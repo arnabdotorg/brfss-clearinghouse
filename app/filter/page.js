@@ -535,7 +535,7 @@ export default function FilterPage() {
       const values = filters[configKey];
       const column = columnFor(configKey);
       if (group && column && values?.length) {
-        clauses.push(`${column} IN (null, ${values.join(", ")})`);
+        clauses.push(`${column} IS NULL OR ${column} IN (null, ${values.join(", ")})`);
       }
     };
     const addTextClause = (configKey) => {
@@ -545,9 +545,9 @@ export default function FilterPage() {
       const value = String(raw).trim();
       if (value) {
         const formatted = formatValue(value);
-        clauses.push(`(${column} = ${formatted} OR ${formatted} = '')`);
+        clauses.push(`(${column} IS NULL OR ${column} = ${formatted} OR ${formatted} = '')`);
       } else {
-        clauses.push(`(${column} = '' OR '' = '')`);
+        clauses.push(`${column} IS NULL OR (${column} = '' OR '' = '')`);
       }
     };
 
