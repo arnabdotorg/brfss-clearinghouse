@@ -506,8 +506,6 @@ export default function FilterPage() {
   const primaryInsuranceColumn = columnFor("primSourceIns");
 
   const formatValue = (value) => {
-    const numeric = Number(value);
-    if (!Number.isNaN(numeric)) return numeric;
     return `'${String(value).replace(/'/g, "''")}'`;
   };
 
@@ -537,17 +535,24 @@ export default function FilterPage() {
       const values = filters[configKey];
       const column = columnFor(configKey);
       if (group && column && values?.length) {
-        clauses.push(`${column} IN (${values.join(", ")})`);
+        clauses.push(`${column} IN (null, ${values.join(", ")})`);
+      }
+    };
+    const addTextClause = (configKey) => {
+      const column = columnFor(configKey);
+      if (!column) return;
+      const raw = filters[configKey] ?? "";
+      const value = String(raw).trim();
+      if (value) {
+        const formatted = formatValue(value);
+        clauses.push(`(${column} = ${formatted} OR ${formatted} = '')`);
+      } else {
+        clauses.push(`(${column} = '' OR '' = '')`);
       }
     };
 
     addInClause("gender");
-    if (filters.age?.trim()) {
-      const ageNum = Number(filters.age);
-      if (!Number.isNaN(ageNum)) {
-        clauses.push(`${textInputs.age.column} = ${ageNum}`);
-      }
-    }
+    addTextClause("age");
     addInClause("maritalStatus");
     addInClause("educationLevel");
     addInClause("primSourceIns");
@@ -567,13 +572,8 @@ export default function FilterPage() {
     addInClause("TBIq5");
     addInClause("TBIq6");
     addInClause("TBIq7");
-
-    if (filters.TBIq8?.trim()) {
-      clauses.push(`${columnFor("TBIq8")} = ${formatValue(filters.TBIq8)}`);
-    }
-    if (filters.TBIq9?.trim()) {
-      clauses.push(`${columnFor("TBIq9")} = ${formatValue(filters.TBIq9)}`);
-    }
+    addTextClause("TBIq8");
+    addTextClause("TBIq9");
 
     addInClause("TBIq10");
     addInClause("TBIq11");
@@ -686,33 +686,6 @@ export default function FilterPage() {
                 </p>
               )}
             </div>
-            {previewRows.length > 0 && (
-              <div className="space-y-2 rounded-xl border border-amber-200 bg-white/90 p-3">
-                <p className="text-xs font-semibold uppercase tracking-wide text-amber-800">Preview</p>
-                <div className="max-h-52 w-full overflow-auto rounded-lg border border-amber-100">
-                  <table className="min-w-full text-[11px] text-stone-800">
-                    <thead className="bg-amber-100 text-left font-semibold uppercase tracking-wide text-amber-800">
-                      <tr>
-                        {previewColumns.map((col) => (
-                          <th key={col} className="px-2 py-1">{col}</th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {previewRows.map((row, idx) => (
-                        <tr key={idx} className={idx % 2 === 0 ? "bg-amber-50" : ""}>
-                          {previewColumns.map((col) => (
-                            <td key={`${idx}-${col}`} className="px-2 py-1">
-                              {String(row[col] ?? "")}
-                            </td>
-                          ))}
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            )}
           </aside>
 
           <section className="space-y-6">
