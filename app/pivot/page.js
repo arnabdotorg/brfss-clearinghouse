@@ -15,6 +15,7 @@ const DATA_DICT_URLS = {
   2021: new URL("../datadicts/2021_datadict.csv", import.meta.url).href,
   2022: new URL("../datadicts/2022_datadict.csv", import.meta.url).href,
   2023: new URL("../datadicts/2023_datadict.csv", import.meta.url).href,
+  union: new URL("../datadicts/union_datadict.csv", import.meta.url).href,
 };
 
 export default function PivotPage() {
@@ -79,7 +80,7 @@ export default function PivotPage() {
       setDictError("Enter a variable name to search.");
       return;
     }
-    const year = Number(searchYear);
+    const year = searchYear;
     const url = DATA_DICT_URLS[year];
     if (!url) {
       setDictError("Invalid year selected.");
@@ -171,7 +172,7 @@ export default function PivotPage() {
                 />
               </div>
               <div className="flex flex-col gap-1">
-                <label className="text-xs text-stone-600">Year</label>
+                <label className="text-xs text-stone-600">Table</label>
                 <select
                   value={searchYear}
                   onChange={(e) => setSearchYear(e.target.value)}
@@ -179,9 +180,9 @@ export default function PivotPage() {
                 >
                   {Object.keys(DATA_DICT_URLS)
                     .sort()
-                    .map((yr) => (
-                      <option key={yr} value={yr}>
-                        {yr}
+                    .map((key) => (
+                      <option key={key} value={key}>
+                        {key === "union" ? "Union (2016-2023)" : key}
                       </option>
                     ))}
                 </select>
