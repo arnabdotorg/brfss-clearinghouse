@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 const tabs = [
   { href: "/", label: "SQL Explorer" },
-  { href: "/filter", label: "Filter" },
+  { href: "/pivot", label: "Pivot Table" },
 ];
 
 export default function NavTabs({ className = "" }) {
