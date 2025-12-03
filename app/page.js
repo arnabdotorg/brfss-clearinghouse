@@ -5,6 +5,7 @@ import NavTabs from "./components/NavTabs";
 import { initDuckDB, loadCsv, runDuckQuery } from "./lib/duckdbClient";
 import { draftSql } from "./lib/sqlexplorerGeminiClient";
 import { SAMPLE_QUERIES } from "./lib/sampleQueries";
+import SampleQueryPicker from "./components/SampleQueryPicker";
 
 const YEARS = [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023];
 
@@ -28,6 +29,10 @@ export default function SqlExplorerV2() {
   const [selectedSample, setSelectedSample] = useState("");
   const [showSampleModal, setShowSampleModal] = useState(false);
   const [sampleModalMessage, setSampleModalMessage] = useState("");
+  const [showPivotModal, setShowPivotModal] = useState(false);
+  const [pivotColumns, setPivotColumns] = useState([]);
+  const [pivotSelectedColumns, setPivotSelectedColumns] = useState([]);
+  const [pivotColumnSearch, setPivotColumnSearch] = useState("");
 
   const dbRef = useRef(null);
   const connRef = useRef(null);
@@ -203,6 +208,39 @@ export default function SqlExplorerV2() {
     await runQuery(sample.sql);
   };
 
+  const openPivotModal = () => {
+    if (!queryResult || !queryResult.rows?.length) {
+      setError("Run a query first to send results to Pivot.");
+      return;
+    }
+    setPivotColumns(queryResult.columns || []);
+    setPivotSelectedColumns(queryResult.columns || []);
+    setPivotColumnSearch("");
+    setShowPivotModal(true);
+  };
+
+  const sendToPivot = () => {
+    const selected = pivotSelectedColumns.filter(Boolean);
+    if (!selected.length) {
+      setError("Select at least one column to send to Pivot.");
+      return;
+    }
+    const filteredRows = queryResult.rows.map((row) => {
+      const next = {};
+      selected.forEach((col) => {
+        next[col] = row[col];
+      });
+      return next;
+    });
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem(
+        "pivotTransfer",
+        JSON.stringify({ rows: filteredRows, columns: selected })
+      );
+      window.location.href = "/pivot";
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-stone-50 to-amber-100 text-stone-900">
       <main className="mx-auto flex max-w-6xl flex-col gap-8 py-10 px-6">
@@ -213,7 +251,7 @@ export default function SqlExplorerV2() {
               Ohio BRFSS
             </p>
             <h1 className="text-3xl font-semibold leading-tight text-stone-900">
-              SQL Explorer v2
+              SQL Explorer
             </h1>
             <p className="text-sm text-stone-600">
               Upload BRFSS CSVs, ask in plain English, review SQL, and run it locally in DuckDB.
@@ -272,18 +310,11 @@ export default function SqlExplorerV2() {
               <label className="text-xs uppercase tracking-[0.2em] text-amber-700">
                 Sample queries
               </label>
-              <select
-                value={selectedSample}
-                onChange={(e) => handleSampleSelect(e.target.value)}
-                className="w-full rounded-xl border border-amber-200 bg-white px-3 py-2 text-sm text-stone-900 outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-500/30"
-              >
-                <option value="">Choose a sample query...</option>
-                {SAMPLE_QUERIES.map((sample) => (
-                  <option key={sample.id} value={sample.id}>
-                    {sample.label}
-                  </option>
-                ))}
-              </select>
+              <SampleQueryPicker
+                samples={SAMPLE_QUERIES}
+                selectedId={selectedSample}
+                onSelect={handleSampleSelect}
+              />
               <p className="text-[11px] text-stone-500">
                 Selecting a sample fills the SQL editor and runs it immediately.
               </p>
@@ -332,12 +363,22 @@ export default function SqlExplorerV2() {
         <section className="rounded-2xl border border-amber-200 bg-white/80 p-5 shadow-lg shadow-amber-100/60">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-semibold text-stone-900">Query result</h3>
-            {message && <p className="text-xs text-amber-700">{message}</p>}
-            {error && (
-              <p className="text-xs text-rose-600">
-                {error}
-              </p>
-            )}
+            <div className="flex items-center gap-2">
+              {queryResult && queryResult.rows?.length > 0 && (
+                <button
+                  onClick={openPivotModal}
+                  className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-800 transition hover:bg-amber-100"
+                >
+                  Send to Pivot
+                </button>
+              )}
+              {message && <p className="text-xs text-amber-700">{message}</p>}
+              {error && (
+                <p className="text-xs text-rose-600">
+                  {error}
+                </p>
+              )}
+            </div>
           </div>
           {!queryResult && (
             <p className="mt-3 text-sm text-stone-600">
@@ -459,6 +500,18 @@ export default function SqlExplorerV2() {
                         Loads as brfss_{year}
                       </p>
                     </div>
+                    <div className="flex items-center gap-3">
+                      {tableMeta[year] ? (
+                        <span className="flex items-center gap-2 text-xs font-semibold text-emerald-700">
+                          <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
+                          Loaded
+                        </span>
+                      ) : (
+                        <span className="flex items-center gap-2 text-xs font-semibold text-amber-700">
+                          <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
+                          Pending
+                        </span>
+                      )}
                     <input
                       type="file"
                       accept=".csv,text/csv"
@@ -466,6 +519,7 @@ export default function SqlExplorerV2() {
                       disabled={uploadingYear === year}
                       className="w-40 cursor-pointer text-xs text-stone-700 file:mr-2 file:rounded-lg file:border-0 file:bg-amber-600 file:px-3 file:py-2 file:text-xs file:font-semibold file:text-white"
                     />
+                    </div>
                   </label>
                 ))}
               </div>
@@ -475,6 +529,96 @@ export default function SqlExplorerV2() {
                   ? loadedYears.map((year) => `brfss_${year}`).join(", ")
                   : "none yet"}
                 .
+              </div>
+            </div>
+          </div>
+        )}
+
+        {showPivotModal && (
+          <div className="fixed inset-0 z-30 flex items-center justify-center bg-stone-900/40 px-4">
+            <div className="w-full max-w-2xl rounded-2xl border border-amber-200 bg-white p-6 shadow-xl">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.2em] text-amber-700">
+                    Pivot export
+                  </p>
+                  <h3 className="text-lg font-semibold text-stone-900">
+                    Select columns to send to Pivot
+                  </h3>
+                  <p className="text-sm text-stone-600">
+                    Choose the fields to include. Pivot will open on the next page.
+                  </p>
+                </div>
+                <button
+                  onClick={() => setShowPivotModal(false)}
+                  className="rounded-full bg-stone-900 px-3 py-1 text-xs font-semibold text-amber-50"
+                >
+                  Close
+                </button>
+              </div>
+              <div className="mt-4 flex items-center gap-3">
+                <input
+                  type="text"
+                  value={pivotColumnSearch}
+                  onChange={(e) => setPivotColumnSearch(e.target.value)}
+                  placeholder="Search columns..."
+                  className="flex-1 rounded-lg border border-amber-200 bg-white px-3 py-2 text-sm text-stone-900 outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-500/30"
+                />
+                <button
+                  onClick={() => setPivotSelectedColumns(pivotColumns)}
+                  className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-semibold text-amber-800 transition hover:bg-amber-100"
+                >
+                  Select all
+                </button>
+                <button
+                  onClick={() => setPivotSelectedColumns([])}
+                  className="rounded-lg border border-amber-200 bg-white px-3 py-2 text-xs font-semibold text-stone-700 transition hover:bg-stone-100"
+                >
+                  Deselect all
+                </button>
+                <button
+                  onClick={sendToPivot}
+                  className="rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-amber-500"
+                >
+                  Send to Pivot
+                </button>
+              </div>
+              <div className="mt-4 max-h-80 overflow-auto rounded-lg border border-amber-200 bg-amber-50 p-3">
+                <div className="grid gap-2 sm:grid-cols-2">
+                  {pivotColumns
+                    .filter((col) =>
+                      col.toLowerCase().includes(pivotColumnSearch.trim().toLowerCase())
+                    )
+                    .map((col) => {
+                      const checked = pivotSelectedColumns.includes(col);
+                      return (
+                        <label
+                          key={col}
+                          className="flex items-center gap-2 rounded-md bg-white px-3 py-2 text-sm text-stone-800 shadow-sm"
+                        >
+                          <input
+                            type="checkbox"
+                            checked={checked}
+                            onChange={(e) => {
+                              if (e.target.checked) {
+                                setPivotSelectedColumns((prev) =>
+                                  prev.includes(col) ? prev : [...prev, col]
+                                );
+                              } else {
+                                setPivotSelectedColumns((prev) =>
+                                  prev.filter((c) => c !== col)
+                                );
+                              }
+                            }}
+                            className="h-4 w-4 rounded border-amber-300 text-amber-600"
+                          />
+                          <span className="truncate" title={col}>
+                            {col}
+                          </span>
+                        </label>
+                      );
+                    })}
+                </div>
               </div>
             </div>
           </div>

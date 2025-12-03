@@ -1,10 +1,27 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Papa from "papaparse";
 import PivotTableUI from "react-pivottable/PivotTableUI";
 import "react-pivottable/pivottable.css";
 import NavTabs from "../components/NavTabs";
+import ReactDOM from "react-dom";
+
+// react-pivottable expects ReactDOM.hasOwnProperty; create a shim getter if missing.
+const reactDomObj = ReactDOM || {};
+if (!Object.prototype.hasOwnProperty.call(reactDomObj, "hasOwnProperty")) {
+  try {
+    Object.defineProperty(reactDomObj, "hasOwnProperty", {
+      value: Object.prototype.hasOwnProperty,
+      configurable: true,
+      enumerable: false,
+      writable: false,
+    });
+  } catch (err) {
+    // ignore if ReactDOM is non-extensible; react-pivottable will still work in most cases.
+    console.warn("ReactDOM shim skipped:", err?.message);
+  }
+}
 
 const DATA_DICT_URLS = {
   2016: new URL("../datadicts/2016_datadict.csv", import.meta.url).href,
@@ -24,12 +41,15 @@ export default function PivotPage() {
   const [error, setError] = useState("");
   const [status, setStatus] = useState("Upload a CSV to start.");
   const [rowCount, setRowCount] = useState(0);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchYear, setSearchYear] = useState("2023");
-  const [dictResult, setDictResult] = useState(null);
+  const [dictSearch, setDictSearch] = useState("");
+  const [dictResults, setDictResults] = useState([]);
   const [dictError, setDictError] = useState("");
   const [dictLoading, setDictLoading] = useState(false);
   const dictCacheRef = useRef(new Map());
+  const [showColumnPicker, setShowColumnPicker] = useState(false);
+  const [availableColumns, setAvailableColumns] = useState([]);
+  const [selectedColumns, setSelectedColumns] = useState([]);
+  const [columnSearch, setColumnSearch] = useState("");
 
   const handleFile = (file) => {
     setError("");
@@ -48,7 +68,8 @@ export default function PivotPage() {
       dynamicTyping: false,
       complete: (results) => {
         const rows = results?.data || [];
-        if (!rows.length) {
+        const columns = results?.meta?.fields || Object.keys(rows[0] || {});
+        if (!rows.length || !columns.length) {
           setError("CSV had no rows.");
           setStatus("Upload a CSV to start.");
           setData([]);
@@ -56,10 +77,13 @@ export default function PivotPage() {
           setRowCount(0);
           return;
         }
+        setAvailableColumns(columns);
+        setSelectedColumns([]);
+        setShowColumnPicker(true);
         setData(rows);
-        setPivotState((prev) => ({ ...prev, data: rows }));
+        setPivotState({});
         setRowCount(rows.length);
-        setStatus(`Loaded ${rows.length.toLocaleString()} rows. Drag fields to pivot.`);
+        setStatus(`Loaded ${rows.length.toLocaleString()} rows. Choose columns to include.`);
       },
       error: (err) => {
         console.error(err);
@@ -72,42 +96,69 @@ export default function PivotPage() {
     });
   };
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const payload = sessionStorage.getItem("pivotTransfer");
+    if (!payload) return;
+    sessionStorage.removeItem("pivotTransfer");
+    try {
+      const { rows = [], columns = [] } = JSON.parse(payload);
+      if (!rows.length) return;
+      setData(rows);
+      const cols = columns.length ? columns : Object.keys(rows[0] || {});
+      setSelectedColumns([]);
+      setAvailableColumns(cols);
+      setPivotState((prev) => ({ ...prev, data: rows }));
+      setRowCount(rows.length);
+      setStatus("Loaded from SQL Explorer. Drag fields to pivot or reopen column selector.");
+    } catch (err) {
+      console.error("Pivot transfer parse error:", err);
+    }
+  }, []);
+
   const lookupDict = async () => {
     setDictError("");
-    setDictResult(null);
-    const term = searchTerm.trim();
+    setDictResults([]);
+    const term = dictSearch.trim().toLowerCase();
     if (!term) {
-      setDictError("Enter a variable name to search.");
+      setDictError("Enter a variable name or description to search.");
       return;
     }
-    const year = searchYear;
-    const url = DATA_DICT_URLS[year];
-    if (!url) {
-      setDictError("Invalid year selected.");
-      return;
-    }
+
     setDictLoading(true);
     try {
-      let parsed = dictCacheRef.current.get(year);
-      if (!parsed) {
-        const res = await fetch(url);
-        if (!res.ok) throw new Error("Could not load data dictionary.");
-        const text = await res.text();
-        parsed = Papa.parse(text, { header: true, skipEmptyLines: true }).data;
-        dictCacheRef.current.set(year, parsed);
+      // load all dicts into cache if not present
+      const entries = [];
+      for (const key of Object.keys(DATA_DICT_URLS)) {
+        let parsed = dictCacheRef.current.get(key);
+        if (!parsed) {
+          const res = await fetch(DATA_DICT_URLS[key]);
+          if (!res.ok) throw new Error(`Could not load data dictionary: ${key}`);
+          const text = await res.text();
+          parsed = Papa.parse(text, { header: true, skipEmptyLines: true }).data;
+          dictCacheRef.current.set(key, parsed);
+        }
+        parsed.forEach((row) => {
+          entries.push({
+            table: key,
+            column_name: row.column_name || "",
+            description: row.description || "",
+            column_type: row.column_type || "",
+            possible_values: row.possible_values || "",
+          });
+        });
       }
-      const lowerTerm = term.toLowerCase();
-      const match =
-        parsed.find(
-          (row) => (row.column_name || "").toLowerCase() === lowerTerm
-        ) ||
-        parsed.find(
-          (row) => (row.column_name || "").toLowerCase().includes(lowerTerm)
-        );
-      if (match) {
-        setDictResult({ year, ...match });
+
+      const filtered = entries.filter((entry) => {
+        const name = entry.column_name.toLowerCase();
+        const desc = entry.description.toLowerCase();
+        return name.includes(term) || desc.includes(term);
+      });
+
+      if (filtered.length) {
+        setDictResults(filtered.slice(0, 200));
       } else {
-        setDictError("No match found in that year's dictionary.");
+        setDictError("No matches found across dictionaries.");
       }
     } catch (err) {
       console.error(err);
@@ -115,6 +166,19 @@ export default function PivotPage() {
     } finally {
       setDictLoading(false);
     }
+  };
+
+  const applyColumnSelection = () => {
+    const trimmed = selectedColumns.filter(Boolean);
+    const filteredData = data.map((row) => {
+      const next = {};
+      trimmed.forEach((col) => {
+        next[col] = row[col];
+      });
+      return next;
+    });
+    setPivotState((prev) => ({ ...prev, data: filteredData }));
+    setShowColumnPicker(false);
   };
 
   return (
@@ -152,40 +216,27 @@ export default function PivotPage() {
         )}
 
         <section className="rounded-2xl border border-amber-200 bg-white/80 p-4 shadow-lg shadow-amber-100/60">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-            <div>
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between">
+            <div className="w-full">
               <p className="text-xs uppercase tracking-[0.2em] text-amber-700">
                 Data dictionary lookup
               </p>
               <h3 className="text-lg font-semibold text-stone-900">
-                Find a variable by year
+                Search all dictionaries
               </h3>
             </div>
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-end">
-              <div className="flex flex-col gap-1">
-                <label className="text-xs text-stone-600">Variable name</label>
+            <div className="flex flex-col sm:flex-row sm:items-end w-full">
+              <div className="flex w-full flex-col gap-1">
+                <label className="text-xs text-stone-600">Name or description</label>
                 <input
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  placeholder="e.g., GENHLTH"
-                  className="w-52 rounded-lg border border-amber-200 bg-white px-3 py-2 text-sm text-stone-900 outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-500/30"
+                  value={dictSearch}
+                  onChange={(e) => setDictSearch(e.target.value)}
+                  placeholder="e.g., head injury, OH8_1"
+                  className="w-full sm:w-[28rem] rounded-lg border border-amber-200 bg-white px-3 py-2 text-sm text-stone-900 outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-500/30"
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") lookupDict();
+                  }}
                 />
-              </div>
-              <div className="flex flex-col gap-1">
-                <label className="text-xs text-stone-600">Table</label>
-                <select
-                  value={searchYear}
-                  onChange={(e) => setSearchYear(e.target.value)}
-                  className="w-28 rounded-lg border border-amber-200 bg-white px-3 py-2 text-sm text-stone-900 outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-500/30"
-                >
-                  {Object.keys(DATA_DICT_URLS)
-                    .sort()
-                    .map((key) => (
-                      <option key={key} value={key}>
-                        {key === "union" ? "Union (2016-2023)" : key}
-                      </option>
-                    ))}
-                </select>
               </div>
               <button
                 onClick={lookupDict}
@@ -199,20 +250,28 @@ export default function PivotPage() {
           {dictError && (
             <p className="mt-2 text-sm text-rose-700">{dictError}</p>
           )}
-          {dictResult && (
-            <div className="mt-3 rounded-lg border border-amber-200 bg-white p-3 text-sm text-stone-800">
-              <p className="text-xs uppercase tracking-[0.2em] text-amber-700">
-                {dictResult.year} · {dictResult.column_name}
-              </p>
-              <p className="mt-1 font-semibold">{dictResult.description}</p>
-              <p className="mt-1 text-xs text-stone-600">
-                DuckDB type: {dictResult.column_type || "n/a"}
-              </p>
-              {dictResult.possible_values && (
-                <pre className="mt-2 whitespace-pre-wrap rounded border border-amber-100 bg-amber-50 p-2 text-xs text-stone-800">
-{dictResult.possible_values}
-                </pre>
-              )}
+          {dictResults.length > 0 && (
+            <div className="mt-3 max-h-80 overflow-auto rounded-lg border border-amber-200 bg-white">
+              <table className="min-w-full text-sm text-stone-800">
+                <thead className="bg-amber-100 text-xs font-semibold uppercase tracking-wide text-amber-800">
+                  <tr>
+                    <th className="px-3 py-2 text-left">Table</th>
+                    <th className="px-3 py-2 text-left">Variable</th>
+                    <th className="px-3 py-2 text-left">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {dictResults.map((res, idx) => (
+                    <tr key={`${res.table}-${res.column_name}-${idx}`} className={idx % 2 === 0 ? "bg-white" : "bg-amber-50"}>
+                      <td className="px-3 py-2 text-xs font-semibold text-amber-800">
+                        {res.table === "union" ? "Union" : res.table}
+                      </td>
+                      <td className="px-3 py-2 font-mono text-xs text-stone-900">{res.column_name}</td>
+                      <td className="px-3 py-2 text-xs text-stone-700">{res.description}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           )}
         </section>
@@ -223,11 +282,19 @@ export default function PivotPage() {
             <p className="text-xs text-stone-600">
               Drag fields between rows/columns; aggregators and renderers are built-in.
             </p>
+            {rowCount > 0 && (
+              <button
+                onClick={() => setShowColumnPicker(true)}
+                className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-800 transition hover:bg-amber-100"
+              >
+                Choose columns
+              </button>
+            )}
           </div>
           <div className="min-h-[420px] overflow-auto rounded-xl border border-amber-100 bg-white p-3">
             {rowCount ? (
               <PivotTableUI
-                data={data}
+                data={pivotState.data || data}
                 onChange={(s) => setPivotState(s)}
                 {...pivotState}
               />
@@ -238,6 +305,96 @@ export default function PivotPage() {
             )}
           </div>
         </section>
+
+        {showColumnPicker && (
+          <div className="fixed inset-0 z-30 flex items-center justify-center bg-stone-900/40 px-4">
+            <div className="w-full max-w-2xl rounded-2xl border border-amber-200 bg-white p-6 shadow-xl">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.2em] text-amber-700">
+                    Column selection
+                  </p>
+                  <h3 className="text-lg font-semibold text-stone-900">
+                    Choose fields for the pivot
+                  </h3>
+                  <p className="text-sm text-stone-600">
+                    Select the columns to include. You can open this dialog again after uploading.
+                  </p>
+                </div>
+                <button
+                  onClick={() => setShowColumnPicker(false)}
+                  className="rounded-full bg-stone-900 px-3 py-1 text-xs font-semibold text-amber-50"
+                >
+                  Close
+                </button>
+              </div>
+              <div className="mt-4 flex items-center gap-3">
+                <input
+                  type="text"
+                  value={columnSearch}
+                  onChange={(e) => setColumnSearch(e.target.value)}
+                  placeholder="Search columns..."
+                  className="flex-1 rounded-lg border border-amber-200 bg-white px-3 py-2 text-sm text-stone-900 outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-500/30"
+                />
+                <button
+                  onClick={() => setSelectedColumns(availableColumns)}
+                  className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-semibold text-amber-800 transition hover:bg-amber-100"
+                >
+                  Select all
+                </button>
+                <button
+                  onClick={() => setSelectedColumns([])}
+                  className="rounded-lg border border-amber-200 bg-white px-3 py-2 text-xs font-semibold text-stone-700 transition hover:bg-stone-100"
+                >
+                  Deselect all
+                </button>
+                <button
+                  onClick={applyColumnSelection}
+                  className="rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-amber-500"
+                >
+                  Apply
+                </button>
+              </div>
+              <div className="mt-4 max-h-80 overflow-auto rounded-lg border border-amber-200 bg-amber-50 p-3">
+                <div className="grid gap-2 sm:grid-cols-2">
+                  {availableColumns
+                    .filter((col) =>
+                      col.toLowerCase().includes(columnSearch.trim().toLowerCase())
+                    )
+                    .map((col) => {
+                      const checked = selectedColumns.includes(col);
+                      return (
+                        <label
+                          key={col}
+                          className="flex items-center gap-2 rounded-md bg-white px-3 py-2 text-sm text-stone-800 shadow-sm"
+                        >
+                          <input
+                            type="checkbox"
+                            checked={checked}
+                            onChange={(e) => {
+                              if (e.target.checked) {
+                                setSelectedColumns((prev) =>
+                                  prev.includes(col) ? prev : [...prev, col]
+                                );
+                              } else {
+                                setSelectedColumns((prev) =>
+                                  prev.filter((c) => c !== col)
+                                );
+                              }
+                            }}
+                            className="h-4 w-4 rounded border-amber-300 text-amber-600"
+                          />
+                          <span className="truncate" title={col}>
+                            {col}
+                          </span>
+                        </label>
+                      );
+                    })}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </main>
     </div>
   );
