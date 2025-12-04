@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import ReactDOM from "react-dom";
 import Papa from "papaparse";
 import PivotTableUI from "react-pivottable/PivotTableUI";
 import "react-pivottable/pivottable.css";
 import NavTabs from "../components/NavTabs";
-import ReactDOM from "react-dom";
 
 // react-pivottable expects ReactDOM.hasOwnProperty; create a shim getter if missing.
 const reactDomObj = ReactDOM || {};
@@ -33,6 +33,23 @@ const DATA_DICT_URLS = {
   2022: new URL("../datadicts/2022_datadict.csv", import.meta.url).href,
   2023: new URL("../datadicts/2023_datadict.csv", import.meta.url).href,
   union: new URL("../datadicts/union_datadict.csv", import.meta.url).href,
+};
+
+const parseDictText = (text) => {
+  // The union dictionary has malformed quotes; parse by splitting on the first comma per line.
+  const lines = text.split(/\r?\n/);
+  const rows = [];
+  lines.forEach((line, idx) => {
+    const trimmed = line.trim();
+    if (!trimmed || idx === 0) return; // skip header/empty
+    const commaIdx = trimmed.indexOf(",");
+    if (commaIdx === -1) return;
+    const column_name = trimmed.slice(0, commaIdx).trim();
+    const rawDesc = trimmed.slice(commaIdx + 1).trim();
+    const description = rawDesc.replace(/^"+|"+$/g, "");
+    rows.push({ column_name, description, column_type: "", possible_values: "" });
+  });
+  return rows;
 };
 
 export default function PivotPage() {
@@ -135,7 +152,7 @@ export default function PivotPage() {
           const res = await fetch(DATA_DICT_URLS[key]);
           if (!res.ok) throw new Error(`Could not load data dictionary: ${key}`);
           const text = await res.text();
-          parsed = Papa.parse(text, { header: true, skipEmptyLines: true }).data;
+          parsed = parseDictText(text);
           dictCacheRef.current.set(key, parsed);
         }
         parsed.forEach((row) => {
@@ -156,7 +173,7 @@ export default function PivotPage() {
       });
 
       if (filtered.length) {
-        setDictResults(filtered.slice(0, 200));
+        setDictResults(filtered);
       } else {
         setDictError("No matches found across dictionaries.");
       }

@@ -25,6 +25,7 @@ export default function SqlExplorerV2() {
   const [error, setError] = useState("");
   const [tableMeta, setTableMeta] = useState({});
   const [queryResult, setQueryResult] = useState(null);
+  const [resultFlash, setResultFlash] = useState(false);
   const [uploadingYear, setUploadingYear] = useState(null);
   const [selectedSample, setSelectedSample] = useState("");
   const [showSampleModal, setShowSampleModal] = useState(false);
@@ -38,6 +39,7 @@ export default function SqlExplorerV2() {
   const connRef = useRef(null);
   const workerUrlRef = useRef(null);
   const sqlFlashTimeoutRef = useRef(null);
+  const resultFlashTimeoutRef = useRef(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -67,6 +69,9 @@ export default function SqlExplorerV2() {
       }
       if (sqlFlashTimeoutRef.current) {
         clearTimeout(sqlFlashTimeoutRef.current);
+      }
+      if (resultFlashTimeoutRef.current) {
+        clearTimeout(resultFlashTimeoutRef.current);
       }
     };
   }, []);
@@ -126,6 +131,17 @@ export default function SqlExplorerV2() {
     sqlFlashTimeoutRef.current = setTimeout(() => setSqlFlash(false), 600);
   };
 
+  const triggerResultFlash = () => {
+    setResultFlash(true);
+    if (resultFlashTimeoutRef.current) {
+      clearTimeout(resultFlashTimeoutRef.current);
+    }
+    resultFlashTimeoutRef.current = setTimeout(
+      () => setResultFlash(false),
+      600
+    );
+  };
+
   const handleDraftSql = async () => {
     if (!geminiKey.trim()) {
       setError("Add a Gemini API key first.");
@@ -175,6 +191,7 @@ export default function SqlExplorerV2() {
           result.rows.length === 1 ? "" : "s"
         }.`
       );
+      triggerResultFlash();
     } catch (err) {
       console.error(err);
       setError(err.message || "Query failed.");
@@ -225,10 +242,12 @@ export default function SqlExplorerV2() {
       setError("Select at least one column to send to Pivot.");
       return;
     }
+    const normalize = (value) =>
+      typeof value === "bigint" ? value.toString() : value;
     const filteredRows = queryResult.rows.map((row) => {
       const next = {};
       selected.forEach((col) => {
-        next[col] = row[col];
+        next[col] = normalize(row[col]);
       });
       return next;
     });
@@ -386,12 +405,20 @@ export default function SqlExplorerV2() {
             </p>
           )}
           {queryResult && queryResult.rows.length === 0 && (
-            <p className="mt-3 text-sm text-stone-600">
+            <div
+              className={`mt-4 rounded-xl border border-amber-200 bg-white/90 px-4 py-3 text-sm text-stone-700 ${
+                resultFlash ? "result-flash" : ""
+              }`}
+            >
               Query returned zero rows. Adjust your filters and try again.
-            </p>
+            </div>
           )}
           {queryResult && queryResult.rows.length > 0 && (
-            <div className="mt-4 overflow-hidden rounded-xl border border-amber-200 bg-white/90">
+            <div
+              className={`mt-4 overflow-hidden rounded-xl border border-amber-200 bg-white/90 ${
+                resultFlash ? "result-flash" : ""
+              }`}
+            >
               <div className="max-h-[28rem] w-full overflow-auto">
                 <table className="min-w-max text-sm text-stone-800">
                   <thead className="bg-amber-100 text-left text-xs font-semibold uppercase tracking-wide text-amber-800">

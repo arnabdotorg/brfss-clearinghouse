@@ -27,8 +27,8 @@ body {
 
 @keyframes sql-flash {
   0% {
-    color: #92400e;
-    background-color: #fef9c3;
+    color: #065f46;
+    background-color: #d1fae5;
   }
   100% {
     color: #171717;
@@ -38,4 +38,19 @@ body {
 
 .sql-flash {
   animation: sql-flash 0.6s ease;
+}
+
+@keyframes result-flash {
+  0% {
+    background-color: #d1fae5;
+    box-shadow: 0 0 0 2px #34d399;
+  }
+  100% {
+    background-color: transparent;
+    box-shadow: none;
+  }
+}
+
+.result-flash {
+  animation: result-flash 0.6s ease;
 }

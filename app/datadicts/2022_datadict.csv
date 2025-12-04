@@ -1,578 +1,578 @@
-column_name,column_type,description,possible_values
-_STATE,DOUBLE,State FIPS Code,{'39': 'Ohio'}
-_GEOSTR,DOUBLE,Geographic Stratum Code,{'HIDDEN': 'Data not displayed'}
-_DENSTR2,DOUBLE,Household Density Stratum Code,"{'1': 'Listed', '2': 'Unlisted', '9': 'Not Applicable'}"
-PRECALL,DOUBLE,Pre-Call Status Code,"{'1': 'To be called', '7': 'To be called'}"
-SECSCRFL,DOUBLE,Secondary Screening Flags,"{'0': 'Undetermined/', '1': 'No Answer', '2': 'Busy', '5': 'Privacy Manager', '6': 'Residential Voice', '7': 'Residence/Phone', 'BLANK': 'Missing or Not'}"
-REPNUM,DOUBLE,Replicate Number,"{'1': '010001-019999', '2': '020001-029999', '3': '030001-039999', '4': '040001-049999', '5': '050001-059999', '6': '060001-069999', '7': '070001-079999', '8': '080001-089999', '9': '090001-099999', '10': '100001-109999', '11': '110001-119999', '12': '120001-129999'}"
-REPDEPTH,DOUBLE,Replicate Depth,"{'1': 'Replicate Depth', '2': '540', '3': '528', '4': '524', '6': '554', '7': '595', '8': '553', '9': '602', '10': '561', '11': '524', '12': '523', '13': '579', '14': '541', '15': '567', '16': '571', '17': '581', '18': '540', '19': '555', '20': '505', '21': '560', '22': '534', '23': '509', '24': '540', '25': '572', '26': '510', '27': '546', '28': '553', '29': '537', '30': '537'}"
-FMONTH,DOUBLE,File Month,"{'1': 'January', '2': 'February', '3': 'March', '4': 'April', '5': 'May', '6': 'June', '7': 'July', '8': 'August', '9': 'September', '10': 'October', '11': 'November', '12': 'December'}"
-IDATE,VARCHAR,Interview Date,"{'1': '01012022-01312022', '2': '02012022-02292022', '3': '03012022-03312022', '4': '04012022-04302022', '5': '05012022-05312022', '6': '06012022-06302022', '7': '07012022-07312022', '8': '08012022-08312022', '9': '09012022-09302022', '10': '10012022-10312022', '11': '11012022-11302022', '12': '12012022-12312022', '13': 'Collected in'}"
-IMONTH,VARCHAR,Interview Month,"{'1': 'January', '2': 'February', '3': 'March', '4': 'April', '5': 'May', '6': 'June', '7': 'July', '8': 'August', '9': 'September', '10': 'October', '11': 'November', '12': 'December'}"
-IDAY,VARCHAR,Interview Day,"{'1': 'Interview Day', '2': '432', '3': '500', '4': '401', '5': '496', '6': '597', '7': '525', '8': '520', '9': '465', '10': '450', '11': '380', '12': '421', '13': '485', '14': '539', '15': '532', '16': '600', '17': '505', '18': '554', '19': '516', '20': '563', '21': '618', '22': '690', '23': '640', '24': '496', '25': '570', '26': '601', '27': '570', '28': '720', '29': '737', '30': '567', '31': '268'}"
-IYEAR,BIGINT,Interview Year,{}
-INTVID,VARCHAR,Interviewer Identification,{'HIDDEN': 'Data not displayed'}
-DISPCODE,DOUBLE,Final Disposition,{}
-SEQNO,BIGINT,Annual Sequence Number,{'HIDDEN': 'Data not displayed'}
-_PSU,DOUBLE,Primary Sampling Unit (Equal to Annual Sequence Number),{'HIDDEN': 'Data not displayed'}
-NATTMPTS,DOUBLE,Description not found,{}
-NRECSEL,DOUBLE,Number of Sample Records Selected from Stratum,{'HIDDEN': 'Data not displayed'}
-NRECSTR,DOUBLE,Number of Telephone Numbers in Stratum from Which Sample Was Selected,{'HIDDEN': 'Data not displayed'}
-CTELENM1,DOUBLE,Is this [PHONE NUMBER]?,"{'1': 'Yes—Go to LL.02,', 'BLANK': 'Missing'}"
-PVTRESD1,DOUBLE,Is this a private residence?,"{'1': 'Yes—Go to LL.04,', '2': 'No—Go to LL.03,', 'BLANK': 'Missing'}"
-COLGHOUS,DOUBLE,Do you live in college housing?,"{'1': 'Yes—Go to LL.04,', 'BLANK': 'Missing'}"
-STATERE1,DOUBLE,Do you currently live in__Ohio____?,"{'1': 'Yes—Go to LL.05,', 'BLANK': 'Not asked or'}"
-CELPHON1,DOUBLE,Is this a cell telephone?,"{'2': 'Not a cell phone—', 'BLANK': 'Missing of Cell'}"
-LADULT1,DOUBLE,Are you 18 years of age or older?,"{'1': 'Yes—If LL.03,', 'BLANK': 'Not asked or'}"
-COLGSEX1,DOUBLE,Are you male or female?,"{'2': 'Female—Go to', 'BLANK': 'Not asked or'}"
-NUMADULT,DOUBLE,"I need to randomly select one adult who lives in your household to be interviewed. Excluding adults living away from home, such as students away at college, how many members of your household, including yourself, are 18 years of age or older?","{'1': 'Number of adults', '2': 'Number of adults', '3': 'Number of adults', '4': 'Number of adults', '5': 'Number of adults', '6': '-', 'BLANK': 'Missing'}"
-LANDSEX1,DOUBLE,Are you male or female?,"{'1': 'Male—Go to C01.01,', '2': 'Female—Go to', '3': 'Nonbinary—Insert', 'BLANK': 'Not asked or'}"
-NUMMEN,DOUBLE,How many of these adults are men?,"{'0': 'Number of adult', '1': 'Number of adult', '2': 'Number of adult', '3': 'Number of adult', '4': 'Number of adult', 'BLANK': 'Missing'}"
-NUMWOMEN,DOUBLE,So the number of women in the household is [X]. Is that correct?,"{'0': 'Number of adult', '1': 'Number of adult', '2': 'Number of adult', '3': 'Number of adult', '4': 'Number of adult', '6': '-', 'BLANK': 'Missing'}"
-RESPSLCT,DOUBLE,The person in your household that I need to speak with is [XXX]. Are you the [XXX] in this household,"{'1': 'Male—Go to Section', '2': 'Female—Go to', 'BLANK': 'Not asked or'}"
-SAFETIME,DOUBLE,Is this a safe time to talk with you?,"{'1': 'Yes—Go to CP.02,', 'BLANK': 'Not asked or'}"
-CTELNUM1,DOUBLE,Is this (phone number) ?,"{'1': 'Yes—Go to CP.03,', 'BLANK': 'Not asked or'}"
-CELLFON5,DOUBLE,Is this a cell phone?,"{'1': 'Yes—Go to CP.04,', 'BLANK': 'Not asked or'}"
-CADULT1,DOUBLE,Are you 18 years of age or older?,"{'1': 'Yes—Go to CP.05,', 'BLANK': 'Not asked or'}"
-CELLSEX1,DOUBLE,Are you male or female?,"{'1': 'Male—Go to CP.06,', '2': 'Female—Go to', '3': 'Nonbinary—Insert', '7': 'Don’t know/Not', '9': 'Refused—Insert Sex', 'BLANK': 'Not asked or'}"
-PVTRESD3,DOUBLE,Do you live in a private residence?,"{'1': 'Yes—Go to CP.08,', '2': 'No—Go to CP.07', 'BLANK': 'Not asked or'}"
-CCLGHOUS,DOUBLE,Do you live in college housing?,"{'1': 'Yes—Go to CP.08,', 'BLANK': 'Missing'}"
-CSTATE1,DOUBLE,Do you currently live in ____(state)____?,"{'1': 'Yes—Go to CP.10,', '2': 'No—Go to CP.09,', 'BLANK': 'Not asked or'}"
-RSPSTAT1,DOUBLE,In what state do you currently live?,"{'39': 'Ohio', 'BLANK': 'Not asked or'}"
-LANDLINE,DOUBLE,Do you also have a landline telephone in your home that is used to make and receive calls?,"{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-HHADULT,DOUBLE,"How many members of your household, including yourself, are 18","{'1': '-', '77': 'Don’t know/Not', '99': 'Refused', 'BLANK': 'Not asked or'}"
-SEXVAR,DOUBLE,Sex of Respondent,"{'1': 'Male—Code=1 if', '2': 'Female—Code=2 if'}"
-GENHLTH,DOUBLE,Would you say that in general your health is—,"{'1': 'Excellent', '2': 'Very good', '3': 'Good', '4': 'Fair', '5': 'Poor', '7': 'Don’t know/Not', '9': 'Refused'}"
-PHYSHLTH,DOUBLE,"Now thinking about your physical health, which includes physical illness and injury, for how many days during","{'1': '-', '88': 'None', '77': 'Don’t know/Not', '99': 'Refused'}"
-MENTHLTH,DOUBLE,"Now thinking about your mental health, which includes stress, depression, and problems with emotions, for how","{'1': '-', '88': 'None', '77': 'Don’t know/Not', '99': 'Refused'}"
-POORHLTH,DOUBLE,"During the past 30 days, for about how many days did poor physical or mental health keep you from doing your","{'1': '-', '88': 'None', '77': 'Don’t know/Not', '99': 'Refused', 'BLANK': 'Not asked or'}"
-PRIMINSR,DOUBLE,What is the current primary source of your health insurance?,"{'1': 'A plan purchased', '2': 'A private', '3': 'Medicare', '4': 'Medigap', '5': 'Medicaid', '6': 'Children´s Health', '7': 'Military related', '8': 'Indian Health', '9': 'State sponsored', '10': 'Other government', '88': 'No coverage of any', '77': 'Don’t know/Not', '99': 'Refused'}"
-PERSDOC3,DOUBLE,Do you have one person (or a group of doctors) that you think of as your personal health care provider?,"{'1': 'Yes, only one', '2': 'More than one', '3': 'No', '7': 'Don’t know/Not', '9': 'Refused'}"
-MEDCOST1,DOUBLE,Was there a time in the past 12 months when you needed to see a doctor but could not because you could not afford it?,"{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused'}"
-CHECKUP1,DOUBLE,About how long has it been since you last visited a doctor for a routine checkup?,"{'1': 'Within past year', '2': 'Within past', '3': 'Within past', '4': '5 or more years', '7': 'Don’t know/Not', '8': 'Never', '9': 'Refused'}"
-EXERANY2,DOUBLE,"During the past month, other than your regular job, did you participate in any physical activities or exercises such","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused'}"
-SLEPTIM1,DOUBLE,"On average, how many hours of sleep do you get in a 24-hour period?","{'1': '-', '77': 'Don’t know/Not', '99': 'Refused'}"
-LASTDEN4,DOUBLE,"Including all types of dentists, such as orthodontists, oral surgeons, and all other dental specialists, as well as dental hygienists, how long has it been since you last visited a dentist or a dental clinic for any reason?","{'1': 'Within the past', '2': 'Within the past', '3': 'Within the past', '4': '5 or more years', '7': 'Don’t know/Not', '8': 'Never', '9': 'Refused', 'BLANK': 'Missing'}"
-RMVTETH4,DOUBLE,"Not including teeth lost for injury or orthodontics, how many of your permanent teeth have been removed because of tooth decay or gum disease?","{'1': '1 to', '2': '6 or more, but not', '3': 'All', '7': 'Don’t know/Not', '8': 'None', '9': 'Refused', 'BLANK': 'Not asked or'}"
-CVDINFR4,DOUBLE,"(Ever told) you had a heart attack, also called a myocardial infarction?","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused'}"
-CVDCRHD4,DOUBLE,(Ever told) (you had) angina or coronary heart disease?,"{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused'}"
-CVDSTRK3,DOUBLE,(Ever told) (you had) a stroke.,"{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused'}"
-ASTHMA3,DOUBLE,(Ever told) (you had) asthma?,"{'1': 'Yes', '2': 'No—Go to Section', '7': 'Don’t know/Not', '9': 'Refused—Go to'}"
-ASTHNOW,DOUBLE,Do you still have asthma?,"{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-CHCSCNC1,DOUBLE,(Ever told) (you had) skin cancer that is not melanoma?,"{'1': 'Yes', '2': 'No', '7': 'Don’t know / Not', '9': 'Refused'}"
-CHCOCNC1,DOUBLE,(Ever told) (you had) melanoma or any other types of cancer?,"{'1': 'Yes', '2': 'No', '7': 'Don’t know / Not', '9': 'Refused'}"
-CHCCOPD3,DOUBLE,"(Ever told) (you had) C.O.P.D. (chronic obstructive pulmonary disease), emphysema or chronic bronchitis?","{'1': 'Yes', '2': 'No', '7': 'Don’t know / Not', '9': 'Refused'}"
-ADDEPEV3,DOUBLE,"(Ever told) (you had) a depressive disorder (including depression, major depression, dysthymia, or minor depression)?","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused'}"
-CHCKDNY2,DOUBLE,"Not including kidney stones, bladder infection or incontinence, were you ever told you had kidney disease?","{'1': 'Yes', '2': 'No', '7': 'Don’t know / Not', '9': 'Refused'}"
-HAVARTH4,DOUBLE,"(Ever told) (you had) some form of arthritis, rheumatoid arthritis, gout, lupus, or fibromyalgia?","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused'}"
-DIABETE4,DOUBLE,(Ever told) (you had) diabetes?,"{'1': 'Yes', '2': 'Yes, but female', '3': 'No—Go to Section', '4': 'No, pre-diabetes', '7': 'Don’t know/Not', '9': 'Refused—Go to'}"
-DIABAGE4,DOUBLE,Description not found,{}
-AGE,DOUBLE,What is your age?,"{'7': 'Don’t know/Not', '9': 'Refused', '18': '-', '25': '-', '35': '-', '45': '-', '55': '-', '65': '-'}"
-HISPANC3,BIGINT,"Are you Hispanic, Latino/a, or Spanish origin? [One or more categories may be selected.]","{'1': 'Mexican, Mexican', '2': 'Puerto Rican', '3': 'Cuban', '4': 'Another Hispanic,', '5': 'No', '6': 'Multiple', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-MRACE2,BIGINT,Which one or more of the following would you say is your race? (If 40 (Asian) or 50 (Pacific Islander) is selected,"{'77': 'Don’t know/Not', '99': 'Refused', 'HIDDEN': 'Data not displayed'}"
-ORACE4,DOUBLE,Which one of these groups would you say best represents your race? (If 40 (Asian) or 50 (Pacific Islander) is,"{'10': 'White', '20': 'Black or African', '30': 'American Indian or', '41': 'Asian Indian', '42': 'Chinese', '44': 'Japanese', '46': 'Vietnamese', '47': 'Other Asian', '51': 'Native Hawaiian', '88': '1', '77': 'Don´t know/Not', '99': 'Refused', 'BLANK': 'Not asked or'}"
-MARITAL,DOUBLE,Are you…,"{'1': 'Married', '2': 'Divorced', '3': 'Widowed', '4': 'Separated', '5': 'Never married', '6': 'A member of an', '9': 'Refused'}"
-EDUCA,DOUBLE,What is the highest grade or year of school you completed ?,"{'1': 'Never attended', '2': 'Grades', '3': 'Grades', '4': 'Grade', '5': 'College', '6': 'College', '9': 'Refused'}"
-RENTHOM1,DOUBLE,Do you own or rent your home?,"{'1': 'Own', '2': 'Rent', '3': 'Other arrangement', '7': 'Don’t know/Not', '9': 'Refused'}"
-CTYCODE2,DOUBLE,In what county do you currently live?,{'1': '-'}
-ZIPCODE1,VARCHAR,What is the ZIP Code where you currently live?,"{'1': '-', 'BLANK': 'Not asked or'}"
-NUMHHOL4,DOUBLE,"Not including cell phones or numbers used for computers, fax machines or security systems, do you have more","{'1': 'Yes', '2': 'No—Go to Section', '7': 'Don’t know/Not', '9': 'Refused—Go to', 'BLANK': 'Not asked or'}"
-NUMPHON4,DOUBLE,Description not found,{}
-CPDEMO1C,DOUBLE,Description not found,{}
-VETERAN3,DOUBLE,"Have you ever served on active duty in the United States Armed Forces, either in the regular military or in a","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-EMPLOY1,DOUBLE,Are you currently…?,"{'1': 'Employed for wages', '2': 'Self-employed', '3': 'Out of work for', '4': 'Out of work for', '5': 'A homemaker', '6': 'A student', '7': 'Retired', '8': 'Unable to work', '9': 'Refused', 'BLANK': 'Not asked or'}"
-CHILDREN,DOUBLE,How many children less than 18 years of age live in your household?,"{'1': '-', '88': 'None', '99': 'Refused', 'BLANK': 'Not asked or'}"
-INCOME3,DOUBLE,"Is your annual household income from all sources: (If respondent refuses at any income level, code ´Refused.´)","{'1': 'Less than $10,000', '2': 'Less than $15,000', '3': 'Less than $20,000', '4': 'Less than $25,000', '5': 'Less than $35,000', '6': 'Less than $50,000', '7': 'Less than $75,000', '8': 'Less than', '9': 'Less than', '10': 'Less than', '11': '$200,000 or more', '77': 'Don’t know/Not', '99': 'Refused', 'BLANK': 'Not asked or'}"
-PREGNANT,DOUBLE,"To your knowledge , are you now pregnant?","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-WEIGHT2,DOUBLE,About how much do you weigh without shoes?,"{'50': '-', 'BLANK': 'Not asked or'}"
-HEIGHT3,DOUBLE,About how tall are you without shoes?,{'BLANK': 'Not asked or'}
-DEAF,DOUBLE,Are you deaf or do you have serious difficulty hearing?,"{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-BLIND,DOUBLE,"Are you blind or do you have serious difficulty seeing, even when wearing glasses?","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-DECIDE,DOUBLE,"Because of a physical, mental, or emotional condition, do you have serious difficulty concentrating,","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-DIFFWALK,DOUBLE,Do you have serious difficulty walking or climbing stairs?,"{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-DIFFDRES,DOUBLE,Do you have difficulty dressing or bathing?,"{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-DIFFALON,DOUBLE,"Because of a physical, mental, or emotional condition, do you have difficulty doing errands alone such as visiting a doctor","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-HADMAM,DOUBLE,(The next questions are about breast and cervical cancer.) Have you ever had a mammogram?,"{'1': 'Yes', '2': 'No—Go to Section', '7': 'Don’t know/Not', 'BLANK': 'Not asked or'}"
-HOWLONG,DOUBLE,How long has it been since you had your last mammogram?,"{'1': 'Within the past', '2': 'Within the past', '3': 'Within the past', '4': 'Within the past', '5': '5 or more years', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-CERVSCRN,DOUBLE,Have you ever had a cervical,"{'1': 'Yes', '2': 'No—Go to Section', '7': 'Don’t know/Not', '9': 'Refused—Go to', 'BLANK': 'Not asked or'}"
-CRVCLCNC,DOUBLE,How long has it been since you had your last cervical cancer screening test?,"{'1': 'Within the past', '2': 'Within the past', '3': 'Within the past', '4': 'Within the past', '5': '5 or more years', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-CRVCLPAP,DOUBLE,"At your most recent cervical cancer screening, did you have a Pap test?","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-CRVCLHPV,DOUBLE,"At your most recent cervical cancer screening, did you have an H.P.V. test?","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-HADHYST2,DOUBLE,Have you had a hysterectomy?,"{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-HADSIGM4,DOUBLE,Colonoscopy and sigmoidoscopy are exams to check for colon cancer. Have you ever had either of these exams?,"{'1': 'Yes', '2': 'No—Go to Section', '7': 'Don’t know/Not', '9': 'Refused—Go to', 'BLANK': 'Not asked or'}"
-COLNSIGM,DOUBLE,"Have you had a colonoscopy, a sigmoidoscopy, or both?","{'1': 'Colonoscopy', '2': 'Sigmoidoscopy—Go', '7': 'Don’t know/Not', '9': 'Refused—Go to', 'BLANK': 'Not asked or'}"
-COLNTES1,DOUBLE,How long has it been since your most recent colonoscopy?,"{'1': 'Within the past', '2': 'Within the past', '3': 'Within the past', '4': 'Within the past', '5': '10 or more years', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-SIGMTES1,DOUBLE,How long has it been since your most recent sigmoidoscopy?,"{'1': 'Within the past', '2': 'Within the past', '3': 'Within the past', '4': 'Within the past', '5': '10 or more years', '7': 'Don’t know/Not', '9': 'Refused—Go to', 'BLANK': 'Not asked or'}"
-LASTSIG4,DOUBLE,How long has it been since your most recent colonoscopy or sigmoidoscopy?,"{'1': 'Within the past', '2': 'Within the past', '3': 'Within the past', '4': 'Within the past', '5': '10 or more years', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-COLNCNCR,DOUBLE,"Have you ever had any other kind of test for colorectal cancer, such as virtual colonoscopy, CT colonography, blood stool test, FIT DNA, or Cologuard test?","{'1': 'Yes', '2': 'No—Go to Next', '7': 'Don’t know/Not', '9': 'Refused—Go to Next', 'BLANK': 'Not asked or'}"
-VIRCOLO1,DOUBLE,A virtual colonoscopy uses a series of X-rays to take pictures of inside the colon. Have you ever had a virtual colonoscopy?,"{'2': 'No—Go to Section', '7': 'Don’t know/Not', '9': 'Refused—Go to', 'BLANK': 'Not asked or'}"
-VCLNTES2,DOUBLE,When was your most recent CT colonography or virtual colonoscopy?,"{'1': 'Within the past', '2': 'Within the past', '3': 'Within the past', '4': 'Within the past', '5': '10 or more years', '7': 'Don’t know/Not', 'BLANK': 'Not asked or'}"
-SMALSTOL,DOUBLE,One stool test uses a special kit to obtain a small amount of stool at home and returns the kit to the doctor or the lab. Have you,"{'1': 'Yes', '2': 'No—Go to Section', '7': 'Don’t know/Not', '9': 'Refused—Go to', 'BLANK': 'Not asked or'}"
-STOLTEST,DOUBLE,How long has it been since you had this test?,"{'1': 'Within the past', '2': 'Within the past', '3': 'Within the past', '4': 'Within the past', '5': '5 or more years', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-STOOLDN2,DOUBLE,Another stool test uses a special kit to obtain an entire bowel movement at home and returns the kit to a lab.,"{'1': 'Yes', '2': 'No—Go to Next', '7': 'Don’t know/Not', '9': 'Refused—Go to Next', 'BLANK': 'Not asked or'}"
-BLDSTFIT,DOUBLE,Was the blood stool or FIT (you reported earlier) conducted as part of a Cologuard test?,"{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-SDNATES1,DOUBLE,How long has it been since you had this test?,"{'1': 'Within the past', '2': 'Within the past', '3': 'Within the past', '4': 'Within the past', '5': '5 or more years', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-SMOKE100,DOUBLE,Have you smoked at least 100 cigarettes in your entire life? [Note: 5 packs = 100 cigarettes],"{'1': 'Yes', '2': 'No—Go to Section', '7': 'Don’t know/Not', '9': 'Refused—Go to', 'BLANK': 'Not asked or'}"
-SMOKDAY2,DOUBLE,"Do you now smoke cigarettes every day, some days, or not at all?","{'1': 'Every day', '2': 'Some days', '3': 'Not at all', '7': 'Don´t Know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-USENOW3,DOUBLE,"Do you currently use chewing tobacco, snuff, or snus every day, some days, or not at all? (Snus (Swedish for","{'1': 'Every day', '2': 'Some days', '3': 'Not at all', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-ECIGNOW2,DOUBLE,Would you say you have never used e-cigarettes or other electronic vaping products in your entire life or now,"{'1': 'Never used e-', '2': 'Use them every day', '3': 'Use them some days', '4': 'Not at all (right', '7': 'Don’t know / Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-LCSFIRST,DOUBLE,You’ve told us that you have smoked in the past or are currently smoking. The next questions are about screening for lung cancer. How old were you when you first started to smoke cigarettes regularly?,"{'1': '-', 'BLANK': 'Not asked or'}"
-LCSLAST,DOUBLE,How old were you when you last smoked cigarettes regularly?,"{'1': '-', 'BLANK': 'Not asked or'}"
-LCSNUMCG,DOUBLE,"On average, when you [smoke/ smoked] regularly, about how many cigarettes {do/did} you usually smoke each day?","{'1': '-', 'BLANK': 'Not asked or'}"
-LCSCTSC1,DOUBLE,Have you ever had a CT or CAT scan of your chest area?,"{'1': 'Yes', '2': 'No—Go to Section', '7': 'Don’t know/Not', '9': 'Refused—Go to', 'BLANK': 'Not asked or'}"
-LCSSCNCR,DOUBLE,Were any of the CT or CAT scans of your chest area done mainly to check or screen for lung cancer?,"{'1': 'Yes', '2': 'No—Go to Section', '7': 'Don’t know/Not', '9': 'Refused—Go to', 'BLANK': 'Not asked or'}"
-LCSCTWHN,DOUBLE,When did you have your most recent CT or CAT scan of your chest area mainly to check or screen for lung cancer?,"{'1': 'Within the past', '2': 'Within the past', '3': 'Within the past', '4': 'Within the past', '5': 'Within the past', '6': '10 or more years', '7': 'Don’t know / Not', 'BLANK': 'Not asked or'}"
-ALCDAY4,DOUBLE,"During the past 30 days, how many days per week or per month did you have at least one drink of any alcoholic beverage?",{'BLANK': 'Not asked or'}
-AVEDRNK3,DOUBLE,"One drink is equivalent to a 12-ounce beer, a 5-ounce glass of wine, or a drink with one shot of liquor. During the past 30","{'1': '-', '88': 'None', '77': 'Don’t know/Not', '99': 'Refused', 'BLANK': 'Not asked or'}"
-DRNK3GE5,DOUBLE,"Considering all types of alcoholic beverages, how many times during the past 30 days did you have 5 or more","{'1': '-', '88': 'None', '77': 'Don’t know/Not', '99': 'Refused', 'BLANK': 'Not asked or'}"
-MAXDRNKS,DOUBLE,"During the past 30 days, what is the largest number of drinks you had on any occasion?","{'1': '-', '77': 'Don’t know/Not', '99': 'Refused', 'BLANK': 'Not asked or'}"
-FLUSHOT7,DOUBLE,"During the past 12 months, have you had either flu vaccine that was sprayed in your nose or flu shot injected into your arm?","{'1': 'Yes', '2': 'No—Go to Section', '7': 'Don’t know/Not', '9': 'Refused—Go to', 'BLANK': '2,003'}"
-FLSHTMY3,DOUBLE,During what month and year did you receive your most recent flu vaccine that was sprayed in your nose or flu,{'BLANK': 'Not asked or'}
-PNEUVAC4,DOUBLE,Have you ever had a pneumonia shot also known as a pneumococcal vaccine?,"{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-TETANUS1,DOUBLE,"Have you received a tetanus shot in the past 10 years? (If yes, ask: “Was this Tdap, the tetanus shot that also has","{'1': 'Yes, received Tdap', '2': 'Yes, received', '3': 'Yes, received', '4': 'No, did not', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-HIVTST7,DOUBLE,"Including fluid testing from your mouth, but not including tests you may have had for blood donation, have you ever been tested for H.I.V?","{'1': 'Yes', '2': 'No—Go to Section', '7': 'Don’t know/Not', '9': 'Refused—Go to', 'BLANK': 'Not asked or'}"
-HIVTSTD3,DOUBLE,"Not including blood donations, in what month and year was your last H.I.V. test?",{'BLANK': 'Not asked or'}
-HIVRISK5,DOUBLE,"I am going to read you a list. When I am done, please tell me if any of the situations apply to you. You do not need to tell me","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-COVIDPOS,DOUBLE,"Has a doctor, nurse, or other health professional ever told you that you tested positive for COVID 19?","{'1': 'Yes', '2': 'No—Go to next', '3': 'Tested positive', '7': 'Don’t know/Not', '9': 'Refused—Go to next', 'BLANK': 'Not asked or'}"
-COVIDSMP,DOUBLE,Did you have any symptoms lasting 3 months or longer that you did not have prior to having coronavirus or COVID-19?,"{'1': 'Yes', '2': 'No—Go to next', '7': 'Don’t know/Not', '9': 'Refused—Go to next', 'BLANK': 'Not asked or'}"
-COVIDPRM,DOUBLE,Which of the following was the primary symptom that you experienced? Was it….,"{'1': 'Tiredness or', '2': 'Difficulty', '3': 'Difficulty', '4': 'Joint or muscle', '5': 'Fast-beating or', '6': 'Dizziness on', '7': 'Depression,', '8': 'Symptoms that get', '9': 'You did not have', '10': 'Loss of taste or', '11': 'Some other symptom', '77': 'Don’t know/Not', '99': 'Refused', 'BLANK': 'Not asked or'}"
-PDIABTS1,DOUBLE,"When was the last time you had a blood test for high blood sugar or diabetes by a doctor, nurse, or other health professional?","{'1': 'Within the past', '2': 'Within the past', '3': 'Within the past', '4': 'Within the past', '5': 'Within the past', '6': '10 or more years', '7': 'Don’t know / Not', '8': 'Never', '9': 'Refused', 'BLANK': 'Not asked or'}"
-PREDIAB2,DOUBLE,Has a doctor or other health professional ever told you that you had prediabetes or borderline diabetes? (If,"{'1': 'Yes', '2': 'Yes, during', '3': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-DIABTYPE,DOUBLE,"According to your doctor or other health professional, what type of diabetes do you have?","{'1': 'Type', '2': 'Type', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-INSULIN1,DOUBLE,Are you now taking insulin?,"{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', 'BLANK': 'Not asked or'}"
-CHKHEMO3,DOUBLE,"About how many times in the past 12 months has a doctor, nurse, or other health professional checked you for A-one-C?","{'1': '-', '88': 'None', '98': 'Never heard of “A', '77': 'Don’t know/Not', '99': 'Refused', 'BLANK': 'Not asked or'}"
-EYEEXAM1,DOUBLE,"When was the last time you had an eye exam in which the pupils were dilated, making you temporarily sensitive to bright light?","{'1': 'Within the past', '2': 'Within the past', '3': 'Within the past', '4': '2 or more years', '7': 'Don’t know/Not', '8': 'Never', 'BLANK': 'Not asked or'}"
-DIABEYE1,DOUBLE,"When was the last time a doctor, nurse or other health professional took a photo of the back of your eye with a","{'1': 'Within the past', '2': 'Within the past', '3': 'Within the past', '4': '2 or more years', '7': 'Don’t know/Not', '8': 'Never', 'BLANK': 'Not asked or'}"
-DIABEDU1,DOUBLE,When was the last time you took a course or class in how to manage your diabetes yourself?,"{'1': 'Within the past', '2': 'Within the last', '3': 'Within the last', '4': 'Within the last', '5': 'Within the last', '6': '10 years ago or', '7': 'Don’t know/Not', '8': 'Never', '9': 'Refused', 'BLANK': 'Not asked or'}"
-FEETSORE,DOUBLE,Have you ever had any sores or irritations on your feet that took more than four weeks to heal?,"{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', 'BLANK': 'Not asked or'}"
-TOLDCFS,VARCHAR,Have you ever been told by a doctor or other health professional that you had Chronic Fatigue Syndrome (CFS),{'BLANK': 'Not asked or'}
-HAVECFS,VARCHAR,Do you still have Chronic Fatigue Syndrome (CFS) or (Myalgic Encephalomyelitis) ME?,{'BLANK': 'Not asked or'}
-WORKCFS,VARCHAR,"Thinking about your CFS or ME, during the past 6 months, how many hours a week on average have you been",{'BLANK': 'Not asked or'}
-IMFVPLA3,VARCHAR,At what kind of place did you get your last flu shot or vaccine?,{'BLANK': 'Not asked or'}
-HPVADVC4,VARCHAR,Have you ever had an H.P.V. vaccination?,{'BLANK': 'Not asked or'}
-HPVADSHT,VARCHAR,How many HPV shots did you receive?,{'BLANK': 'Not asked or'}
-SHINGLE2,VARCHAR,Have you ever had the shingles or zoster vaccine?,{'BLANK': 'Not asked or'}
-COVIDVA1,VARCHAR,Have you received at least one dose of a COVID-19 vaccination?,{'BLANK': 'Not asked or'}
-COVIDNU1,VARCHAR,How many COVID-19 vaccinations have you received?,{'BLANK': 'Not asked or'}
-COVIDFS1,VARCHAR,During what month and year did you receive your (first) COVID-19 vaccination?,{'BLANK': 'Not asked or'}
-COVIDSE1,VARCHAR,During what month and year did you receive your second COVID-19 vaccination?,{'BLANK': 'Not asked or'}
-COPDCOGH,VARCHAR,"During the past 3 months, did you have a cough on most days?",{'BLANK': 'Not asked or'}
-COPDFLEM,VARCHAR,"During the past 3 months, did you cough up phlegm [FLEM] or mucus on most days?",{'BLANK': 'Not asked or'}
-COPDBRTH,VARCHAR,Do you have shortness of breath either when hurrying on level ground or when walking up a slight hill or stairs?,{'BLANK': 'Not asked or'}
-COPDBTST,VARCHAR,Have you ever been given a breathing test to diagnose breathing problems?,{'BLANK': 'Not asked or'}
-COPDSMOK,VARCHAR,"Over your lifetime, how many years have you smoked tobacco products?",{'BLANK': 'Not asked or'}
-CNCRDIFF,DOUBLE,You’ve told us that you have had cancer. I would like to ask you a few more questions about your cancer. How many different types of cancer have you had?,"{'1': 'Only one', '2': 'Two', '3': 'Three or more', '7': 'Don’t know/Not', '9': 'Refused—Go to next', 'BLANK': 'Not asked or'}"
-CNCRAGE,DOUBLE,At what age were you told that you had cancer?,"{'0': '1', '1': '-', '98': 'Don’t know/Not', '99': 'Refused', 'BLANK': 'Missing'}"
-CNCRTYP2,DOUBLE,What kind of cancer is it?,"{'1': 'Bladder', '2': 'Blood', '3': 'Bone', '4': 'Brain', '5': 'Breast', '6': 'Cervix/Cervical', '7': 'Colon', '8': 'Esophagus/', '10': 'Kidney', '11': 'Larynx-trachea', '12': 'Leukemia', '13': 'Liver', '14': 'Lung', '15': 'Lymphoma', '16': 'Melanoma', '17': 'Mouth/tongue/lip', '18': 'Ovary/Ovarian', '19': 'Pancreas/', '20': 'Prostate', '21': 'Rectum/Rectal', '22': 'Skin (non-', '23': 'Skin (don´t know', '24': 'Soft tissue', '25': 'Stomach', '26': 'Testis/Testicular', '27': 'Throat - pharynx', '28': 'Thyroid', '29': 'Uterus/Uterine', '30': 'Other', '77': 'Don’t know/Not', '99': 'Refused', 'BLANK': 'Not asked or'}"
-CSRVTRT3,DOUBLE,Are you currently receiving treatment for cancer?,"{'1': 'Yes—Go to next', '2': 'No, I’ve completed', '3': 'No, I’ve refused', '4': 'No, I haven’t', '7': 'Don’t know/Not', '9': 'Refused—Go to next', 'BLANK': 'Not asked or'}"
-CSRVDOC1,DOUBLE,What type of doctor provides the majority of your health care? Is it a….,"{'1': 'Cancer Surgeon', '2': 'Family', '3': 'General Surgeon', '4': 'Gynecologic', '5': 'General', '6': 'Plastic Surgeon,', '7': 'Medical Oncologist', '8': 'Radiation', '9': 'Urologist', '10': 'Other', '77': 'Don’t know/Not', 'BLANK': 'Not asked or'}"
-CSRVSUM,DOUBLE,"Did any doctor, nurse, or other health professional ever give you a written summary of all the cancer treatments that you received?","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-CSRVRTRN,DOUBLE,"Have you ever received instructions from a doctor, nurse, or other health professional about where you should","{'1': 'Yes', '2': 'No—Go to Module', '7': 'Don’t know/Not', '9': 'Refused—Go to', 'BLANK': 'Not asked or'}"
-CSRVINST,DOUBLE,Were these instructions written down or printed on paper for you?,"{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused'}"
-CSRVINSR,DOUBLE,"With your most recent diagnosis of cancer, did you have health insurance that paid for all or part of your cancer","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-CSRVDEIN,DOUBLE,Were you ever denied health insurance or life insurance coverage because of your cancer?,"{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-CSRVCLIN,DOUBLE,Did you participate in a clinical trial as part of your cancer treatment?,"{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-CSRVPAIN,DOUBLE,Do you currently have physical pain caused by your cancer or cancer treatment?,"{'1': 'Yes', '2': 'No—Go to next', '7': 'Don’t know/Not', '9': 'Refused—Go to next', 'BLANK': 'Not asked or'}"
-CSRVCTL2,DOUBLE,Would you say your pain is currently under control…?,"{'1': 'With medication', '2': 'Without medication', '3': 'Not under control,', '4': 'Not under control,', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-PSATEST1,VARCHAR,Have you ever had a P.S.A. test?,{'BLANK': 'Not asked or'}
-PSATIME1,VARCHAR,About how long has it been since your most recent P.S.A. test?,{'BLANK': 'Not asked or'}
-PCPSARS2,VARCHAR,What was the main reason you had this P.S.A. test – was it …?,{'BLANK': 'Not asked or'}
-PSASUGST,VARCHAR,"Who first suggested this PSA test: you, your doctor, or someone else?",{'BLANK': 'Not asked or'}
-PCSTALK1,VARCHAR,"When you met with a doctor, nurse, or other health professional, did they talk about the advantages, the",{'BLANK': 'Not asked or'}
-CIMEMLOS,DOUBLE,"The next few questions ask about difficulties in thinking or remembering that can make a big difference in everyday activities. This does not refer to occasionally forgetting your keys or the name of someone you recently met, which is normal. This refers to confusion or memory loss that is happening more often or getting worse, such as forgetting how to do things you’ve always done or forgetting things that you would normally know. We want to know how these","{'1': 'Yes', '2': 'No—Go to next', '7': 'Don’t know/Not', '9': 'Refused—Go to next', 'BLANK': 'Not asked or'}"
-CDHOUSE,DOUBLE,"During the past 12 months, as a result of confusion or memory loss, how often have you given up day-to-day","{'1': 'Always', '2': 'or', '3': 'Sometimes', '4': 'Rarely', '5': 'Never', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-CDASSIST,DOUBLE,"As a result of confusion or memory loss, how often do you need assistance with these day-to-day activities?","{'1': 'Always', '2': 'or', '3': 'Sometimes', '4': 'Rarely—Go to', '5': 'Never—Go to Module', '7': 'Don’t know/Not', '9': 'Refused—Go to', 'BLANK': 'Not asked or'}"
-CDHELP,DOUBLE,"When you need help with these day-to-day activities, how often are you able to get the help that you need?","{'1': 'Always', '2': 'or', '3': 'Sometimes', '4': 'Rarely', '5': 'Never', '7': 'Don’t know/Not', 'BLANK': 'Not asked or'}"
-CDSOCIAL,DOUBLE,"During the past 12 months, how often has confusion or memory loss interfered with your ability to work,","{'1': 'Always', '2': 'or', '3': 'Sometimes', '4': 'Rarely', '5': 'Never', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-CDDISCUS,DOUBLE,Have you or anyone else discussed your confusion or memory loss with a health care professional?,"{'1': 'Yes', '2': 'or', '7': 'Don’t know/Not', 'BLANK': 'Not asked or'}"
-CAREGIV1,DOUBLE,"During the past 30 days, did you provide regular care or assistance to a friend or family member who has a","{'1': 'Yes', '2': 'No—Go to Module', '7': 'Don’t know/Not', '8': 'Caregiving', '9': 'Refused—Go to', 'BLANK': 'Not asked or'}"
-CRGVREL4,DOUBLE,What is his or her relationship to you?,"{'1': 'Mother', '2': 'Father', '3': 'Mother-in-law', '4': 'Father-in-law', '5': 'Child', '6': 'Husband', '7': 'Wife', '8': 'Live-in partner', '9': 'Brother or', '10': 'Sister or sister-', '11': 'Grandmother', '12': 'Grandfather', '13': 'Grandchild', '14': 'Other relative', '15': 'Non-relative/', '77': 'Don’t know/Not', '99': 'Refused', 'BLANK': 'Not asked or'}"
-CRGVLNG1,DOUBLE,For how long have you provided care for that person?,"{'1': 'Less than', '2': '1 month to less', '3': '6 months to less', '4': '2 years to less', '5': '5 or more years', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-CRGVHRS1,DOUBLE,"In an average week, how many hours do you provide care or assistance?","{'1': 'Up to', '2': '9 to', '3': '20 to', '4': '40 hours or more', '7': 'Don’t know/Not', 'BLANK': 'Not asked or'}"
-CRGVPRB3,DOUBLE,"What is the main health problem, long- term illness, or disability that the person you care for has?","{'1': 'Arthritis/', '2': 'Asthma', '3': 'Cancer', '4': 'Chronic', '5': 'Alzheimer´s', '6': 'Developmental', '7': 'Diabetes', '8': 'Heart disease,', '9': 'Human', '10': 'Mental illnesses,', '11': 'Other organ', '12': 'Substance abuse or', '13': 'Injuries,', '14': 'Old age/', '15': 'Other', '77': 'Don’t know/Not', '99': 'Refused', 'BLANK': 'Not asked or'}"
-CRGVALZD,DOUBLE,"Does the person you care for also have Alzheimer´s disease, dementia or other cognitive impairment disorder?","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-CRGVPER1,DOUBLE,"In the past 30 days, did you provide care for this person by managing personal care such as giving medications,","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-CRGVHOU1,DOUBLE,"In the past 30 days, did you provide care for this person by managing household tasks such as cleaning,","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-CRGVEXPT,DOUBLE,"In the next 2 years, do you expect to provide care or assistance to a friend or family member who has a health","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-ACEDEPRS,DOUBLE,"Did you live with anyone who was depressed, mentally ill, or suicidal?","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-ACEDRINK,DOUBLE,Did you live with anyone who was a problem drinker or alcoholic?,"{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-ACEDRUGS,DOUBLE,Did you live with anyone who used illegal street drugs or who abused prescription medications?,"{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-ACEPRISN,DOUBLE,"Did you live with anyone who served time or was sentenced to serve time in a prison, jail, or other correctional facility?","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-ACEDIVRC,DOUBLE,Were your parents separated or divorced?,"{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '8': 'Parents not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-ACEPUNCH,DOUBLE,"How often did your parents or adults in your home ever slap, hit, kick, punch or beat each other up? Was it…","{'1': 'Never', '2': 'Once', '3': 'More than once', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-ACEHURT1,DOUBLE,"Not including spanking, (before age 18), how often did a parent or adult in your home ever hit, beat, kick, or physically hurt you in any way? Was it—","{'1': 'Never', '2': 'Once', '3': 'More than once', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-ACESWEAR,DOUBLE,"How often did a parent or adult in your home ever swear at you, insult you, or put you down? Was it…","{'1': 'Never', '2': 'Once', '3': 'More than once', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-ACETOUCH,DOUBLE,"How often did anyone at least 5 years older than you or an adult, ever touch you sexually? Was it…","{'1': 'Never', '2': 'Once', '3': 'More than once', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-ACETTHEM,DOUBLE,"How often did anyone at least 5 years older than you or an adult, try to make you touch them sexually? Was it…","{'1': 'Never', '2': 'Once', '3': 'More than once', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-ACEHVSEX,DOUBLE,"How often did anyone at least 5 years older than you or an adult, force you to have sex? Was it…","{'1': 'Never', '2': 'Once', '3': 'More than once', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-ACEADSAF,DOUBLE,For how much of your childhood was there an adult in your household who made you feel safe and protected?,"{'1': 'Never', '2': 'A little of the', '3': 'Some of the time', '4': 'Most of the time', '5': 'All of the time', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-ACEADNED,DOUBLE,For how much of your childhood was there an adult in your household who tried hard to make sure your basic,"{'1': 'Never', '2': 'A little of the', '3': 'Some of the time', '4': 'Most of the time', '5': 'All of the time', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-LSATISFY,DOUBLE,"In general, how satisfied are you with your life?","{'1': 'Very satisfied', '2': 'Satisfied', '3': 'Dissatisfied', '4': 'Very dissatisfied', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-EMTSUPRT,DOUBLE,How often do you get the social and emotional support you need?,"{'1': 'Always', '2': 'Usually', '3': 'Sometimes', '4': 'Rarely', '5': 'Never', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-SDHISOLT,DOUBLE,How often do you feel socially isolated from others? Is it…,"{'1': 'Always', '2': 'Usually', '3': 'Sometimes', '4': 'Rarely', '5': 'Never', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-SDHEMPLY,DOUBLE,In the past 12 months have you lost employment or had hours reduced?,"{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-FOODSTMP,DOUBLE,"During the past 12 months, have you received food stamps, also called SNAP, the Supplemental Nutrition","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-SDHFOOD1,DOUBLE,"During the past 12 months how often did the food that you bought not last, and you didn’t have money to get","{'1': 'Always', '2': 'Usually', '3': 'Sometimes', '4': 'Rarely', '5': 'Never', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-SDHBILLS,DOUBLE,"During the last 12 months, was there a time when you were not able to pay your mortgage, rent or utility bills?","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-SDHUTILS,DOUBLE,"During the last 12 months was there a time when an electric, gas, oil, or water company threatened to shut off services?","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-SDHTRNSP,DOUBLE,"During the past 12 months has a lack of reliable transportation kept you from medical appointments, meetings,","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-SDHSTRE1,DOUBLE,"Within the last 30 days, how often have you felt this kind of stress?","{'1': 'Always', '2': 'Usually', '3': 'Sometimes', '4': 'Rarely', '5': 'Never', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-MARIJAN1,DOUBLE,"During the past 30 days, on how many days did you use marijuana or cannabis?","{'1': '-', '88': 'None—Go to next', '77': 'Don’t know/Not', '99': 'Refused—Go to next', 'BLANK': 'Not asked or'}"
-MARJSMOK,DOUBLE,"During the past 30 days, did you smoke it (for example, in a joint, bong, pipe, or blunt)?","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', 'BLANK': 'Not asked or'}"
-MARJEAT,DOUBLE,"…eat it or drink it (for example, in brownies, cakes, cookies, or candy, or in tea, cola, or alcohol)?","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', 'BLANK': 'Not asked or'}"
-MARJVAPE,DOUBLE,"…vaporize it (for example, in an e-cigarette-like vaporizer or another vaporizing device)","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', 'BLANK': 'Not asked or'}"
-MARJDAB,DOUBLE,"…dab it (for example, using a dabbing rig, knife, or dab pen)?","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', 'BLANK': 'Not asked or'}"
-MARJOTHR,DOUBLE,…use it in some other way?,"{'1': 'Yes', '2': 'No', '9': 'Refused', 'BLANK': 'Not asked or'}"
-USEMRJN4,DOUBLE,Description not found,{}
-LASTSMK2,VARCHAR,"How long has it been since you last smoked a cigarette, even one or two puffs?",{'BLANK': 'Not asked or'}
-STOPSMK2,VARCHAR,"During the past 12 months, have you stopped smoking for one day or longer because you were trying to quit smoking?",{'BLANK': 'Not asked or'}
-MENTCIGS,VARCHAR,"Currently, when you smoke cigarettes, do you usually smoke menthol cigarettes?",{'BLANK': 'Not asked or'}
-MENTECIG,VARCHAR,"Currently, when you use e-cigarettes, do you usually use menthol e-cigarettes?",{'BLANK': 'Not asked or'}
-HEATTBCO,VARCHAR,"Before today, have you heard of heated tobacco products?",{'BLANK': 'Not asked or'}
-ASBIALCH,VARCHAR,You told me earlier that your last routine checkup was [within the past year/within the past 2 years]. At that,{'BLANK': 'Not asked or'}
-ASBIDRNK,VARCHAR,Did the health care provider ask you in person or on a form how much you drink?,{'BLANK': 'Not asked or'}
-ASBIBING,VARCHAR,Did the healthcare provider specifically ask whether you drank [5 FOR MEN /4 FOR WOMEN] or more alcoholic,{'BLANK': 'Not asked or'}
-ASBIADVC,VARCHAR,Were you offered advice about what level of drinking is harmful or risky for your health?,{'BLANK': 'Not asked or'}
-ASBIRDUC,VARCHAR,"At your last routine checkup, were you advised to reduce or quit your drinking?",{'BLANK': 'Not asked or'}
-FIREARM5,DOUBLE,Are any firearms now kept in or around your home?,"{'1': 'Yes', '2': 'No—Go to Next', '7': 'Don’t know/Not', '9': 'Refused—Go to Next', 'BLANK': 'Missing'}"
-GUNLOAD,DOUBLE,Are any of these firearms now loaded?,"{'1': 'Yes', '2': 'No—Go to Next', '7': 'Don’t know/Not', '9': 'Refused—Go to Next', 'BLANK': 'Not asked or'}"
-LOADULK2,DOUBLE,Are any of these loaded firearms also unlocked?,"{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-TYPEWORK,VARCHAR,"What kind of work do you do? For example, registered nurse, janitor, cashier, auto mechanic.","{'BLANK': 'Not asked or', 'HIDDEN': 'Data not displayed'}"
-TYPEINDS,VARCHAR,"What kind of business or industry do you work in? For example, hospital, elementary school, clothing manufacturing, restaurant","{'BLANK': 'Not asked or', 'HIDDEN': 'Data not displayed'}"
-RCSBIRTH,VARCHAR,What is the birth month and year of the “Xth” child?,"{'BLANK': 'Not asked or', 'HIDDEN': 'Data not displayed'}"
-RCSGEND1,DOUBLE,Is the child a boy or a girl?,"{'1': 'Boy—Go to Module', '2': 'Girl—Go to Module', '3': 'Nonbinary/other', '9': 'Refused', 'BLANK': 'Not asked or'}"
-RCSXBRTH,DOUBLE,What was the child´s sex on their original birth certificate?,"{'1': 'Boy', '2': 'Girl', '7': '2', '9': 'Refused', 'BLANK': 'Not asked or'}"
-RCHISLA1,BIGINT,"Is the child Hispanic, Latino/a, or Spanish origin?","{'1': 'Mexican, Mexican', '2': 'Puerto Rican', '3': 'Cuban', '4': 'Another Hispanic,', '5': 'No', '6': 'Multiple', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-RCSRACE2,BIGINT,Description not found,{}
-RCSBRAC3,DOUBLE,Which one of these groups would you say best represents the child´s race? (If 40 (Asian) or 50 (Pacific Islander),"{'10': 'White', '20': 'Black or African', '30': 'American Indian or', '43': 'Filipino', '47': 'Other Asian', '54': 'Other Pacific', '77': 'or', '99': 'Refused', 'BLANK': 'Not asked or'}"
-RCSRLTN2,DOUBLE,How are you related to the child? Are you a….,"{'1': 'Parent (include', '2': 'Grandparent', '3': 'Foster parent or', '4': 'Sibling (include', '5': 'Other relative', '6': 'Not related in any', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-CASTHDX2,DOUBLE,"The next two questions are about the Xth child. Has a doctor, nurse or other health professional EVER said that the child has asthma?","{'1': 'Yes', '2': 'No—Go to next', '7': 'Don’t know/Not', '9': 'Refused—Go to next', 'BLANK': 'Not asked or'}"
-CASTHNO2,DOUBLE,Does the child still have asthma?,"{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', 'BLANK': 'Not asked or'}"
-BIRTHSEX,DOUBLE,What was your sex at birth? Was it male or female?,"{'1': 'Male', '2': 'Female', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-SOMALE,DOUBLE,Which of the following best represents how you think of yourself?,"{'1': 'Gay', '2': 'Straight, that is,', '3': 'Bisexual', '4': 'Something else', '7': 'I don´t know the', '9': 'Refused', 'BLANK': 'Not asked or'}"
-SOFEMALE,DOUBLE,Which of the following best represents how you think of yourself?,"{'1': 'Lesbian or Gay', '2': 'Straight, that is,', '3': 'Bisexual', '4': 'Something else', '7': 'I don´t know the', '9': 'Refused', 'BLANK': 'Not asked or'}"
-TRNSGNDR,DOUBLE,Do you consider yourself to be transgender?,"{'1': 'Yes, Transgender,', '2': 'Yes, Transgender,', '3': 'Yes, Transgender,', '4': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-HADSEX,DOUBLE,"In the past 12 months, did you have sexual intercourse?","{'1': 'Yes', '2': 'No—Go to next', '7': 'Don’t know/Not', '9': 'Refused—Go to next', 'BLANK': 'Not asked or'}"
-PFPPRVN4,DOUBLE,"The last time you had sexual intercourse, did you or your partner do anything to keep you from getting pregnant?","{'1': 'Yes', '2': 'No—Go to Module', '7': 'Don’t know/Not', '9': 'Refused—Go to', 'BLANK': 'Not asked or'}"
-TYPCNTR9,DOUBLE,"The last time you had sexual intercourse, what did you or your partner do to keep you from getting pregnant?","{'1': 'Female', '2': 'Male sterilization', '3': 'Contraceptive', '4': 'Intrauterine', '5': 'Shots (Depo-', '6': 'Birth control', '7': 'Condoms (male or', '9': 'Had sex at a time', '10': 'Withdrawal or', '12': 'Other method', '77': 'Don’t know/Not', '99': 'Refused', 'BLANK': 'Not asked or'}"
-BRTHCNT4,DOUBLE,"The last time you had sexual intercourse, what else, if anything, did you or your partner do to keep you from","{'0': 'Nothing else', '1': 'Female', '2': 'Male sterilization', '3': 'Contraceptive', '4': 'Intrauterine', '5': 'Shots (Depo-', '6': 'Birth control', '7': 'Condoms (male or', '9': 'Had sex at a time', '10': 'Withdrawal or', '11': 'Emergency', '12': 'Other method', '77': 'Don’t know/Not', '99': 'Refused', 'BLANK': 'Not asked or'}"
-WHEREGET,DOUBLE,Where did you get the [response from Q3] you used when you last had sexual intercourse?,"{'1': 'Private doctor´s', '2': 'Community health', '3': 'Family planning or', '4': 'School or school-', '5': 'Hospital', '7': 'In- store health', '8': 'Health care visit', '9': 'Website or app—Go', '10': 'Some other place—', '77': 'Don’t know/Not', '99': 'Refused—Go to', 'BLANK': 'Not asked or'}"
-NOBCUSE8,DOUBLE,What was your main reason for not doing anything to prevent pregnancy the last time you had sexual intercourse?,"{'1': 'You didn´t think', '2': 'You just didn´t', '3': 'You wanted a', '4': 'You didn´t care if', '5': 'You or your', '6': 'You had trouble', '8': 'Didn´t think you', '9': 'You were using', '10': 'You had your tubes', '11': 'Your partner had a', '14': 'Other reasons', '77': 'Don’t know/Not', '99': 'Refused', 'BLANK': 'Not asked or'}"
-BCPREFER,DOUBLE,"If you could use any birth control method you wanted, what method would you use?","{'1': 'Female', '2': 'Male sterilization', '3': 'Contraceptive', '4': 'Intrauterine', '5': 'Shots (Depo-', '6': 'Birth control', '7': 'Condoms (male or', '8': 'Diaphragm,', '9': 'Having sex at a', '10': 'Withdrawal or', '12': 'Other method', '13': 'I am using the', '14': 'I don´t want to', '77': 'Don’t know/Not', '99': 'Refused', 'BLANK': 'Not asked or'}"
-RRCLASS3,DOUBLE,"How do other people usually classify you in this country? Would you say White, Black or African American,","{'1': 'White', '2': 'Black or African', '4': 'Asian', '5': 'Native Hawaiian or', '6': 'American Indian or', '7': 'Mixed Race', '8': 'Some other group', '77': 'Don’t know/Not', '99': 'Refused', 'BLANK': 'Not asked or'}"
-RRCOGNT2,DOUBLE,"How often do you think about your race? Would you say never, once a year, once a month, once a week, once a","{'1': 'Never', '2': 'Once a year', '3': 'Once a month', '4': 'Once a week', '5': 'Once a day', '6': 'Once an hour', '7': 'Don’t know/Not', '8': 'Constantly', '9': 'Refused', 'BLANK': 'Not asked or'}"
-RRTREAT,DOUBLE,"Within the past 12 months, do you feel that in general you were treated worse than, the same as, or better than","{'1': 'Worse than other', '2': 'The same as other', '3': 'Better than other', '4': 'Worse than some', '5': 'Only encountered', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-RRATWRK2,DOUBLE,"Within the past 12 months at work, do you feel you were treated worse than, the same as, or better than people","{'1': 'Worse than other', '2': 'The same as other', '3': 'Better than other', '4': 'Worse than some', '5': 'Only encountered', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-RRHCARE4,DOUBLE,"Within the past 12 months when seeking health care, do you feel your experiences were worse than, the same","{'1': 'Worse than other', '2': 'The same as other', '3': 'Better than other', '4': 'Worse than some', '5': 'Only encountered', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-RRPHYSM2,DOUBLE,"Within the past 30 days, have you experienced any physical symptoms, for example, a headache, an upset","{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Not asked or'}"
-CALLBACK,DOUBLE,We would like to call you again within the next 2 weeks to talk in more detail about (your/your child’s) experiences with,"{'1': 'Yes', '2': 'No', 'BLANK': 'Not asked or'}"
-ADLTCHLD,DOUBLE,Which household member was selected to be the focus of the callback.,"{'1': 'Adult', '2': 'Child', 'BLANK': '14,729'}"
-ADHISPA,DOUBLE,Adult Hispanic response,"{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused', 'BLANK': 'Missing'}"
-CHHISPA,DOUBLE,Child Hispanic response,"{'1': 'Yes', 'BLANK': 'Missing'}"
-QSTVER,DOUBLE,Questionnaire Version Identifier,"{'11': 'Landline multiple', '12': 'Landline multiple', '20': 'Cell Phone single', '21': 'Cell Phone', '22': 'Cell Phone'}"
-QSTLANG,DOUBLE,Language identifier,"{'1': 'English', '2': 'Spanish'}"
-CATI_RN,VARCHAR,Description not found,{}
-CATI_RG,BIGINT,Description not found,{}
-CATI_SR,BIGINT,Description not found,{}
-CPCOUNTY,VARCHAR,Cell Phone County Name,"{'BLANK': '16,084', 'HIDDEN': 'Data not displayed'}"
-STATEQUE,VARCHAR,State Added Questions,{'HIDDEN': 'Data not displayed'}
-OH1_1,DOUBLE,Have you ever had a P.S.A. test?,{}
-OH1_2,DOUBLE,About how long has it been since your most recent P.S.A. test?,"{'2': 'years but less than', '1': 'year but less than', '3': 'years but less than', '4': 'Within the past', '5': 'or more years ago'}"
-OH1_3,DOUBLE,"What was the main reason you had this P.S.A. test – was it for a routine test, because of a problem, or some other reason?",{}
-OH1_4,DOUBLE,"Who first suggested that you should have a P.S.A. test – did you suggest it, your doctor, or someone else?","{'1': 'Self', '3': 'Someone else', '9': 'Refused'}"
-OH1_5,DOUBLE,Did your doctor or health care professional recommend that you have a P.S.A. test?,"{'1': 'Advantages', '2': 'Disadvantages', '3': 'Both Advantages and disadvantages DO NOT READ'}"
-OH2_1,DOUBLE,When was the last time you had your eyes examined by any doctor or eye care provider?,{'3': 'if OH'}
-OH2_2,DOUBLE,What is the reason(s) you had your eyes examined this last time? (check all that apply),{}
-OH2_3,DOUBLE,What is the main reason you have not visited an eye care professional in the past 12 months?,"{'1': 'Your vision is fine', '2': 'A doctor said that an annual eye exam is not needed', '3': 'You did not know an annual eye exam was needed', '4': 'Other'}"
-OH2_3a,DOUBLE,(If 'Other' to OH2_3) What was the main reason you have not visited an eye care professional?,{}
-OH2_4,DOUBLE,Do you have any kind of health insurance coverage for eye care?,{'1': 'Yes'}
-FALL12MN,DOUBLE,"In the past 12 months, how many times have you fallen?",{'1': 'In the past'}
-FALLINJ4,DOUBLE,How many of these falls caused an injury that limited your regular activities for at least a day or caused you to go to see a doctor?,"{'88': 'None', '99': 'Refused'}"
-OH4_1,DOUBLE,"Has your Xth child ever played or participated in organized sports, either in school or in a non-school recreation league?","{'1': 'Yes', '2': 'No'}"
-OH4_2,DOUBLE,How many times has your Xth child ever received an injury or blow to the head that resulted in symptoms of a concussion as a result of playing organized sports?,{}
-OH4_3,DOUBLE,When did the most recent incident occur?,{}
-OH4_4,DOUBLE,Did the most recent incident occur during practice or competition?,"{'1': 'During school sports practice', '2': 'During school sports competiti on', '3': 'During a non- school recreation league practice', '4': 'During a non- school recreation league competiti on'}"
-OH4_5,DOUBLE,In what type of sport was the child playing or participating?,{'5': 'Do not'}
-OH4_6,DOUBLE,"Was the child removed from play for the day by an adult, such as a coach or trainer?",{'1': 'Yes'}
-OH4_7,DOUBLE,Was the child immediately taken to an emergency room or urgent care center?,{}
-OH4_8,DOUBLE,"Was the child checked out later for this injury by a health care professional (e.g., doctor, nurse) or athletic trainer?","{'1': 'Yes', '2': 'No', '9': 'Refused'}"
-OH4_9,DOUBLE,"To your knowledge, does Ohio have a law that requires children in school athletics and non-school youth sports leagues to be removed from play if they sustain a concussion?","{'1': 'Yes', '2': 'No'}"
-OH4_10,DOUBLE,How did you become aware of the law?,{}
-OH5_1,DOUBLE,"In the past year, did you use any pain medications that were prescribed to you by a healthcare provider?","{'1': 'Yes', '2': 'No', '9': 'Refused'}"
-OH5_2,DOUBLE,"The last time you filled a prescription for pain medication, did you use any of the pain medication more frequently or in higher doses than directed?",{}
-OH5_3,DOUBLE,"The last time you filled a prescription for pain medication, was there any medication leftover?",{}
-OH5_4,DOUBLE,What did you do with the leftover medication?,{}
-OH5_5,DOUBLE,"In the past year, did you use prescription pain medication that was NOT prescribed to you?","{'1': 'Yes', '2': 'No'}"
-OH5_6,DOUBLE,"The last time you used prescription pain medication not prescribed to you, how did you obtain the medication?",{'1': 'Given to me for free from'}
-OH5_7,DOUBLE,What was the main reason you used prescription pain medications not prescribed to you?,"{'1': 'Yes', '2': 'No'}"
-OH5_8,DOUBLE,Have you ever used heroin?,"{'1': 'Yes', '2': 'No', '9': 'Refused'}"
-OH5_9,DOUBLE,"Have you ever used methadone, suboxone, or subutex to treat an addiction?","{'1': 'Yes', '2': 'No', '9': 'Refused'}"
-OH5_10,DOUBLE,Have you used Naloxone (nal-ox-one) on someone else to reverse a suspected overdose?,{}
-OH6_1,DOUBLE,Have you recently lost weight without trying?,"{'1': 'Yes', '2': 'No', '9': 'Refused'}"
-OH6_2,DOUBLE,"If yes, how much weight have you lost?","{'1': 'lb', '13': 'lb', '23': 'lb', '33': 'lb', '34': 'lb or more', '9': 'Refused'}"
-OH6_3,DOUBLE,Have you been eating poorly because of a decreased appetite?,{'1': 'Yes'}
-OH6_4,DOUBLE,Has food intake declined over the past 3 months due to chewing or swallowing difficulties?,"{'4': 'Has food intake declined over the past', '1': 'Yes', '2': 'No'}"
-OH7_1,DOUBLE,"Over the last 2 weeks, how many days have you had little interest or pleasure in doing things?","{'1': 'Yes', '2': 'No', '9': 'Refused'}"
-OH7_2,DOUBLE,"Over the last 2 weeks, how many days have you felt down, depressed, or hopeless?","{'1': 'Yes', '2': 'No'}"
-OH7_3,DOUBLE,"Over the last 2 weeks, how many days have you had trouble falling asleep or staying asleep or sleeping too much?","{'3': 'During the past', '1': 'Yes', '2': 'No', '9': 'Refused'}"
-OH7_4,DOUBLE,"Over the last 2 weeks, how many days have you felt tired or had little energy?",{}
-OH7_5,DOUBLE,"Has a doctor, nurse, or other health professional ever told you that you had a depressive disorder, including depression, major depression, dysthymia, or minor depression?","{'1': 'Yes', '2': 'No', '9': 'Refused'}"
-OH8_1,DOUBLE,"In your lifetime, have you ever been hospitalized or treated in an emergency room following an injury to your head or neck?","{'1': 'Yes', '2': 'No'}"
-OH8_2,DOUBLE,"In your lifetime, have you ever been injured in a vehicular accident, such as a car, motorcycle, or ATV crash?","{'1': 'Yes', '2': 'No', '9': 'Refused'}"
-OH8_3,DOUBLE,"In your lifetime, have you ever been injured in a fall?","{'1': 'Yes', '2': 'No', '9': 'Refused'}"
-OH8_4,DOUBLE,"In your lifetime, have you ever been injured in a fight or assault?","{'1': 'Yes', '2': 'No', '9': 'Refused'}"
-OH8_5,DOUBLE,"In your lifetime, have you ever been near an explosion or blast?","{'1': 'Yes', '2': 'No', '9': 'Refused'}"
-OH8_6,DOUBLE,Have you ever been injured playing sports or on a playground?,{}
-OH8_7,DOUBLE,Were you ever knocked out or did you lose consciousness from any of the injuries you reported above?,{}
-OH8_8,DOUBLE,What was the longest time you were knocked out or unconscious?,{'9': 'Refused'}
-OH8_9,DOUBLE,How old were you the first time you were knocked out or lost consciousness?,{}
-OH8_10,DOUBLE,How many times in your life have you been knocked out?,{}
-OH8_11,DOUBLE,"If you were not knocked out, did you have a dazed or confused feeling or a gap in your memory from the injury?","{'1': 'Yes', '2': 'No', '9': 'Refused'}"
-INTRO,DOUBLE,Introduction to State-Added Questions,{}
-OH9_1,DOUBLE,Have you ever been threatened with physical violence by an intimate partner?,"{'1': 'Yes', '2': 'No', '9': 'Refused'}"
-OH9_2,DOUBLE,"Have you ever been slapped, pushed, kicked, choked, or hit by an intimate partner?",{'1': 'Yes'}
-OH9_3,DOUBLE,Have you ever been forced to have sex by an intimate partner?,"{'1': 'Yes', '2': 'No', '9': 'Refused'}"
-OH9_4,DOUBLE,Are you afraid of your current partner?,"{'1': 'Yes', '2': 'No'}"
-OH9_5,DOUBLE,"In the past 12 months, have you been threatened with physical violence by an intimate partner?",{}
-OH9_6,DOUBLE,"In the past 12 months, have you been slapped, pushed, kicked, choked, or hit by an intimate partner?","{'6': 'In the past', '1': 'Yes', '2': 'No', '9': 'Refused'}"
-OH9_7,DOUBLE,"In the past 12 months, have you been forced to have sex by an intimate partner?","{'1': 'Current boyfriend', '2': 'Current girlfriend', '3': 'Former boyfriend', '4': 'Former girlfriend'}"
-OTH_Tob_1,DOUBLE,"Do you currently use other tobacco products every day, some days, or not at all? (Chewing tobacco, snuff, snus)",{}
-OTH_Tob_2,DOUBLE,"Do you smoke cigars every day, some days, or not at all?","{'1': 'Every day', '2': 'Some days', '3': 'Not at all', '9': 'Refused'}"
-OTH_Tob_3,DOUBLE,"Do you now smoke little cigars or cigarillos, such as Black and Mild's, every day, some days, or not at all?","{'1': 'Every day', '2': 'Some days', '3': 'Not at all', '9': 'Refused'}"
-OTH_Tob_4,DOUBLE,"Do you now smoke a water pipe or hookah every day, some days, or not at all?","{'1': 'Every day', '2': 'Some days', '3': 'Not at all'}"
-OTH_Tob_5,DOUBLE,"Do you now use any flavored e-cigarette or tobacco products every day, some days, or not at all?",{'1': 'Every day'}
-OTH_Tob_6,DOUBLE,"Do you now use any flavored e-cigarette or tobacco products every day, some days, or not at all?","{'1': 'Every day', '2': 'Some days', '3': 'Not at all'}"
-OTH_Tob_8,DOUBLE,Where do you buy your e-cigarettes or vaping products?,{}
-SHS_1,DOUBLE,"In the last 7 days, have you been exposed to vapor from someone who was using an e-cigarette or other electronic vaping product near you?","{'1': 'Yes', '2': 'No', '9': 'Refused'}"
-SHS_2,DOUBLE,"In the last 7 days, have you been exposed to secondhand smoke from someone who was smoking a cigarette or other tobacco product near you?",{'1': 'or'}
-SHS_3a,DOUBLE,In which of the following places were you exposed to secondhand smoke: In your home?,"{'1': 'Yes', '2': 'No'}"
-SHS_3b,DOUBLE,"In which of the following places were you exposed to secondhand smoke: At home, from someone smoking in another apartment/unit attached to yours?","{'1': 'Yes', '2': 'No'}"
-SHS_3c,DOUBLE,In which of the following places were you exposed to secondhand smoke: In a car or other vehicle?,"{'1': 'Yes', '2': 'No'}"
-SHS_3d,DOUBLE,In which of the following places were you exposed to secondhand smoke: At work?,"{'1': 'Yes', '2': 'No'}"
-SHS_3e,DOUBLE,In which of the following places were you exposed to secondhand smoke: At school?,"{'1': 'Yes', '2': 'No'}"
-SHS_3f,DOUBLE,"In which of the following places were you exposed to secondhand smoke: In an indoor public place such as a building lobby, mall, or enclosed stadium?","{'1': 'Yes', '2': 'No'}"
-SHS_3g,DOUBLE,"In which of the following places were you exposed to secondhand smoke: In an outdoor public place such as a park, sidewalk, or outdoor sporting event?","{'1': 'Yes', '2': 'No'}"
-SHS_4,DOUBLE,"Thinking now about your home, which best describes the building you live in?",{}
-SHS_6,DOUBLE,Which statement best describes the rules about using e-cigarettes or vaping products inside your home?,"{'1': 'Yes', '2': 'No'}"
-ATS_1,DOUBLE,About how old were you the first time you smoked part or all of a cigarette?,"{'19': 'During the past', '30': 'days', '3': 'times per week'}"
-ATS_2,DOUBLE,About how old were you when you first started smoking cigarettes fairly regularly?,{'29': 'In July'}
-ATS_3,DOUBLE,"On average, about how many cigarettes a day do you now smoke?","{'1': 'Yes', '2': 'No', '9': 'SKIP to closing statement'}"
-ATS_4a,DOUBLE,"On the days that you smoke, how soon after you wake up do you smoke your first cigarette?",{}
-ATS_4b,DOUBLE,Do you mostly smoke menthol or non-menthol cigarettes?,{'1': 'Yes'}
-ATS_4c,DOUBLE,Which of the following brands do you smoke most often?,"{'1': 'Yes', '2': 'No', '9': 'Refused'}"
-ATS_5,DOUBLE,"In the past 30 days, on how many days did you vape marijuana?",{'5': 'In the past'}
-ATS_6,DOUBLE,Where do you obtain the marijuana you use within e-cigarette or vapor products?,{'1': 'Exclusively'}
-ATS_7,DOUBLE,"In the past 30 days, on how many days did you vape CBD oil?",{}
-ATS_8,DOUBLE,Where do you obtain the CBD oil you use within e-cigarette or vapor products?,{'1': 'Exclusively'}
-ATS_9,DOUBLE,"During the past 12 months, did any doctor, nurse, or other health professional ask if you smoke?","{'9': 'Refused ASK OF ALL SPLIT', '1': 'Yes', '2': 'RESPONDENTS', '3': 'Have not been to the doctor in the past', '12': 'months'}"
-ATS_10,DOUBLE,"During the past 12 months, did any doctor, nurse, or other health professional advise you to quit smoking?","{'10': 'During the past', '1': 'or', '2': 'No', '3': 'Have not been to the doctor in the past', '12': 'months'}"
-ATS_11,DOUBLE,"During the past 12 months, did any doctor, nurse, or other health professional ask if you use e-cigarettes or vape?",{}
-ATS_12,DOUBLE,"During the past 12 months, did any doctor, nurse, or other health professional advise you to quit using e-cigarettes or vaping?",{}
-ATS_13,DOUBLE,"Have you used any of the following to help you quit using tobacco: Nicotine replacement products (gum, patch, lozenge)?",{}
-ATS_14,DOUBLE,"Have you used any of the following to help you quit using tobacco: Prescription medication (Chantix, Zyban)?",{}
-ATS_15,DOUBLE,Have you used any of the following to help you quit using tobacco: Counseling or classes?,{}
-ATS_16,DOUBLE,Have you used any of the following to help you quit using tobacco: E-cigarettes or vaping products?,"{'1': 'Yes', '2': 'No', '9': 'Refused'}"
-ATS_17,DOUBLE,Have you used any of the following to help you quit using tobacco: Cold turkey / Just stopped?,{}
-ATS_18,DOUBLE,"Have you used any of the following to help you quit using tobacco: Traditional methods (acupuncture, hypnosis)?","{'1': 'Yes', '2': 'No', '9': 'Refused'}"
-ATS_19,DOUBLE,Have you used any of the following to help you quit using tobacco: Quitline or telephone support?,{}
-ATS_20,DOUBLE,Have you used any of the following to help you quit using tobacco: A mobile app or texting program?,{}
-ATS_22,DOUBLE,Which statement best describes the rules about smoking inside your home?,{}
-ATS_23,DOUBLE,Do you think that breathing smoke from other people's cigarettes is harmful to one's health?,"{'1': 'Yes', '2': 'No', '9': 'Refused'}"
-ATS_24,DOUBLE,Do you think that breathing vapor from other people's e-cigarettes is harmful to one's health?,"{'1': 'Yes', '2': 'No', '9': 'Refused'}"
-ATS_25,DOUBLE,"How much do you favor or oppose banning the sale of all tobacco products, including e-cigarettes, in your community?",{}
-ATS_26,DOUBLE,How much do you favor or oppose banning the sale of flavored tobacco products?,"{'1': 'Strongly agree', '2': 'Agree', '3': 'Disagree', '4': 'Strongly disagree', '9': 'Refused'}"
-ATS_27,DOUBLE,How much do you favor or oppose banning the sale of menthol cigarettes?,{}
-ATS_28,DOUBLE,Tobacco use of any kind should not be allowed in outdoor public spaces. Do you agree or disagree?,"{'1': 'Strongly agree', '2': 'Agree', '3': 'Disagree', '4': 'Strongly disagree', '9': 'Refused'}"
-ATS_29,DOUBLE,"In July 2019, Ohio passed a law that raised the minimum age to buy tobacco products from 18 to 21 years. How would you rate your approval of the law?",{}
-ATS_30,DOUBLE,E-cigarettes and other electronic vaping products should be treated the same as regular cigarettes in terms of tobacco laws and policies. Do you agree or disagree?,{}
-ATS_31,DOUBLE,Stores that sell tobacco products should not be allowed near schools. Do you agree or disagree?,{}
-ATS_32,DOUBLE,How likely would you be to ask a stranger to not smoke or vape around you?,{}
-ATS_33,DOUBLE,How likely would you be to ask a friend or family member to not smoke or vape around you?,{}
-ATS_34,DOUBLE,Do you believe you have a right to breathe clean air in public places?,{}
-ATS_35,DOUBLE,Would you support a policy that prohibits smoking and vaping in multi-unit housing complexes?,"{'1': 'Yes', '2': 'No'}"
-ATS_36,DOUBLE,Would you favor or oppose a tax increase on tobacco products?,{}
-EOR,DOUBLE,End of Data-Submission Record Marker,{}
-_URBNRRL,DOUBLE,NCHS Urban-Rural Classification,"{'1': 'Large central', '2': 'Large fringe metro', '3': 'Medium metro', '4': 'Small metro', '5': 'Micropolitan', '6': 'Noncore'}"
-_METSTAT,DOUBLE,Metropolitan Status,"{'1': 'Metropolitan', '2': 'Nonmetropolitan'}"
-_URBSTAT,DOUBLE,Urban/Rural Status,"{'1': 'Urban counties', '2': 'Rural counties'}"
-_MSACODE,DOUBLE,FIPS Metropolitan Statistical Area Code,{'HIDDEN': 'Data not displayed'}
-MSCODE,DOUBLE,Metropolitan Status Code,"{'1': 'In the center city', '2': 'Outside the center', '3': 'Inside a suburban', '5': 'Not in an MSA', 'BLANK': 'GU, PR, VI, or'}"
-_STSTR,DOUBLE,Sample Design Stratification Variable (Prior to 2011: _STSTR is a five digit number that combines the values for,{'HIDDEN': 'Data not displayed'}
-_STRWT,DOUBLE,Stratum weight (Number of records in a stratum (NRECSTR) divided by the number of records selected (NRECSEL).),{'HIDDEN': 'Data not displayed'}
-_RAW,DOUBLE,Raw weighting factor (Number of adults in the household (NUMADULT) divided by the imputed number of,{'HIDDEN': 'Data not displayed'}
-_WT2,DOUBLE,Design weight (Stratum weight (_STRWT) multiplied by the raw weighting factor (_RAW).),{'HIDDEN': 'Data not displayed'}
-_RAWRAKE,DOUBLE,"Raw weighting factor used in raking (Number of adults in the household (NUMADULT, maximum of 5) divided by",{'HIDDEN': 'Data not displayed'}
-_WT2RAKE,DOUBLE,Design weight used in raking (Stratum weight (_STRWT) multiplied by the raw weighting factor (_RAWRAKE).),{'HIDDEN': 'Data not displayed'}
-_REGION,DOUBLE,"Geographic region within a state, imputed from CTYCODE, _IMPCTY, or _GEOSTR",{'HIDDEN': 'Data not displayed'}
-_IMPSEX,DOUBLE,"Imputed gender (This value is the reported gender or an imputed gender, if the respondent refused to give their","{'1': 'Male', '2': 'Female'}"
-_IMPAGE,DOUBLE,"Imputed age used in post-stratification (This value is the reported age or an imputed age, if the respondent refused to give an","{'18': '-', '25': '-', '35': '-', '45': '-', '55': '-', '65': '-'}"
-_IMPRACE,DOUBLE,"Imputed race/ethnicity value (This value is the reported race/ethnicity or an imputed race/ethnicity, if the respondent refused","{'1': 'White, Non-', '2': 'Black, Non-', '3': 'Asian, Non-', '4': 'American Indian/', '5': 'Hispanic', '6': 'Other race, Non-'}"
-_IMPNPH,DOUBLE,Imputed number of phones used in weighting,"{'1': 'Number of phones', '2': '58', '3': '8', '4': '4', '5': '2', '6': '3', 'BLANK': '13,359'}"
-_IMPCTY,DOUBLE,Imputed County,{'HIDDEN': 'Data not displayed'}
-_IMPEDUC,DOUBLE,"Imputed Education Level (This value is the reported education level or an imputed education level, if the respondent refused","{'1': 'Never attended', '2': 'Grades', '3': 'Grades', '4': 'Grade', '5': 'College', '6': 'College'}"
-_IMPMRTL,DOUBLE,"Imputed Marital Status (This value is the reported marital status or an imputed marital status, if the respondent refused to","{'1': 'Married', '2': 'Divorced', '3': 'Widowed', '4': 'Separated', '5': 'Never married', '6': 'A member of an'}"
-_IMPHOME,DOUBLE,"Imputed Own or Rent Home (This value is the reported tenure (rent or own home) or an imputed tenure, if the respondent","{'1': 'Own', '2': 'Rent', '3': 'Other arrangement'}"
-O_STATE,DOUBLE,Original state that collected the cell phone data,"{'1': 'Alabama', '4': 'Arizona', '5': 'Arkansas', '6': 'California', '8': 'Colorado', '9': 'Connecticut', '10': 'Delaware', '12': 'Florida', '13': 'Georgia', '16': 'Idaho', '17': 'Illinois', '18': 'Indiana', '19': 'Iowa', '20': 'Kansas', '21': 'Kentucky', '22': 'Louisiana', '23': 'Maine', '24': 'Maryland', '25': 'Massachusetts', '26': 'Michigan', '27': 'Minnesota', '28': 'Mississippi', '29': 'Missouri', '30': 'Montana', '31': 'Nebraska', '32': 'Nevada', '33': 'New Hampshire', '34': 'New Jersey', '35': 'New Mexico', '36': 'New York', '37': 'North Carolina', '38': 'North Dakota', '39': 'Ohio', '40': 'Oklahoma', '41': 'Oregon', '42': 'Pennsylvania', '44': 'Rhode Island', '45': 'South Carolina', '46': 'South Dakota', '47': 'Tennessee', '48': 'Texas', '49': 'Utah', '51': 'Virginia', '53': 'Washington', '54': 'West Virginia', '55': 'Wisconsin', '56': 'Wyoming', '72': 'Puerto Rico', '78': 'Virgin Islands'}"
-_CHISPNC,DOUBLE,"Child Hispanic, Latino/a, or Spanish origin calculated variable","{'1': 'Child of Hispanic,', '2': 'Child not of', '9': 'Don’t know/Not'}"
-CRACORG2,BIGINT,"RCSRACE2 with 77, 88, 80, 99s removed","{'99': 'Refused', 'BLANK': 'Missing', 'HIDDEN': 'Data not displayed'}"
-CRACASC2,DOUBLE,CRACORG2 with responses in ascending order,"{'77': 'Don’t know/Not', '99': 'Refused', 'BLANK': 'Missing', 'HIDDEN': 'Data not displayed'}"
-_CRACE2,DOUBLE,Child multiracial race categorization,"{'2': 'Black or African', '3': 'American Indian or', '4': 'Asian Only', '5': 'Native Hawaiian or', '6': 'Multiracial', '77': 'Don’t know/Not', '99': 'Refused', 'BLANK': 'Missing'}"
-_CPRACE2,DOUBLE,Preferred Child Race Categories,"{'1': 'White', '2': 'Black or African', '3': 'American Indian or', '5': 'Native Hawaiian or', '7': 'Multiracial but no', '77': 'Don’t know/Not', '99': 'Refused', 'BLANK': 'Missing'}"
-_IMPCAGE,DOUBLE,Imputed Child Age,"{'1': '0-4 Years old', '2': '5-9 Years old', '3': '10-14 Years old', '4': '15-17 Years old', 'BLANK': 'Not asked or'}"
-_IMPCRAC,DOUBLE,Imputed Child Race/Ethnicity,"{'1': 'White, non-', '2': 'Black or African', '3': 'Asian, non-', '4': 'American Indian or', '5': 'Multi-race, non-', '6': 'Hispanic', 'BLANK': 'Missing'}"
-_IMPCSEX,DOUBLE,Imputed Child Gender,"{'1': 'Male', '2': 'Female', 'BLANK': 'Missing'}"
-_RAWCH,DOUBLE,Raw child weighting factor (Number of children in the household (CHILDREN) divided by the imputed number of,{'HIDDEN': 'Data not displayed'}
-_WT2CH,DOUBLE,Child design weight (Child stratum weight (_STRWT) multiplied by the raw weighting factor (_RAWCH).),{'HIDDEN': 'Data not displayed'}
-CHILDAGE,DOUBLE,Child Age (in months),"{'0': '-', '12': '-', '24': '-', '36': '-', '48': '-', '60': '-', '72': '-', '84': '-', '7': 'Years old', '96': '-', 'BLANK': 'Not asked or'}"
-CAGEG,DOUBLE,Four level child age,"{'1': '0 months to <', '2': '5 to <', '3': '10 to <', '4': '15 to <', 'BLANK': 'Not asked or'}"
-_CLCPM01,DOUBLE,Child Combined Land-Line and Cell-Phone First Margin (Age-Gender),"{'1': '-', 'BLANK': 'Missing'}"
-_CLCPM02,DOUBLE,Child Combined Land-Line and Cell-Phone Second Margin (Race/Ethnicity),"{'1': '-', 'BLANK': 'Missing'}"
-_CLCPM03,DOUBLE,Child Combined Land-Line and Cell-Phone Third Margin (Gender-Race/Ethnicity),"{'1': '-', 'BLANK': 'Missing'}"
-_CLCPM04,DOUBLE,Child Combined Land-Line and Cell-Phone Fourth Margin (Age-Race/Ethnicity),"{'1': '-', 'BLANK': 'Missing'}"
-_CLCPM05,DOUBLE,Child Combined Land-Line and Cell-Phone Fifth Margin (Telephone Source),"{'1': '-', 'BLANK': 'Missing'}"
-_CLLCPWT,DOUBLE,Final child weight: Land-line and Cell-Phone data (Raking derived weight),{'HIDDEN': 'Data not displayed'}
-_CLCM1V1,DOUBLE,Version 1 Child Combined Land-Line and Cell-Phone First Margin (Age-Gender),"{'1': '-', 'BLANK': 'Missing'}"
-_CLCM2V1,DOUBLE,Version 1 Child Combined Land-Line and Cell-Phone Second Margin (Race/Ethnicity),"{'1': '-', 'BLANK': 'Missing'}"
-_CLCM3V1,DOUBLE,Version 1 Child Combined Land-Line and Cell-Phone Third Margin (Gender-Race/Ethnicity),"{'1': '-', 'BLANK': 'Missing'}"
-_CLCM4V1,DOUBLE,Version 1 Child Combined Land-Line and Cell-Phone Fourth Margin (Age-Race/Ethnicity),"{'1': '-', 'BLANK': 'Missing'}"
-_CLCM5V1,DOUBLE,Version 1 Child Combined Land-Line and Cell-Phone Fifth Margin (Telephone Source),"{'1': '-', 'BLANK': 'Missing'}"
-_CLCWTV1,DOUBLE,Version 1 child weight: Land-line and Cell-Phone data,{'HIDDEN': 'Data not displayed'}
-_CLCM1V2,DOUBLE,Version 2 Child Combined Land-Line and Cell-Phone First Margin (Age-Gender),"{'1': '-', 'BLANK': 'Missing'}"
-_CLCM2V2,DOUBLE,Version 2 Child Combined Land-Line and Cell-Phone Second Margin (Race/Ethnicity),"{'1': '-', 'BLANK': 'Missing'}"
-_CLCM3V2,DOUBLE,Version 2 Child Combined Land-Line and Cell-Phone Third Margin (Gender-Race/Ethnicity),"{'1': '-', 'BLANK': 'Missing'}"
-_CLCM4V2,DOUBLE,Version 2 Child Combined Land-Line and Cell-Phone Fourth Margin (Age-Race/Ethnicity),"{'1': '-', 'BLANK': 'Missing'}"
-_CLCM5V2,DOUBLE,Version 2 Child Combined Land-Line and Cell-Phone Fifth Margin (Telephone Source),"{'1': '-', 'BLANK': 'Missing'}"
-_CLCWTV2,DOUBLE,Version 2 child weight: Land-line and Cell-Phone data,{'HIDDEN': 'Data not displayed'}
-_CLCM1V3,VARCHAR,Version 3 Child Combined Land-Line and Cell-Phone First Margin (Age-Gender),{'BLANK': 'Missing'}
-_CLCM2V3,VARCHAR,Version 3 Child Combined Land-Line and Cell-Phone Second Margin (Race/Ethnicity),{'BLANK': 'Missing'}
-_CLCM3V3,VARCHAR,Version 3 Child Combined Land-Line and Cell-Phone Third Margin (Gender-Race/Ethnicity),{'BLANK': 'Missing'}
-_CLCM4V3,VARCHAR,Version 3 Child Combined Land-Line and Cell-Phone Fourth Margin (Age-Race/Ethnicity),{'BLANK': 'Missing'}
-_CLCM5V3,VARCHAR,Version 3 Child Combined Land-Line and Cell-Phone Fifth Margin (Telephone Source),{'BLANK': 'Missing'}
-_CLCWTV3,VARCHAR,Version 3 child weight: Land-line and Cell-Phone data,{'HIDDEN': 'Data not displayed'}
-ORGSEQNO,VARCHAR,Original State and Original Sequence Number,{'HIDDEN': 'Data not displayed'}
-_DUALUSE,DOUBLE,Dual Phone Use Categories,"{'1': 'Landline frame', '2': 'Cell phone frame', '9': 'No Dual Phone Use'}"
-_DUALCOR,DOUBLE,Dual phone use correction factor,{'HIDDEN': 'Data not displayed'}
-_LLCPWT2,DOUBLE,Truncated design weight used in adult combined land line and cell phone raking,{'HIDDEN': 'Data not displayed'}
-_LLCPM01,DOUBLE,Combined Land-Line and Cell-Phone First Margin (Age-Gender),{'1': '-'}
-_LLCPM02,DOUBLE,Combined Land-Line and Cell-Phone Second Margin (Race/Ethnicity),{'1': '-'}
-_LLCPM03,DOUBLE,Combined Land-Line and Cell-Phone Third Margin (Education),"{'1': 'Less than HS', '2': 'HS Grad', '3': 'Some College', '4': 'College Grad'}"
-_LLCPM04,DOUBLE,Combined Land-Line and Cell-Phone Fourth Margin (Marital Status),"{'1': 'Married', '2': 'Never married,', '3': 'Divorced, Widowed,'}"
-_LLCPM05,DOUBLE,Combined Land-Line and Cell-Phone Fifth Margin (Home Ownership),{'1': '-'}
-_LLCPM06,DOUBLE,Combined Land-Line and Cell-Phone Sixth Margin (Gender-Race/Ethnicity),{'1': '-'}
-_LLCPM07,DOUBLE,Combined Land-Line and Cell-Phone Seventh Margin (Age-Race/Ethnicity),{'1': '-'}
-_LLCPM08,DOUBLE,Combined Land-Line and Cell-Phone Eighth Margin (Telephone Source),{'1': '-'}
-_LLCPM09,DOUBLE,Combined Land-Line and Cell-Phone Ninth Margin (Regions),{'1': '-'}
-_LLCPM10,DOUBLE,Combined Land-Line and Cell-Phone Tenth Margin (Regions-Age),{'1': '-'}
-_LLCPM11,DOUBLE,Combined Land-Line and Cell-Phone Eleventh Margin (Regions-Gender),{'1': '-'}
-_LLCPM12,DOUBLE,Combined Land-Line and Cell-Phone Twelfth Margin (Regions-Race/Ethnicity),{'1': '-'}
-_LLCPM13,DOUBLE,Combined Land-Line and Cell-Phone Thirteenth Margin (Counties),{'1': '-'}
-_LLCPM14,DOUBLE,Combined Land-Line and Cell-Phone Fourteenth Margin (Counties-Race/Ethnicity),{'1': '-'}
-_LLCPM15,DOUBLE,Combined Land-Line and Cell-Phone Fifteenth Margin (Counties-Age),{'1': '-'}
-_LLCPM16,DOUBLE,Combined Land-Line and Cell-Phone Sixteenth Margin (Counties-Sex),{'1': '-'}
-_LLCPWT,DOUBLE,Final weight assigned to each respondent: Land-line and cell-phone data (Raking derived weight),{'HIDDEN': 'Data not displayed'}
-_LCM01V1,DOUBLE,Version 1 Combined Land-Line and Cell-Phone First Margin (Age-Gender),"{'1': '-', 'BLANK': 'Missing'}"
-_LCM02V1,DOUBLE,Version 1 Combined Land-Line and Cell-Phone Second Margin (Race/Ethnicity),"{'1': '-', 'BLANK': 'Missing'}"
-_LCM03V1,DOUBLE,Version 1 Combined Land-Line and Cell-Phone Third Margin (Education),"{'1': 'Less than HS', '2': 'HS Grad', '3': 'Some College', '4': 'College Grad', 'BLANK': 'Missing'}"
-_LCM04V1,DOUBLE,Version 1 Combined Land-Line and Cell-Phone Fourth Margin (Marital Status),"{'1': 'Married', '2': 'Never married,', '3': 'Divorced, Widowed,', 'BLANK': 'Missing'}"
-_LCM05V1,DOUBLE,Version 1 Combined Land-Line and Cell-Phone Fifth Margin (Home Ownership),"{'1': '-', 'BLANK': 'Missing'}"
-_LCM06V1,DOUBLE,Version 1 Combined Land-Line and Cell-Phone Sixth Margin (Gender-Race/Ethnicity),"{'1': '-', 'BLANK': 'Missing'}"
-_LCM07V1,DOUBLE,Version 1 Combined Land-Line and Cell-Phone Seventh Margin (Age-Race/Ethnicity),"{'1': '-', 'BLANK': 'Missing'}"
-_LCM08V1,DOUBLE,Version 1 Combined Land-Line and Cell-Phone Eighth Margin (Telephone Source),"{'1': '-', 'BLANK': 'Missing'}"
-_LCM09V1,DOUBLE,Version 1 Combined Land-Line and Cell-Phone Ninth Margin (Regions),"{'1': '-', 'BLANK': 'Missing'}"
-_LCM10V1,DOUBLE,Version 1 Combined Land-Line and Cell-Phone Tenth Margin (Regions-Age),"{'1': '-', 'BLANK': 'Missing'}"
-_LCM11V1,DOUBLE,Version 1 Combined Land-Line and Cell-Phone Eleventh Margin (Regions-Gender),"{'1': '-', 'BLANK': 'Missing'}"
-_LCM12V1,DOUBLE,Version 1 Combined Land-Line and Cell-Phone Twelfth Margin (Regions-Race/Ethnicity),"{'1': '-', 'BLANK': 'Missing'}"
-_LCPWTV1,DOUBLE,Version 1 weight assigned to each respondent: Land-line and cell-phone data,{'HIDDEN': 'Data not displayed'}
-_LCM01V2,DOUBLE,Version 2 Combined Land-Line and Cell-Phone First Margin (Age-Gender),"{'1': '-', 'BLANK': 'Missing'}"
-_LCM02V2,DOUBLE,Version 2 Combined Land-Line and Cell-Phone Second Margin (Race/Ethnicity),"{'1': '-', 'BLANK': 'Missing'}"
-_LCM03V2,DOUBLE,Version 2 Combined Land-Line and Cell-Phone Third Margin (Education),"{'1': 'Less than HS', '2': 'HS Grad', '3': 'Some College', '4': 'College Grad', 'BLANK': 'Missing'}"
-_LCM04V2,DOUBLE,Version 2 Combined Land-Line and Cell-Phone Fourth Margin (Marital Status),"{'1': 'Married', '2': 'Never married,', '3': 'Divorced, Widowed,', 'BLANK': 'Missing'}"
-_LCM05V2,DOUBLE,Version 2 Combined Land-Line and Cell-Phone Fifth Margin (Home Ownership),"{'1': '-', 'BLANK': 'Missing'}"
-_LCM06V2,DOUBLE,Version 2 Combined Land-Line and Cell-Phone Sixth Margin (Gender-Race/Ethnicity),"{'1': '-', 'BLANK': 'Missing'}"
-_LCM07V2,DOUBLE,Version 2 Combined Land-Line and Cell-Phone Seventh Margin (Age-Race/Ethnicity),"{'1': '-', 'BLANK': 'Missing'}"
-_LCM08V2,DOUBLE,Version 2 Combined Land-Line and Cell-Phone Eighth Margin (Telephone Source),"{'1': '-', 'BLANK': 'Missing'}"
-_LCM09V2,VARCHAR,Version 2 Combined Land-Line and Cell-Phone Ninth Margin (Regions),{'BLANK': 'Missing'}
-_LCM10V2,VARCHAR,Version 2 Combined Land-Line and Cell-Phone Tenth Margin (Regions-Age),{'BLANK': 'Missing'}
-_LCM11V2,VARCHAR,Version 2 Combined Land-Line and Cell-Phone Eleventh Margin (Regions-Gender),{'BLANK': 'Missing'}
-_LCM12V2,VARCHAR,Version 2 Combined Land-Line and Cell-Phone Twelfth Margin (Regions-Race/Ethnicity),{'BLANK': 'Missing'}
-_LCPWTV2,DOUBLE,Version 2 weight assigned to each respondent: Land-line and cell-phone data,{'HIDDEN': 'Data not displayed'}
-_LCM01V3,VARCHAR,Version 3 Combined Land-Line and Cell-Phone First Margin (Age-Gender),{'BLANK': 'Missing'}
-_LCM02V3,VARCHAR,Version 3 Combined Land-Line and Cell-Phone Second Margin (Race/Ethnicity),{'BLANK': 'Missing'}
-_LCM03V3,VARCHAR,Version 3 Combined Land-Line and Cell-Phone Third Margin (Education),{'BLANK': 'Missing'}
-_LCM04V3,VARCHAR,Version 3 Combined Land-Line and Cell-Phone Fourth Margin (Marital Status),{'BLANK': 'Missing'}
-_LCM05V3,VARCHAR,Version 3 Combined Land-Line and Cell-Phone Fifth Margin (Home Ownership),{'BLANK': 'Missing'}
-_LCM06V3,VARCHAR,Version 3 Combined Land-Line and Cell-Phone Sixth Margin (Gender-Race/Ethnicity),{'BLANK': 'Missing'}
-_LCM07V3,VARCHAR,Version 3 Combined Land-Line and Cell-Phone Seventh Margin (Age-Race/Ethnicity),{'BLANK': 'Missing'}
-_LCM08V3,VARCHAR,Version 3 Combined Land-Line and Cell-Phone Eighth Margin (Telephone Source),{'BLANK': 'Missing'}
-_LCM09V3,VARCHAR,Version 3 Combined Land-Line and Cell-Phone Ninth Margin (Regions),{'BLANK': 'Missing'}
-_LCM10V3,VARCHAR,Version 3 Combined Land-Line and Cell-Phone Tenth Margin (Regions-Age),{'BLANK': 'Missing'}
-_LCM11V3,VARCHAR,Version 3 Combined Land-Line and Cell-Phone Eleventh Margin (Regions-Gender),{'BLANK': 'Missing'}
-_LCM12V3,VARCHAR,Version 3 Combined Land-Line and Cell-Phone Twelfth Margin (Regions-Race/Ethnicity),{'BLANK': 'Missing'}
-_LCPWTV3,VARCHAR,Version 3 weight assigned to each respondent: Land-line and cell-phone data,{'HIDDEN': 'Data not displayed'}
-_RFHLTH,DOUBLE,Adults with good or better health,"{'1': 'Good or Better', '2': 'Fair or Poor', '9': 'Don’t know/Not'}"
-_PHYS14D,DOUBLE,"3 level not good physical health status: 0 days, 1-13 days, 14-30 days","{'1': 'Zero days when', '2': '1-13 days when', '3': '14+ days when', '9': 'Don’t know/'}"
-_MENT14D,DOUBLE,"3 level not good mental health status: 0 days, 1-13 days, 14-30 days","{'1': 'Zero days when', '2': '1-13 days when', '3': '14+ days when', '9': 'Don’t know/'}"
-_HLTHPLN,DOUBLE,Adults who had some form of health insurance,"{'1': 'Have some form of', '2': 'Do not have some', '9': 'Don´t know,'}"
-_HCVU652,DOUBLE,Respondents aged 18-64 who have any form of health insurance,"{'1': 'Have some form of', '2': 'Do not have any', '9': 'Don’t know/Not'}"
-_TOTINDA,DOUBLE,Adults who reported doing physical activity or exercise during the past 30 days other than their regular job,"{'1': 'Had physical', '2': 'No physical', '9': 'Don’t know/', '7': 'or'}"
-_EXTETH3,DOUBLE,Adults aged 18+ who have had permanent teeth extracted,"{'1': 'Not at risk', '2': 'At risk', '9': 'Don’t know/Not'}"
-_ALTETH3,DOUBLE,Adults aged 65+ who have had all their natural teeth extracted,"{'1': 'No', '2': 'Yes', '9': 'Don’t know/Not', 'BLANK': 'Missing or Age <'}"
-_DENVST3,DOUBLE,"Adults who have visited a dentist, dental hygenist or dental clinic within the past year","{'1': 'Yes', '2': 'No', '9': 'Don’t know/Not'}"
-_MICHD,DOUBLE,Respondents that have ever reported having coronary heart disease (CHD) or myocardial infarction (MI),"{'1': 'Reported having MI', '2': 'Did not report', 'BLANK': 'Not asked or'}"
-_LTASTH1,DOUBLE,Adults who have ever been told they have asthma,"{'1': 'No', '2': 'Yes', '9': 'Don’t know/Not'}"
-_CASTHM1,DOUBLE,Adults who have been told they currently have asthma,"{'1': 'No', '2': 'Yes', '9': 'Don’t know/Not'}"
-_ASTHMS1,DOUBLE,Computed asthma status,"{'1': 'Current', '2': 'Former', '3': 'Never', '9': 'Don’t know/Not'}"
-_DRDXAR2,DOUBLE,Respondents who have had a doctor diagnose them as having some form of arthritis,"{'1': 'Diagnosed with', '2': 'Not diagnosed with', 'BLANK': 'Don´t know/Not', '7': 'or'}"
-MRACORG2,BIGINT,"MRACE2 with 77,88,99s removed","{'77': '59', '99': '205', 'HIDDEN': '16,223'}"
-MRACASC2,DOUBLE,"MRACORG2 with 77,88,99s removed, in ascending order","{'77': '59', '99': '205', 'BLANK': '293', 'HIDDEN': '15,930'}"
-_PRACE2,DOUBLE,Preferred race category,"{'1': 'White', '2': 'Black or African', '3': 'American Indian or', '4': 'Asian', '5': 'Native Hawaiian or', '7': 'Multiracial but no', '88': 'No race choice', '77': 'Don’t know/Not', '99': 'Refused', 'BLANK': 'Missing'}"
-_MRACE2,DOUBLE,Calculated multiracial race categorization,"{'1': 'White only', '2': 'Black or African', '3': 'American Indian or', '4': 'Asian Only', '5': 'Native Hawaiian or', '6': 'Multiracial', '88': 'No race choice', '77': 'Don’t know/Not', '99': 'Refused'}"
-_M_RACE1,DOUBLE,Calculated multiracial race categorization,"{'10': 'White', '20': 'Black or African', '30': 'American Indian or', '40': 'Asian', '41': 'Asian Indian', '42': 'Chinese', '43': 'Filipino', '44': 'Japanese', '45': 'Korean', '46': 'Vietnamese', '47': 'Other Asian', '50': 'Pacific Islander', '51': 'Native Hawaiian', '52': 'Guamanian or', '53': 'Samoan', '54': 'Other Pacific', '70': 'Multiple responses', '88': 'No race choice', '77': 'Don’t know/Not', '99': 'Refused'}"
-_HISPANC,DOUBLE,"Hispanic, Latino/a, or Spanish origin calculated variable","{'1': 'Hispanic, Latino/', '2': 'Not of Hispanic,', '9': 'Don´t Know,'}"
-_RACE1,DOUBLE,Race/ethnicity categories,"{'1': 'White only, non-', '2': 'and _MRACE2 =', '3': 'American Indian or', '4': 'Asian only, non-', '5': 'Native Hawaiian or', '7': 'or', '8': 'Hispanic', '9': 'Don’t know/Not'}"
-_RACEG22,DOUBLE,White non-Hispanic race group,"{'1': 'Non-Hispanic White', '2': 'Non-White or', '6': 'or', '9': 'Don’t know/Not'}"
-_RACEGR4,DOUBLE,Five-level race/ethnicity category,"{'1': 'White only, Non-', '2': 'Black only, Non-', '3': 'Other race only,', '4': 'Multiracial, Non-', '5': 'Hispanic', '9': 'Don’t know/Not'}"
-_RACEPR1,DOUBLE,Computed race groups used for internet prevalence tables,"{'1': 'White only, non-', '2': 'Black only, non-', '3': 'American Indian or', '4': 'Asian only, non-', '5': 'Native Hawaiian or', '6': 'Multiracial, non-', '7': 'Hispanic'}"
-_SEX,DOUBLE,Calculated sex variable,"{'1': 'Male', '2': 'Female'}"
-_AGEG5YR,DOUBLE,Fourteen-level age category,"{'1': 'Age', '2': 'Age', '3': 'Age', '4': 'Age', '5': 'Age', '6': 'Age', '7': 'Age', '8': 'Age', '9': 'Age', '10': 'Age', '11': 'Age', '12': 'Age', '13': 'Age', '14': 'Don’t know/'}"
-_AGE65YR,DOUBLE,Two-level age category,"{'1': 'Age', '2': 'Age', '3': 'Don’t know/'}"
-_AGE80,DOUBLE,Imputed Age value collapsed above 80,"{'18': '-', '25': '-', '30': '-', '35': '-', '40': '-', '45': '-', '50': '-', '55': '-', '60': '-', '65': '-', '70': '-', '75': '-', '80': '-'}"
-_AGE_G,DOUBLE,Six-level imputed age category,"{'1': 'Age', '2': 'Age', '3': 'Age', '4': 'Age', '5': 'Age', '6': 'Age'}"
-HTIN4,DOUBLE,Reported height in inches,"{'36': '-', 'BLANK': 'Don’t know/'}"
-HTM4,DOUBLE,Reported height in meters,"{'91': '-', 'BLANK': 'Don’t know/'}"
-WTKG3,DOUBLE,Reported weight in kilograms,{'BLANK': 'Don’t know/'}
-_BMI5,DOUBLE,Body Mass Index (BMI),"{'1': '-', 'BLANK': 'Don’t know/'}"
-_BMI5CAT,DOUBLE,Four-categories of Body Mass Index (BMI),"{'1': 'Underweight', '2': 'Normal Weight', '3': 'Overweight', '4': 'Obese', 'BLANK': 'Don’t know/'}"
-_RFBMI5,DOUBLE,Adults who have a body mass index greater than 25.00 (Overweight or Obese),"{'1': 'No', '2': 'Yes', '9': 'Don’t know/'}"
-_CHLDCNT,DOUBLE,Number of children in household,"{'1': 'No children in', '2': 'One child in', '3': 'Two children in', '4': 'Three children in', '5': 'Four children in', '6': 'Five or more', '9': 'Don’t know/Not'}"
-_EDUCAG,DOUBLE,Level of education completed,"{'1': 'Did not graduate', '2': 'Graduated High', '3': 'Attended College', '4': 'Graduated from', '9': 'Don’t know/Not'}"
-_INCOMG1,DOUBLE,Income categories,"{'1': 'Less than $15,000', '2': '$15,000 to <', '3': '$25,000 to <', '4': '$35,000 to <', '5': '$50,000 to <', '6': '$100,000 to <', '7': '$200,000 or more', '9': 'Don’t know/Not'}"
-_RFMAM22,DOUBLE,Women respondents aged 40+ who have had a mammogram in the past two years,"{'1': 'and HOWLONG =', '2': 'No', '9': 'Don’t know/Not', '7': 'or', 'BLANK': 'Missing or Age <'}"
-_MAM5023,DOUBLE,Women respondents aged 50-74 who have had a mammogram in the past two years,"{'1': 'Received a', '2': 'Did not receive a', 'BLANK': 'Missing, Age <'}"
-_HADCOLN,DOUBLE,Had colonoscopy calculated variable,"{'1': 'Have had a', '2': 'Have not had a', 'BLANK': 'Don’t know/'}"
-_CLNSCP1,DOUBLE,Respondents aged 45-75 who have had a colonoscopy within the past ten years,"{'1': 'Had a colonoscopy', '2': 'Had a colonoscopy', '3': 'Have never had a', 'BLANK': 'Missing, Age <'}"
-_HADSIGM,DOUBLE,Had sigmoidoscopy calculated variable,"{'1': 'Have had a', 'BLANK': 'Don’t know/'}"
-_SGMSCP1,DOUBLE,Respondents aged 45-75 who have had a sigmoidoscopy within the past five years,"{'1': 'Have had a', '2': 'Have had a', '3': 'Have never had a', 'BLANK': 'Missing, Age <'}"
-_SGMS101,DOUBLE,Respondents aged 45-75 who have had a sigmoidoscopy within the past ten years,"{'1': 'Have had a', '2': 'Have had a', '3': 'Have never had a', 'BLANK': 'Missing, Age <', '45': 'or AGE >'}"
-_RFBLDS5,DOUBLE,Respondents aged 45-75 who have had a stool test within the past year,"{'1': 'Had a blood stool', '2': 'Have had a blood', '3': 'Have never had a', 'BLANK': 'Missing, Age <'}"
-_STOLDN1,DOUBLE,Respondents aged 45-75 who have had a stool DNA test within the past three years,"{'1': 'Had a stool DNA', '2': 'Have had a stool', '3': 'Have never had a', 'BLANK': 'Missing, Age <'}"
-_VIRCOL1,DOUBLE,Respondents aged 45-75 who have had a virtual colonoscopy within the past five years,"{'1': 'Had a virtual', '2': 'Have not had a', '3': 'Have never had a', 'BLANK': 'Missing, Age <'}"
-_SBONTI1,DOUBLE,Respondents aged 45-75 who have had a sigmoidoscopy within the past ten years and a blood stool test in the past year,"{'1': 'Both on time', '2': 'At least one not', '3': 'Never had either', 'BLANK': 'Missing, Age <'}"
-_CRCREC2,DOUBLE,Respondents aged 45-75 who have fully met the USPSTF recommendations,"{'1': 'Had at least one', '2': 'Did not have any', '3': 'Have never had any', 'BLANK': 'Missing, Age <'}"
-_SMOKER3,DOUBLE,"Four-level smoker status: Everyday smoker, Someday smoker, Former smoker, Non-smoker","{'1': 'and SMOKEDAY =', '2': 'Current smoker -', '3': 'Former smoker', '4': 'Never smoked', '9': 'Don’t know/'}"
-_RFSMOK3,DOUBLE,Adults who are current smokers,"{'1': 'or', '3': 'or', '2': 'Yes', '9': 'Don’t know/'}"
-_CURECI2,DOUBLE,Adults who are current e-cigarette users,"{'1': 'Not currently', '2': 'Current E-', '9': 'Don’t know/'}"
-_YRSSMOK,DOUBLE,Number of years respondent smoked cigarettes,"{'1': '-', 'BLANK': 'Don’t know/'}"
-_PACKDAY,DOUBLE,Number of packs of cigarettes smoked per day,"{'0': '-', 'BLANK': 'Don’t know/'}"
-_PACKYRS,DOUBLE,Number of years smoked reported number of packs per day,"{'0': '-', 'BLANK': 'Don’t know/'}"
-_YRSQUIT,DOUBLE,Number of years since quit smoking cigarettes,"{'1': '-', 'BLANK': 'Don’t know/'}"
-_SMOKGRP,VARCHAR,Smoking Group,"{'2': 'Former smoker,', '3': 'All other current', '4': 'Never smoker', 'BLANK': 'Don’t know/'}"
-_LCSREC,VARCHAR,Lung cancer screening recommendation status,"{'1': 'Meet USPSTF', '2': 'Does not meet', 'BLANK': 'Don’t know/'}"
-DRNKANY6,VARCHAR,Adults who reported having had at least one drink of alcohol in the past 30 days.,"{'1': 'Yes', '2': 'No', '7': 'Don’t know/Not', '9': 'Refused/Missing'}"
-DROCDY4_,VARCHAR,Drink-occasions-per-day,"{'0': 'No Drink-Occasions', '1': '-'}"
-_RFBING6,VARCHAR,"Binge drinkers (males having five or more drinks on one occasion, females having four or more drinks on one occasion)","{'1': 'No', '2': 'Yes', '9': 'Don’t know/'}"
-_DRNKWK2,VARCHAR,Calculated total number of alcoholic beverages consumed per week,"{'0': 'Did not drink', '1': '-'}"
-_RFDRHV8,VARCHAR,Heavy drinkers (adult men having more than 14 drinks per week and adult women having more than 7 drinks per week),"{'1': 'No', '2': 'Yes', '9': 'Don’t know/'}"
-_FLSHOT7,VARCHAR,Adults aged 65+ who have had a flu shot within the past year,"{'1': 'Yes', '2': 'No', '9': 'Don’t know/Not', 'BLANK': 'Age <'}"
-_PNEUMO3,VARCHAR,Adults aged 65+ who have ever had a pneumonia vaccination,"{'1': 'Yes', '2': 'No', '9': 'Don’t know/Not', 'BLANK': 'Age <'}"
-_AIDTST4,VARCHAR,Adults who have ever been tested for HIV,"{'1': 'Yes', '2': 'No', '9': 'Don’t know/Not', 'BLANK': 'Not asked or'}"
+column_name,description
+_STATE,State FIPS Code
+_GEOSTR,Geographic Stratum Code
+_DENSTR2,Household Density Stratum Code
+PRECALL,Pre-Call Status Code
+SECSCRFL,Secondary Screening Flags
+REPNUM,Replicate Number
+REPDEPTH,Replicate Depth
+FMONTH,File Month
+IDATE,Interview Date
+IMONTH,Interview Month
+IDAY,Interview Day
+IYEAR,Interview Year
+INTVID,Interviewer Identification
+DISPCODE,Final Disposition
+SEQNO,Annual Sequence Number
+_PSU,Primary Sampling Unit (Equal to Annual Sequence Number)
+NATTMPTS,Description not found
+NRECSEL,Number of Sample Records Selected from Stratum
+NRECSTR,Number of Telephone Numbers in Stratum from Which Sample Was Selected
+CTELENM1,Is this [PHONE NUMBER]?
+PVTRESD1,Is this a private residence?
+COLGHOUS,Do you live in college housing?
+STATERE1,Do you currently live in__Ohio____?
+CELPHON1,Is this a cell telephone?
+LADULT1,Are you 18 years of age or older?
+COLGSEX1,Are you male or female?
+NUMADULT,"I need to randomly select one adult who lives in your household to be interviewed. Excluding adults living away from home, such as students away at college, how many members of your household, including yourself, are 18 years of age or older?"
+LANDSEX1,Are you male or female?
+NUMMEN,How many of these adults are men?
+NUMWOMEN,So the number of women in the household is [X]. Is that correct?
+RESPSLCT,The person in your household that I need to speak with is [XXX]. Are you the [XXX] in this household
+SAFETIME,Is this a safe time to talk with you?
+CTELNUM1,Is this (phone number) ?
+CELLFON5,Is this a cell phone?
+CADULT1,Are you 18 years of age or older?
+CELLSEX1,Are you male or female?
+PVTRESD3,Do you live in a private residence?
+CCLGHOUS,Do you live in college housing?
+CSTATE1,Do you currently live in ____(state)____?
+RSPSTAT1,In what state do you currently live?
+LANDLINE,Do you also have a landline telephone in your home that is used to make and receive calls?
+HHADULT,"How many members of your household, including yourself, are 18"
+SEXVAR,Sex of Respondent
+GENHLTH,Would you say that in general your health is—
+PHYSHLTH,"Now thinking about your physical health, which includes physical illness and injury, for how many days during"
+MENTHLTH,"Now thinking about your mental health, which includes stress, depression, and problems with emotions, for how"
+POORHLTH,"During the past 30 days, for about how many days did poor physical or mental health keep you from doing your"
+PRIMINSR,What is the current primary source of your health insurance?
+PERSDOC3,Do you have one person (or a group of doctors) that you think of as your personal health care provider?
+MEDCOST1,Was there a time in the past 12 months when you needed to see a doctor but could not because you could not afford it?
+CHECKUP1,About how long has it been since you last visited a doctor for a routine checkup?
+EXERANY2,"During the past month, other than your regular job, did you participate in any physical activities or exercises such"
+SLEPTIM1,"On average, how many hours of sleep do you get in a 24-hour period?"
+LASTDEN4,"Including all types of dentists, such as orthodontists, oral surgeons, and all other dental specialists, as well as dental hygienists, how long has it been since you last visited a dentist or a dental clinic for any reason?"
+RMVTETH4,"Not including teeth lost for injury or orthodontics, how many of your permanent teeth have been removed because of tooth decay or gum disease?"
+CVDINFR4,"(Ever told) you had a heart attack, also called a myocardial infarction?"
+CVDCRHD4,(Ever told) (you had) angina or coronary heart disease?
+CVDSTRK3,(Ever told) (you had) a stroke.
+ASTHMA3,(Ever told) (you had) asthma?
+ASTHNOW,Do you still have asthma?
+CHCSCNC1,(Ever told) (you had) skin cancer that is not melanoma?
+CHCOCNC1,(Ever told) (you had) melanoma or any other types of cancer?
+CHCCOPD3,"(Ever told) (you had) C.O.P.D. (chronic obstructive pulmonary disease), emphysema or chronic bronchitis?"
+ADDEPEV3,"(Ever told) (you had) a depressive disorder (including depression, major depression, dysthymia, or minor depression)?"
+CHCKDNY2,"Not including kidney stones, bladder infection or incontinence, were you ever told you had kidney disease?"
+HAVARTH4,"(Ever told) (you had) some form of arthritis, rheumatoid arthritis, gout, lupus, or fibromyalgia?"
+DIABETE4,(Ever told) (you had) diabetes?
+DIABAGE4,Description not found
+AGE,What is your age?
+HISPANC3,"Are you Hispanic, Latino/a, or Spanish origin? [One or more categories may be selected.]"
+MRACE2,Which one or more of the following would you say is your race? (If 40 (Asian) or 50 (Pacific Islander) is selected
+ORACE4,Which one of these groups would you say best represents your race? (If 40 (Asian) or 50 (Pacific Islander) is
+MARITAL,Are you…
+EDUCA,What is the highest grade or year of school you completed ?
+RENTHOM1,Do you own or rent your home?
+CTYCODE2,In what county do you currently live?
+ZIPCODE1,What is the ZIP Code where you currently live?
+NUMHHOL4,"Not including cell phones or numbers used for computers, fax machines or security systems, do you have more"
+NUMPHON4,Description not found
+CPDEMO1C,Description not found
+VETERAN3,"Have you ever served on active duty in the United States Armed Forces, either in the regular military or in a"
+EMPLOY1,Are you currently…?
+CHILDREN,How many children less than 18 years of age live in your household?
+INCOME3,"Is your annual household income from all sources: (If respondent refuses at any income level, code ´Refused.´)"
+PREGNANT,"To your knowledge , are you now pregnant?"
+WEIGHT2,About how much do you weigh without shoes?
+HEIGHT3,About how tall are you without shoes?
+DEAF,Are you deaf or do you have serious difficulty hearing?
+BLIND,"Are you blind or do you have serious difficulty seeing, even when wearing glasses?"
+DECIDE,"Because of a physical, mental, or emotional condition, do you have serious difficulty concentrating,"
+DIFFWALK,Do you have serious difficulty walking or climbing stairs?
+DIFFDRES,Do you have difficulty dressing or bathing?
+DIFFALON,"Because of a physical, mental, or emotional condition, do you have difficulty doing errands alone such as visiting a doctor"
+HADMAM,(The next questions are about breast and cervical cancer.) Have you ever had a mammogram?
+HOWLONG,How long has it been since you had your last mammogram?
+CERVSCRN,Have you ever had a cervical
+CRVCLCNC,How long has it been since you had your last cervical cancer screening test?
+CRVCLPAP,"At your most recent cervical cancer screening, did you have a Pap test?"
+CRVCLHPV,"At your most recent cervical cancer screening, did you have an H.P.V. test?"
+HADHYST2,Have you had a hysterectomy?
+HADSIGM4,Colonoscopy and sigmoidoscopy are exams to check for colon cancer. Have you ever had either of these exams?
+COLNSIGM,"Have you had a colonoscopy, a sigmoidoscopy, or both?"
+COLNTES1,How long has it been since your most recent colonoscopy?
+SIGMTES1,How long has it been since your most recent sigmoidoscopy?
+LASTSIG4,How long has it been since your most recent colonoscopy or sigmoidoscopy?
+COLNCNCR,"Have you ever had any other kind of test for colorectal cancer, such as virtual colonoscopy, CT colonography, blood stool test, FIT DNA, or Cologuard test?"
+VIRCOLO1,A virtual colonoscopy uses a series of X-rays to take pictures of inside the colon. Have you ever had a virtual colonoscopy?
+VCLNTES2,When was your most recent CT colonography or virtual colonoscopy?
+SMALSTOL,One stool test uses a special kit to obtain a small amount of stool at home and returns the kit to the doctor or the lab. Have you
+STOLTEST,How long has it been since you had this test?
+STOOLDN2,Another stool test uses a special kit to obtain an entire bowel movement at home and returns the kit to a lab.
+BLDSTFIT,Was the blood stool or FIT (you reported earlier) conducted as part of a Cologuard test?
+SDNATES1,How long has it been since you had this test?
+SMOKE100,Have you smoked at least 100 cigarettes in your entire life? [Note: 5 packs = 100 cigarettes]
+SMOKDAY2,"Do you now smoke cigarettes every day, some days, or not at all?"
+USENOW3,"Do you currently use chewing tobacco, snuff, or snus every day, some days, or not at all? (Snus (Swedish for"
+ECIGNOW2,Would you say you have never used e-cigarettes or other electronic vaping products in your entire life or now
+LCSFIRST,You’ve told us that you have smoked in the past or are currently smoking. The next questions are about screening for lung cancer. How old were you when you first started to smoke cigarettes regularly?
+LCSLAST,How old were you when you last smoked cigarettes regularly?
+LCSNUMCG,"On average, when you [smoke/ smoked] regularly, about how many cigarettes {do/did} you usually smoke each day?"
+LCSCTSC1,Have you ever had a CT or CAT scan of your chest area?
+LCSSCNCR,Were any of the CT or CAT scans of your chest area done mainly to check or screen for lung cancer?
+LCSCTWHN,When did you have your most recent CT or CAT scan of your chest area mainly to check or screen for lung cancer?
+ALCDAY4,"During the past 30 days, how many days per week or per month did you have at least one drink of any alcoholic beverage?"
+AVEDRNK3,"One drink is equivalent to a 12-ounce beer, a 5-ounce glass of wine, or a drink with one shot of liquor. During the past 30"
+DRNK3GE5,"Considering all types of alcoholic beverages, how many times during the past 30 days did you have 5 or more"
+MAXDRNKS,"During the past 30 days, what is the largest number of drinks you had on any occasion?"
+FLUSHOT7,"During the past 12 months, have you had either flu vaccine that was sprayed in your nose or flu shot injected into your arm?"
+FLSHTMY3,During what month and year did you receive your most recent flu vaccine that was sprayed in your nose or flu
+PNEUVAC4,Have you ever had a pneumonia shot also known as a pneumococcal vaccine?
+TETANUS1,"Have you received a tetanus shot in the past 10 years? (If yes, ask: “Was this Tdap, the tetanus shot that also has"
+HIVTST7,"Including fluid testing from your mouth, but not including tests you may have had for blood donation, have you ever been tested for H.I.V?"
+HIVTSTD3,"Not including blood donations, in what month and year was your last H.I.V. test?"
+HIVRISK5,"I am going to read you a list. When I am done, please tell me if any of the situations apply to you. You do not need to tell me"
+COVIDPOS,"Has a doctor, nurse, or other health professional ever told you that you tested positive for COVID 19?"
+COVIDSMP,Did you have any symptoms lasting 3 months or longer that you did not have prior to having coronavirus or COVID-19?
+COVIDPRM,Which of the following was the primary symptom that you experienced? Was it….
+PDIABTS1,"When was the last time you had a blood test for high blood sugar or diabetes by a doctor, nurse, or other health professional?"
+PREDIAB2,Has a doctor or other health professional ever told you that you had prediabetes or borderline diabetes? (If
+DIABTYPE,"According to your doctor or other health professional, what type of diabetes do you have?"
+INSULIN1,Are you now taking insulin?
+CHKHEMO3,"About how many times in the past 12 months has a doctor, nurse, or other health professional checked you for A-one-C?"
+EYEEXAM1,"When was the last time you had an eye exam in which the pupils were dilated, making you temporarily sensitive to bright light?"
+DIABEYE1,"When was the last time a doctor, nurse or other health professional took a photo of the back of your eye with a"
+DIABEDU1,When was the last time you took a course or class in how to manage your diabetes yourself?
+FEETSORE,Have you ever had any sores or irritations on your feet that took more than four weeks to heal?
+TOLDCFS,Have you ever been told by a doctor or other health professional that you had Chronic Fatigue Syndrome (CFS)
+HAVECFS,Do you still have Chronic Fatigue Syndrome (CFS) or (Myalgic Encephalomyelitis) ME?
+WORKCFS,"Thinking about your CFS or ME, during the past 6 months, how many hours a week on average have you been"
+IMFVPLA3,At what kind of place did you get your last flu shot or vaccine?
+HPVADVC4,Have you ever had an H.P.V. vaccination?
+HPVADSHT,How many HPV shots did you receive?
+SHINGLE2,Have you ever had the shingles or zoster vaccine?
+COVIDVA1,Have you received at least one dose of a COVID-19 vaccination?
+COVIDNU1,How many COVID-19 vaccinations have you received?
+COVIDFS1,During what month and year did you receive your (first) COVID-19 vaccination?
+COVIDSE1,During what month and year did you receive your second COVID-19 vaccination?
+COPDCOGH,"During the past 3 months, did you have a cough on most days?"
+COPDFLEM,"During the past 3 months, did you cough up phlegm [FLEM] or mucus on most days?"
+COPDBRTH,Do you have shortness of breath either when hurrying on level ground or when walking up a slight hill or stairs?
+COPDBTST,Have you ever been given a breathing test to diagnose breathing problems?
+COPDSMOK,"Over your lifetime, how many years have you smoked tobacco products?"
+CNCRDIFF,You’ve told us that you have had cancer. I would like to ask you a few more questions about your cancer. How many different types of cancer have you had?
+CNCRAGE,At what age were you told that you had cancer?
+CNCRTYP2,What kind of cancer is it?
+CSRVTRT3,Are you currently receiving treatment for cancer?
+CSRVDOC1,What type of doctor provides the majority of your health care? Is it a….
+CSRVSUM,"Did any doctor, nurse, or other health professional ever give you a written summary of all the cancer treatments that you received?"
+CSRVRTRN,"Have you ever received instructions from a doctor, nurse, or other health professional about where you should"
+CSRVINST,Were these instructions written down or printed on paper for you?
+CSRVINSR,"With your most recent diagnosis of cancer, did you have health insurance that paid for all or part of your cancer"
+CSRVDEIN,Were you ever denied health insurance or life insurance coverage because of your cancer?
+CSRVCLIN,Did you participate in a clinical trial as part of your cancer treatment?
+CSRVPAIN,Do you currently have physical pain caused by your cancer or cancer treatment?
+CSRVCTL2,Would you say your pain is currently under control…?
+PSATEST1,Have you ever had a P.S.A. test?
+PSATIME1,About how long has it been since your most recent P.S.A. test?
+PCPSARS2,What was the main reason you had this P.S.A. test – was it …?
+PSASUGST,"Who first suggested this PSA test: you, your doctor, or someone else?"
+PCSTALK1,"When you met with a doctor, nurse, or other health professional, did they talk about the advantages, the"
+CIMEMLOS,"The next few questions ask about difficulties in thinking or remembering that can make a big difference in everyday activities. This does not refer to occasionally forgetting your keys or the name of someone you recently met, which is normal. This refers to confusion or memory loss that is happening more often or getting worse, such as forgetting how to do things you’ve always done or forgetting things that you would normally know. We want to know how these"
+CDHOUSE,"During the past 12 months, as a result of confusion or memory loss, how often have you given up day-to-day"
+CDASSIST,"As a result of confusion or memory loss, how often do you need assistance with these day-to-day activities?"
+CDHELP,"When you need help with these day-to-day activities, how often are you able to get the help that you need?"
+CDSOCIAL,"During the past 12 months, how often has confusion or memory loss interfered with your ability to work,"
+CDDISCUS,Have you or anyone else discussed your confusion or memory loss with a health care professional?
+CAREGIV1,"During the past 30 days, did you provide regular care or assistance to a friend or family member who has a"
+CRGVREL4,What is his or her relationship to you?
+CRGVLNG1,For how long have you provided care for that person?
+CRGVHRS1,"In an average week, how many hours do you provide care or assistance?"
+CRGVPRB3,"What is the main health problem, long- term illness, or disability that the person you care for has?"
+CRGVALZD,"Does the person you care for also have Alzheimer´s disease, dementia or other cognitive impairment disorder?"
+CRGVPER1,"In the past 30 days, did you provide care for this person by managing personal care such as giving medications,"
+CRGVHOU1,"In the past 30 days, did you provide care for this person by managing household tasks such as cleaning,"
+CRGVEXPT,"In the next 2 years, do you expect to provide care or assistance to a friend or family member who has a health"
+ACEDEPRS,"Did you live with anyone who was depressed, mentally ill, or suicidal?"
+ACEDRINK,Did you live with anyone who was a problem drinker or alcoholic?
+ACEDRUGS,Did you live with anyone who used illegal street drugs or who abused prescription medications?
+ACEPRISN,"Did you live with anyone who served time or was sentenced to serve time in a prison, jail, or other correctional facility?"
+ACEDIVRC,Were your parents separated or divorced?
+ACEPUNCH,"How often did your parents or adults in your home ever slap, hit, kick, punch or beat each other up? Was it…"
+ACEHURT1,"Not including spanking, (before age 18), how often did a parent or adult in your home ever hit, beat, kick, or physically hurt you in any way? Was it—"
+ACESWEAR,"How often did a parent or adult in your home ever swear at you, insult you, or put you down? Was it…"
+ACETOUCH,"How often did anyone at least 5 years older than you or an adult, ever touch you sexually? Was it…"
+ACETTHEM,"How often did anyone at least 5 years older than you or an adult, try to make you touch them sexually? Was it…"
+ACEHVSEX,"How often did anyone at least 5 years older than you or an adult, force you to have sex? Was it…"
+ACEADSAF,For how much of your childhood was there an adult in your household who made you feel safe and protected?
+ACEADNED,For how much of your childhood was there an adult in your household who tried hard to make sure your basic
+LSATISFY,"In general, how satisfied are you with your life?"
+EMTSUPRT,How often do you get the social and emotional support you need?
+SDHISOLT,How often do you feel socially isolated from others? Is it…
+SDHEMPLY,In the past 12 months have you lost employment or had hours reduced?
+FOODSTMP,"During the past 12 months, have you received food stamps, also called SNAP, the Supplemental Nutrition"
+SDHFOOD1,"During the past 12 months how often did the food that you bought not last, and you didn’t have money to get"
+SDHBILLS,"During the last 12 months, was there a time when you were not able to pay your mortgage, rent or utility bills?"
+SDHUTILS,"During the last 12 months was there a time when an electric, gas, oil, or water company threatened to shut off services?"
+SDHTRNSP,"During the past 12 months has a lack of reliable transportation kept you from medical appointments, meetings,"
+SDHSTRE1,"Within the last 30 days, how often have you felt this kind of stress?"
+MARIJAN1,"During the past 30 days, on how many days did you use marijuana or cannabis?"
+MARJSMOK,"During the past 30 days, did you smoke it (for example, in a joint, bong, pipe, or blunt)?"
+MARJEAT,"…eat it or drink it (for example, in brownies, cakes, cookies, or candy, or in tea, cola, or alcohol)?"
+MARJVAPE,"…vaporize it (for example, in an e-cigarette-like vaporizer or another vaporizing device)"
+MARJDAB,"…dab it (for example, using a dabbing rig, knife, or dab pen)?"
+MARJOTHR,…use it in some other way?
+USEMRJN4,Description not found
+LASTSMK2,"How long has it been since you last smoked a cigarette, even one or two puffs?"
+STOPSMK2,"During the past 12 months, have you stopped smoking for one day or longer because you were trying to quit smoking?"
+MENTCIGS,"Currently, when you smoke cigarettes, do you usually smoke menthol cigarettes?"
+MENTECIG,"Currently, when you use e-cigarettes, do you usually use menthol e-cigarettes?"
+HEATTBCO,"Before today, have you heard of heated tobacco products?"
+ASBIALCH,You told me earlier that your last routine checkup was [within the past year/within the past 2 years]. At that
+ASBIDRNK,Did the health care provider ask you in person or on a form how much you drink?
+ASBIBING,Did the healthcare provider specifically ask whether you drank [5 FOR MEN /4 FOR WOMEN] or more alcoholic
+ASBIADVC,Were you offered advice about what level of drinking is harmful or risky for your health?
+ASBIRDUC,"At your last routine checkup, were you advised to reduce or quit your drinking?"
+FIREARM5,Are any firearms now kept in or around your home?
+GUNLOAD,Are any of these firearms now loaded?
+LOADULK2,Are any of these loaded firearms also unlocked?
+TYPEWORK,"What kind of work do you do? For example, registered nurse, janitor, cashier, auto mechanic."
+TYPEINDS,"What kind of business or industry do you work in? For example, hospital, elementary school, clothing manufacturing, restaurant"
+RCSBIRTH,What is the birth month and year of the “Xth” child?
+RCSGEND1,Is the child a boy or a girl?
+RCSXBRTH,What was the child´s sex on their original birth certificate?
+RCHISLA1,"Is the child Hispanic, Latino/a, or Spanish origin?"
+RCSRACE2,Description not found
+RCSBRAC3,Which one of these groups would you say best represents the child´s race? (If 40 (Asian) or 50 (Pacific Islander)
+RCSRLTN2,How are you related to the child? Are you a….
+CASTHDX2,"The next two questions are about the Xth child. Has a doctor, nurse or other health professional EVER said that the child has asthma?"
+CASTHNO2,Does the child still have asthma?
+BIRTHSEX,What was your sex at birth? Was it male or female?
+SOMALE,Which of the following best represents how you think of yourself?
+SOFEMALE,Which of the following best represents how you think of yourself?
+TRNSGNDR,Do you consider yourself to be transgender?
+HADSEX,"In the past 12 months, did you have sexual intercourse?"
+PFPPRVN4,"The last time you had sexual intercourse, did you or your partner do anything to keep you from getting pregnant?"
+TYPCNTR9,"The last time you had sexual intercourse, what did you or your partner do to keep you from getting pregnant?"
+BRTHCNT4,"The last time you had sexual intercourse, what else, if anything, did you or your partner do to keep you from"
+WHEREGET,Where did you get the [response from Q3] you used when you last had sexual intercourse?
+NOBCUSE8,What was your main reason for not doing anything to prevent pregnancy the last time you had sexual intercourse?
+BCPREFER,"If you could use any birth control method you wanted, what method would you use?"
+RRCLASS3,"How do other people usually classify you in this country? Would you say White, Black or African American,"
+RRCOGNT2,"How often do you think about your race? Would you say never, once a year, once a month, once a week, once a"
+RRTREAT,"Within the past 12 months, do you feel that in general you were treated worse than, the same as, or better than"
+RRATWRK2,"Within the past 12 months at work, do you feel you were treated worse than, the same as, or better than people"
+RRHCARE4,"Within the past 12 months when seeking health care, do you feel your experiences were worse than, the same"
+RRPHYSM2,"Within the past 30 days, have you experienced any physical symptoms, for example, a headache, an upset"
+CALLBACK,We would like to call you again within the next 2 weeks to talk in more detail about (your/your child’s) experiences with
+ADLTCHLD,Which household member was selected to be the focus of the callback.
+ADHISPA,Adult Hispanic response
+CHHISPA,Child Hispanic response
+QSTVER,Questionnaire Version Identifier
+QSTLANG,Language identifier
+CATI_RN,Description not found
+CATI_RG,Description not found
+CATI_SR,Description not found
+CPCOUNTY,Cell Phone County Name
+STATEQUE,State Added Questions
+OH1_1,"Have you ever had a P.S.A. test?"
+OH1_2,"About how long has it been since your most recent P.S.A. test?"
+OH1_3,"What was the main reason you had this P.S.A. test – was it for a routine test, because of a problem, or some other reason?"
+OH1_4,"Who first suggested that you should have a P.S.A. test – did you suggest it, your doctor, or someone else?"
+OH1_5,"Did your doctor or health care professional recommend that you have a P.S.A. test?"
+OH2_1,"When was the last time you had your eyes examined by any doctor or eye care provider?"
+OH2_2,"What is the reason(s) you had your eyes examined this last time? (check all that apply)"
+OH2_3,"What is the main reason you have not visited an eye care professional in the past 12 months?"
+OH2_3a,"(If 'Other' to OH2_3) What was the main reason you have not visited an eye care professional?"
+OH2_4,"Do you have any kind of health insurance coverage for eye care?"
+FALL12MN,"In the past 12 months, how many times have you fallen?"
+FALLINJ4,"How many of these falls caused an injury that limited your regular activities for at least a day or caused you to go to see a doctor?"
+OH4_1,"Has your Xth child ever played or participated in organized sports, either in school or in a non-school recreation league?"
+OH4_2,"How many times has your Xth child ever received an injury or blow to the head that resulted in symptoms of a concussion as a result of playing organized sports?"
+OH4_3,"When did the most recent incident occur?"
+OH4_4,"Did the most recent incident occur during practice or competition?"
+OH4_5,"In what type of sport was the child playing or participating?"
+OH4_6,"Was the child removed from play for the day by an adult, such as a coach or trainer?"
+OH4_7,"Was the child immediately taken to an emergency room or urgent care center?"
+OH4_8,"Was the child checked out later for this injury by a health care professional (e.g., doctor, nurse) or athletic trainer?"
+OH4_9,"To your knowledge, does Ohio have a law that requires children in school athletics and non-school youth sports leagues to be removed from play if they sustain a concussion?"
+OH4_10,"How did you become aware of the law?"
+OH5_1,"In the past year, did you use any pain medications that were prescribed to you by a healthcare provider?"
+OH5_2,"The last time you filled a prescription for pain medication, did you use any of the pain medication more frequently or in higher doses than directed?"
+OH5_3,"The last time you filled a prescription for pain medication, was there any medication leftover?"
+OH5_4,"What did you do with the leftover medication?"
+OH5_5,"In the past year, did you use prescription pain medication that was NOT prescribed to you?"
+OH5_6,"The last time you used prescription pain medication not prescribed to you, how did you obtain the medication?"
+OH5_7,"What was the main reason you used prescription pain medications not prescribed to you?"
+OH5_8,"Have you ever used heroin?"
+OH5_9,"Have you ever used methadone, suboxone, or subutex to treat an addiction?"
+OH5_10,"Have you used Naloxone (nal-ox-one) on someone else to reverse a suspected overdose?"
+OH6_1,"Have you recently lost weight without trying?"
+OH6_2,"If yes, how much weight have you lost?"
+OH6_3,"Have you been eating poorly because of a decreased appetite?"
+OH6_4,"Has food intake declined over the past 3 months due to chewing or swallowing difficulties?"
+OH7_1,"Over the last 2 weeks, how many days have you had little interest or pleasure in doing things?"
+OH7_2,"Over the last 2 weeks, how many days have you felt down, depressed, or hopeless?"
+OH7_3,"Over the last 2 weeks, how many days have you had trouble falling asleep or staying asleep or sleeping too much?"
+OH7_4,"Over the last 2 weeks, how many days have you felt tired or had little energy?"
+OH7_5,"Has a doctor, nurse, or other health professional ever told you that you had a depressive disorder, including depression, major depression, dysthymia, or minor depression?"
+OH8_1,"In your lifetime, have you ever been hospitalized or treated in an emergency room following an injury to your head or neck?"
+OH8_2,"In your lifetime, have you ever been injured in a vehicular accident, such as a car, motorcycle, or ATV crash?"
+OH8_3,"In your lifetime, have you ever been injured in a fall?"
+OH8_4,"In your lifetime, have you ever been injured in a fight or assault?"
+OH8_5,"In your lifetime, have you ever been near an explosion or blast?"
+OH8_6,"Have you ever been injured playing sports or on a playground?"
+OH8_7,"Were you ever knocked out or did you lose consciousness from any of the injuries you reported above?"
+OH8_8,"What was the longest time you were knocked out or unconscious?"
+OH8_9,"How old were you the first time you were knocked out or lost consciousness?"
+OH8_10,"How many times in your life have you been knocked out?"
+OH8_11,"If you were not knocked out, did you have a dazed or confused feeling or a gap in your memory from the injury?"
+INTRO,"Introduction to State-Added Questions"
+OH9_1,"Have you ever been threatened with physical violence by an intimate partner?"
+OH9_2,"Have you ever been slapped, pushed, kicked, choked, or hit by an intimate partner?"
+OH9_3,"Have you ever been forced to have sex by an intimate partner?"
+OH9_4,"Are you afraid of your current partner?"
+OH9_5,"In the past 12 months, have you been threatened with physical violence by an intimate partner?"
+OH9_6,"In the past 12 months, have you been slapped, pushed, kicked, choked, or hit by an intimate partner?"
+OH9_7,"In the past 12 months, have you been forced to have sex by an intimate partner?"
+OTH_Tob_1,"Do you currently use other tobacco products every day, some days, or not at all? (Chewing tobacco, snuff, snus)"
+OTH_Tob_2,"Do you smoke cigars every day, some days, or not at all?"
+OTH_Tob_3,"Do you now smoke little cigars or cigarillos, such as Black and Mild's, every day, some days, or not at all?"
+OTH_Tob_4,"Do you now smoke a water pipe or hookah every day, some days, or not at all?"
+OTH_Tob_5,"Do you now use any flavored e-cigarette or tobacco products every day, some days, or not at all?"
+OTH_Tob_6,"Do you now use any flavored e-cigarette or tobacco products every day, some days, or not at all?"
+OTH_Tob_8,"Where do you buy your e-cigarettes or vaping products?"
+SHS_1,"In the last 7 days, have you been exposed to vapor from someone who was using an e-cigarette or other electronic vaping product near you?"
+SHS_2,"In the last 7 days, have you been exposed to secondhand smoke from someone who was smoking a cigarette or other tobacco product near you?"
+SHS_3a,"In which of the following places were you exposed to secondhand smoke: In your home?"
+SHS_3b,"In which of the following places were you exposed to secondhand smoke: At home, from someone smoking in another apartment/unit attached to yours?"
+SHS_3c,"In which of the following places were you exposed to secondhand smoke: In a car or other vehicle?"
+SHS_3d,"In which of the following places were you exposed to secondhand smoke: At work?"
+SHS_3e,"In which of the following places were you exposed to secondhand smoke: At school?"
+SHS_3f,"In which of the following places were you exposed to secondhand smoke: In an indoor public place such as a building lobby, mall, or enclosed stadium?"
+SHS_3g,"In which of the following places were you exposed to secondhand smoke: In an outdoor public place such as a park, sidewalk, or outdoor sporting event?"
+SHS_4,"Thinking now about your home, which best describes the building you live in?"
+SHS_6,"Which statement best describes the rules about using e-cigarettes or vaping products inside your home?"
+ATS_1,"About how old were you the first time you smoked part or all of a cigarette?"
+ATS_2,"About how old were you when you first started smoking cigarettes fairly regularly?"
+ATS_3,"On average, about how many cigarettes a day do you now smoke?"
+ATS_4a,"On the days that you smoke, how soon after you wake up do you smoke your first cigarette?"
+ATS_4b,"Do you mostly smoke menthol or non-menthol cigarettes?"
+ATS_4c,"Which of the following brands do you smoke most often?"
+ATS_5,"In the past 30 days, on how many days did you vape marijuana?"
+ATS_6,"Where do you obtain the marijuana you use within e-cigarette or vapor products?"
+ATS_7,"In the past 30 days, on how many days did you vape CBD oil?"
+ATS_8,"Where do you obtain the CBD oil you use within e-cigarette or vapor products?"
+ATS_9,"During the past 12 months, did any doctor, nurse, or other health professional ask if you smoke?"
+ATS_10,"During the past 12 months, did any doctor, nurse, or other health professional advise you to quit smoking?"
+ATS_11,"During the past 12 months, did any doctor, nurse, or other health professional ask if you use e-cigarettes or vape?"
+ATS_12,"During the past 12 months, did any doctor, nurse, or other health professional advise you to quit using e-cigarettes or vaping?"
+ATS_13,"Have you used any of the following to help you quit using tobacco: Nicotine replacement products (gum, patch, lozenge)?"
+ATS_14,"Have you used any of the following to help you quit using tobacco: Prescription medication (Chantix, Zyban)?"
+ATS_15,"Have you used any of the following to help you quit using tobacco: Counseling or classes?"
+ATS_16,"Have you used any of the following to help you quit using tobacco: E-cigarettes or vaping products?"
+ATS_17,"Have you used any of the following to help you quit using tobacco: Cold turkey / Just stopped?"
+ATS_18,"Have you used any of the following to help you quit using tobacco: Traditional methods (acupuncture, hypnosis)?"
+ATS_19,"Have you used any of the following to help you quit using tobacco: Quitline or telephone support?"
+ATS_20,"Have you used any of the following to help you quit using tobacco: A mobile app or texting program?"
+ATS_22,"Which statement best describes the rules about smoking inside your home?"
+ATS_23,"Do you think that breathing smoke from other people's cigarettes is harmful to one's health?"
+ATS_24,"Do you think that breathing vapor from other people's e-cigarettes is harmful to one's health?"
+ATS_25,"How much do you favor or oppose banning the sale of all tobacco products, including e-cigarettes, in your community?"
+ATS_26,"How much do you favor or oppose banning the sale of flavored tobacco products?"
+ATS_27,"How much do you favor or oppose banning the sale of menthol cigarettes?"
+ATS_28,"Tobacco use of any kind should not be allowed in outdoor public spaces. Do you agree or disagree?"
+ATS_29,"In July 2019, Ohio passed a law that raised the minimum age to buy tobacco products from 18 to 21 years. How would you rate your approval of the law?"
+ATS_30,"E-cigarettes and other electronic vaping products should be treated the same as regular cigarettes in terms of tobacco laws and policies. Do you agree or disagree?"
+ATS_31,"Stores that sell tobacco products should not be allowed near schools. Do you agree or disagree?"
+ATS_32,"How likely would you be to ask a stranger to not smoke or vape around you?"
+ATS_33,"How likely would you be to ask a friend or family member to not smoke or vape around you?"
+ATS_34,"Do you believe you have a right to breathe clean air in public places?"
+ATS_35,"Would you support a policy that prohibits smoking and vaping in multi-unit housing complexes?"
+ATS_36,"Would you favor or oppose a tax increase on tobacco products?"
+EOR,End of Data-Submission Record Marker
+_URBNRRL,NCHS Urban-Rural Classification
+_METSTAT,Metropolitan Status
+_URBSTAT,Urban/Rural Status
+_MSACODE,FIPS Metropolitan Statistical Area Code
+MSCODE,Metropolitan Status Code
+_STSTR,Sample Design Stratification Variable (Prior to 2011: _STSTR is a five digit number that combines the values for
+_STRWT,Stratum weight (Number of records in a stratum (NRECSTR) divided by the number of records selected (NRECSEL).)
+_RAW,Raw weighting factor (Number of adults in the household (NUMADULT) divided by the imputed number of
+_WT2,Design weight (Stratum weight (_STRWT) multiplied by the raw weighting factor (_RAW).)
+_RAWRAKE,"Raw weighting factor used in raking (Number of adults in the household (NUMADULT, maximum of 5) divided by"
+_WT2RAKE,Design weight used in raking (Stratum weight (_STRWT) multiplied by the raw weighting factor (_RAWRAKE).)
+_REGION,"Geographic region within a state, imputed from CTYCODE, _IMPCTY, or _GEOSTR"
+_IMPSEX,"Imputed gender (This value is the reported gender or an imputed gender, if the respondent refused to give their"
+_IMPAGE,"Imputed age used in post-stratification (This value is the reported age or an imputed age, if the respondent refused to give an"
+_IMPRACE,"Imputed race/ethnicity value (This value is the reported race/ethnicity or an imputed race/ethnicity, if the respondent refused"
+_IMPNPH,Imputed number of phones used in weighting
+_IMPCTY,Imputed County
+_IMPEDUC,"Imputed Education Level (This value is the reported education level or an imputed education level, if the respondent refused"
+_IMPMRTL,"Imputed Marital Status (This value is the reported marital status or an imputed marital status, if the respondent refused to"
+_IMPHOME,"Imputed Own or Rent Home (This value is the reported tenure (rent or own home) or an imputed tenure, if the respondent"
+O_STATE,Original state that collected the cell phone data
+_CHISPNC,"Child Hispanic, Latino/a, or Spanish origin calculated variable"
+CRACORG2,"RCSRACE2 with 77, 88, 80, 99s removed"
+CRACASC2,CRACORG2 with responses in ascending order
+_CRACE2,Child multiracial race categorization
+_CPRACE2,Preferred Child Race Categories
+_IMPCAGE,Imputed Child Age
+_IMPCRAC,Imputed Child Race/Ethnicity
+_IMPCSEX,Imputed Child Gender
+_RAWCH,Raw child weighting factor (Number of children in the household (CHILDREN) divided by the imputed number of
+_WT2CH,Child design weight (Child stratum weight (_STRWT) multiplied by the raw weighting factor (_RAWCH).)
+CHILDAGE,Child Age (in months)
+CAGEG,Four level child age
+_CLCPM01,Child Combined Land-Line and Cell-Phone First Margin (Age-Gender)
+_CLCPM02,Child Combined Land-Line and Cell-Phone Second Margin (Race/Ethnicity)
+_CLCPM03,Child Combined Land-Line and Cell-Phone Third Margin (Gender-Race/Ethnicity)
+_CLCPM04,Child Combined Land-Line and Cell-Phone Fourth Margin (Age-Race/Ethnicity)
+_CLCPM05,Child Combined Land-Line and Cell-Phone Fifth Margin (Telephone Source)
+_CLLCPWT,Final child weight: Land-line and Cell-Phone data (Raking derived weight)
+_CLCM1V1,Version 1 Child Combined Land-Line and Cell-Phone First Margin (Age-Gender)
+_CLCM2V1,Version 1 Child Combined Land-Line and Cell-Phone Second Margin (Race/Ethnicity)
+_CLCM3V1,Version 1 Child Combined Land-Line and Cell-Phone Third Margin (Gender-Race/Ethnicity)
+_CLCM4V1,Version 1 Child Combined Land-Line and Cell-Phone Fourth Margin (Age-Race/Ethnicity)
+_CLCM5V1,Version 1 Child Combined Land-Line and Cell-Phone Fifth Margin (Telephone Source)
+_CLCWTV1,Version 1 child weight: Land-line and Cell-Phone data
+_CLCM1V2,Version 2 Child Combined Land-Line and Cell-Phone First Margin (Age-Gender)
+_CLCM2V2,Version 2 Child Combined Land-Line and Cell-Phone Second Margin (Race/Ethnicity)
+_CLCM3V2,Version 2 Child Combined Land-Line and Cell-Phone Third Margin (Gender-Race/Ethnicity)
+_CLCM4V2,Version 2 Child Combined Land-Line and Cell-Phone Fourth Margin (Age-Race/Ethnicity)
+_CLCM5V2,Version 2 Child Combined Land-Line and Cell-Phone Fifth Margin (Telephone Source)
+_CLCWTV2,Version 2 child weight: Land-line and Cell-Phone data
+_CLCM1V3,Version 3 Child Combined Land-Line and Cell-Phone First Margin (Age-Gender)
+_CLCM2V3,Version 3 Child Combined Land-Line and Cell-Phone Second Margin (Race/Ethnicity)
+_CLCM3V3,Version 3 Child Combined Land-Line and Cell-Phone Third Margin (Gender-Race/Ethnicity)
+_CLCM4V3,Version 3 Child Combined Land-Line and Cell-Phone Fourth Margin (Age-Race/Ethnicity)
+_CLCM5V3,Version 3 Child Combined Land-Line and Cell-Phone Fifth Margin (Telephone Source)
+_CLCWTV3,Version 3 child weight: Land-line and Cell-Phone data
+ORGSEQNO,Original State and Original Sequence Number
+_DUALUSE,Dual Phone Use Categories
+_DUALCOR,Dual phone use correction factor
+_LLCPWT2,Truncated design weight used in adult combined land line and cell phone raking
+_LLCPM01,Combined Land-Line and Cell-Phone First Margin (Age-Gender)
+_LLCPM02,Combined Land-Line and Cell-Phone Second Margin (Race/Ethnicity)
+_LLCPM03,Combined Land-Line and Cell-Phone Third Margin (Education)
+_LLCPM04,Combined Land-Line and Cell-Phone Fourth Margin (Marital Status)
+_LLCPM05,Combined Land-Line and Cell-Phone Fifth Margin (Home Ownership)
+_LLCPM06,Combined Land-Line and Cell-Phone Sixth Margin (Gender-Race/Ethnicity)
+_LLCPM07,Combined Land-Line and Cell-Phone Seventh Margin (Age-Race/Ethnicity)
+_LLCPM08,Combined Land-Line and Cell-Phone Eighth Margin (Telephone Source)
+_LLCPM09,Combined Land-Line and Cell-Phone Ninth Margin (Regions)
+_LLCPM10,Combined Land-Line and Cell-Phone Tenth Margin (Regions-Age)
+_LLCPM11,Combined Land-Line and Cell-Phone Eleventh Margin (Regions-Gender)
+_LLCPM12,Combined Land-Line and Cell-Phone Twelfth Margin (Regions-Race/Ethnicity)
+_LLCPM13,Combined Land-Line and Cell-Phone Thirteenth Margin (Counties)
+_LLCPM14,Combined Land-Line and Cell-Phone Fourteenth Margin (Counties-Race/Ethnicity)
+_LLCPM15,Combined Land-Line and Cell-Phone Fifteenth Margin (Counties-Age)
+_LLCPM16,Combined Land-Line and Cell-Phone Sixteenth Margin (Counties-Sex)
+_LLCPWT,Final weight assigned to each respondent: Land-line and cell-phone data (Raking derived weight)
+_LCM01V1,Version 1 Combined Land-Line and Cell-Phone First Margin (Age-Gender)
+_LCM02V1,Version 1 Combined Land-Line and Cell-Phone Second Margin (Race/Ethnicity)
+_LCM03V1,Version 1 Combined Land-Line and Cell-Phone Third Margin (Education)
+_LCM04V1,Version 1 Combined Land-Line and Cell-Phone Fourth Margin (Marital Status)
+_LCM05V1,Version 1 Combined Land-Line and Cell-Phone Fifth Margin (Home Ownership)
+_LCM06V1,Version 1 Combined Land-Line and Cell-Phone Sixth Margin (Gender-Race/Ethnicity)
+_LCM07V1,Version 1 Combined Land-Line and Cell-Phone Seventh Margin (Age-Race/Ethnicity)
+_LCM08V1,Version 1 Combined Land-Line and Cell-Phone Eighth Margin (Telephone Source)
+_LCM09V1,Version 1 Combined Land-Line and Cell-Phone Ninth Margin (Regions)
+_LCM10V1,Version 1 Combined Land-Line and Cell-Phone Tenth Margin (Regions-Age)
+_LCM11V1,Version 1 Combined Land-Line and Cell-Phone Eleventh Margin (Regions-Gender)
+_LCM12V1,Version 1 Combined Land-Line and Cell-Phone Twelfth Margin (Regions-Race/Ethnicity)
+_LCPWTV1,Version 1 weight assigned to each respondent: Land-line and cell-phone data
+_LCM01V2,Version 2 Combined Land-Line and Cell-Phone First Margin (Age-Gender)
+_LCM02V2,Version 2 Combined Land-Line and Cell-Phone Second Margin (Race/Ethnicity)
+_LCM03V2,Version 2 Combined Land-Line and Cell-Phone Third Margin (Education)
+_LCM04V2,Version 2 Combined Land-Line and Cell-Phone Fourth Margin (Marital Status)
+_LCM05V2,Version 2 Combined Land-Line and Cell-Phone Fifth Margin (Home Ownership)
+_LCM06V2,Version 2 Combined Land-Line and Cell-Phone Sixth Margin (Gender-Race/Ethnicity)
+_LCM07V2,Version 2 Combined Land-Line and Cell-Phone Seventh Margin (Age-Race/Ethnicity)
+_LCM08V2,Version 2 Combined Land-Line and Cell-Phone Eighth Margin (Telephone Source)
+_LCM09V2,Version 2 Combined Land-Line and Cell-Phone Ninth Margin (Regions)
+_LCM10V2,Version 2 Combined Land-Line and Cell-Phone Tenth Margin (Regions-Age)
+_LCM11V2,Version 2 Combined Land-Line and Cell-Phone Eleventh Margin (Regions-Gender)
+_LCM12V2,Version 2 Combined Land-Line and Cell-Phone Twelfth Margin (Regions-Race/Ethnicity)
+_LCPWTV2,Version 2 weight assigned to each respondent: Land-line and cell-phone data
+_LCM01V3,Version 3 Combined Land-Line and Cell-Phone First Margin (Age-Gender)
+_LCM02V3,Version 3 Combined Land-Line and Cell-Phone Second Margin (Race/Ethnicity)
+_LCM03V3,Version 3 Combined Land-Line and Cell-Phone Third Margin (Education)
+_LCM04V3,Version 3 Combined Land-Line and Cell-Phone Fourth Margin (Marital Status)
+_LCM05V3,Version 3 Combined Land-Line and Cell-Phone Fifth Margin (Home Ownership)
+_LCM06V3,Version 3 Combined Land-Line and Cell-Phone Sixth Margin (Gender-Race/Ethnicity)
+_LCM07V3,Version 3 Combined Land-Line and Cell-Phone Seventh Margin (Age-Race/Ethnicity)
+_LCM08V3,Version 3 Combined Land-Line and Cell-Phone Eighth Margin (Telephone Source)
+_LCM09V3,Version 3 Combined Land-Line and Cell-Phone Ninth Margin (Regions)
+_LCM10V3,Version 3 Combined Land-Line and Cell-Phone Tenth Margin (Regions-Age)
+_LCM11V3,Version 3 Combined Land-Line and Cell-Phone Eleventh Margin (Regions-Gender)
+_LCM12V3,Version 3 Combined Land-Line and Cell-Phone Twelfth Margin (Regions-Race/Ethnicity)
+_LCPWTV3,Version 3 weight assigned to each respondent: Land-line and cell-phone data
+_RFHLTH,Adults with good or better health
+_PHYS14D,"3 level not good physical health status: 0 days, 1-13 days, 14-30 days"
+_MENT14D,"3 level not good mental health status: 0 days, 1-13 days, 14-30 days"
+_HLTHPLN,Adults who had some form of health insurance
+_HCVU652,Respondents aged 18-64 who have any form of health insurance
+_TOTINDA,Adults who reported doing physical activity or exercise during the past 30 days other than their regular job
+_EXTETH3,Adults aged 18+ who have had permanent teeth extracted
+_ALTETH3,Adults aged 65+ who have had all their natural teeth extracted
+_DENVST3,"Adults who have visited a dentist, dental hygenist or dental clinic within the past year"
+_MICHD,Respondents that have ever reported having coronary heart disease (CHD) or myocardial infarction (MI)
+_LTASTH1,Adults who have ever been told they have asthma
+_CASTHM1,Adults who have been told they currently have asthma
+_ASTHMS1,Computed asthma status
+_DRDXAR2,Respondents who have had a doctor diagnose them as having some form of arthritis
+MRACORG2,"MRACE2 with 77,88,99s removed"
+MRACASC2,"MRACORG2 with 77,88,99s removed, in ascending order"
+_PRACE2,Preferred race category
+_MRACE2,Calculated multiracial race categorization
+_M_RACE1,Calculated multiracial race categorization
+_HISPANC,"Hispanic, Latino/a, or Spanish origin calculated variable"
+_RACE1,Race/ethnicity categories
+_RACEG22,White non-Hispanic race group
+_RACEGR4,Five-level race/ethnicity category
+_RACEPR1,Computed race groups used for internet prevalence tables
+_SEX,Calculated sex variable
+_AGEG5YR,Fourteen-level age category
+_AGE65YR,Two-level age category
+_AGE80,Imputed Age value collapsed above 80
+_AGE_G,Six-level imputed age category
+HTIN4,Reported height in inches
+HTM4,Reported height in meters
+WTKG3,Reported weight in kilograms
+_BMI5,Body Mass Index (BMI)
+_BMI5CAT,Four-categories of Body Mass Index (BMI)
+_RFBMI5,Adults who have a body mass index greater than 25.00 (Overweight or Obese)
+_CHLDCNT,Number of children in household
+_EDUCAG,Level of education completed
+_INCOMG1,Income categories
+_RFMAM22,Women respondents aged 40+ who have had a mammogram in the past two years
+_MAM5023,Women respondents aged 50-74 who have had a mammogram in the past two years
+_HADCOLN,Had colonoscopy calculated variable
+_CLNSCP1,Respondents aged 45-75 who have had a colonoscopy within the past ten years
+_HADSIGM,Had sigmoidoscopy calculated variable
+_SGMSCP1,Respondents aged 45-75 who have had a sigmoidoscopy within the past five years
+_SGMS101,Respondents aged 45-75 who have had a sigmoidoscopy within the past ten years
+_RFBLDS5,Respondents aged 45-75 who have had a stool test within the past year
+_STOLDN1,Respondents aged 45-75 who have had a stool DNA test within the past three years
+_VIRCOL1,Respondents aged 45-75 who have had a virtual colonoscopy within the past five years
+_SBONTI1,Respondents aged 45-75 who have had a sigmoidoscopy within the past ten years and a blood stool test in the past year
+_CRCREC2,Respondents aged 45-75 who have fully met the USPSTF recommendations
+_SMOKER3,"Four-level smoker status: Everyday smoker, Someday smoker, Former smoker, Non-smoker"
+_RFSMOK3,Adults who are current smokers
+_CURECI2,Adults who are current e-cigarette users
+_YRSSMOK,Number of years respondent smoked cigarettes
+_PACKDAY,Number of packs of cigarettes smoked per day
+_PACKYRS,Number of years smoked reported number of packs per day
+_YRSQUIT,Number of years since quit smoking cigarettes
+_SMOKGRP,Smoking Group
+_LCSREC,Lung cancer screening recommendation status
+DRNKANY6,Adults who reported having had at least one drink of alcohol in the past 30 days.
+DROCDY4_,Drink-occasions-per-day
+_RFBING6,"Binge drinkers (males having five or more drinks on one occasion, females having four or more drinks on one occasion)"
+_DRNKWK2,Calculated total number of alcoholic beverages consumed per week
+_RFDRHV8,Heavy drinkers (adult men having more than 14 drinks per week and adult women having more than 7 drinks per week)
+_FLSHOT7,Adults aged 65+ who have had a flu shot within the past year
+_PNEUMO3,Adults aged 65+ who have ever had a pneumonia vaccination
+_AIDTST4,Adults who have ever been tested for HIV
