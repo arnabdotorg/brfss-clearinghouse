@@ -6,6 +6,7 @@ import Papa from "papaparse";
 import PivotTableUI from "react-pivottable/PivotTableUI";
 import "react-pivottable/pivottable.css";
 import NavTabs from "../components/NavTabs";
+import { printElement } from "../lib/printUtils";
 
 const DATA_DICT_URLS = {
   2016: new URL("../datadicts/2016_datadict.csv", import.meta.url).href,
@@ -53,6 +54,7 @@ export default function PivotClient() {
   const [dictError, setDictError] = useState("");
   const [dictLoading, setDictLoading] = useState(false);
   const dictCacheRef = useRef(new Map());
+  const pivotTableRef = useRef(null);
 
   const [showColumnPicker, setShowColumnPicker] = useState(false);
   const [availableColumns, setAvailableColumns] = useState([]);
@@ -193,6 +195,19 @@ export default function PivotClient() {
     setShowColumnPicker(false);
   };
 
+  const handleExportPivot = () => {
+    if (!rowCount || !pivotTableRef.current) {
+      return;
+    }
+    const success = printElement(
+      pivotTableRef.current,
+      "BRFSS Pivot Table"
+    );
+    if (!success && typeof window !== "undefined") {
+      window.alert("Please allow pop-ups to export the table.");
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-stone-50 to-amber-100 text-stone-900">
       <main className="mx-auto flex max-w-6xl flex-col gap-6 py-10 px-6">
@@ -305,28 +320,42 @@ export default function PivotClient() {
         </section>
 
         <section className="rounded-2xl border border-amber-200 bg-white p-4 shadow-lg shadow-amber-100/60">
-          <div className="mb-2 flex items-center justify-between">
-            <h3 className="text-lg font-semibold text-stone-900">Pivot</h3>
-            <p className="text-xs text-stone-600">
-              Drag fields between rows/columns; aggregators and renderers are
-              built-in.
-            </p>
-            {rowCount > 0 && (
-              <button
-                onClick={() => setShowColumnPicker(true)}
-                className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-800 transition hover:bg-amber-100"
-              >
-                Choose columns
-              </button>
-            )}
+          <div className="mb-2 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h3 className="text-lg font-semibold text-stone-900">Pivot</h3>
+              <p className="text-xs text-stone-600">
+                Drag fields between rows/columns; aggregators and renderers are
+                built-in.
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              {rowCount > 0 && (
+                <>
+                  <button
+                    onClick={handleExportPivot}
+                    className="rounded-full border border-amber-200 bg-white px-3 py-1 text-xs font-semibold text-stone-700 transition hover:bg-stone-100"
+                  >
+                    Export to PDF
+                  </button>
+                  <button
+                    onClick={() => setShowColumnPicker(true)}
+                    className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-800 transition hover:bg-amber-100"
+                  >
+                    Choose columns
+                  </button>
+                </>
+              )}
+            </div>
           </div>
           <div className="min-h-[420px] overflow-auto rounded-xl border border-amber-100 bg-white p-3">
             {rowCount ? (
-              <PivotTableUI
-                data={pivotState.data || data}
-                onChange={(s) => setPivotState(s)}
-                {...pivotState}
-              />
+              <div ref={pivotTableRef}>
+                <PivotTableUI
+                  data={pivotState.data || data}
+                  onChange={(s) => setPivotState(s)}
+                  {...pivotState}
+                />
+              </div>
             ) : (
               <p className="text-sm text-stone-500">
                 Upload a CSV to start. All processing stays in your browser.

@@ -6,6 +6,7 @@ import { initDuckDB, loadCsv, runDuckQuery } from "./lib/duckdbClient";
 import { draftSql } from "./lib/sqlexplorerGeminiClient";
 import { SAMPLE_QUERIES } from "./lib/sampleQueries";
 import SampleQueryPicker from "./components/SampleQueryPicker";
+import { printElement } from "./lib/printUtils";
 
 const YEARS = [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023];
 
@@ -40,6 +41,7 @@ export default function SqlExplorerV2() {
   const workerUrlRef = useRef(null);
   const sqlFlashTimeoutRef = useRef(null);
   const resultFlashTimeoutRef = useRef(null);
+  const queryTableRef = useRef(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -260,6 +262,19 @@ export default function SqlExplorerV2() {
     }
   };
 
+  const handleExportQueryResult = () => {
+    if (!queryResult || !queryResult.rows?.length) {
+      return;
+    }
+    const success = printElement(
+      queryTableRef.current,
+      "BRFSS Query Result"
+    );
+    if (!success && typeof window !== "undefined") {
+      window.alert("Please allow pop-ups to export the table.");
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-stone-50 to-amber-100 text-stone-900">
       <main className="mx-auto flex max-w-6xl flex-col gap-8 py-10 px-6">
@@ -384,12 +399,20 @@ export default function SqlExplorerV2() {
             <h3 className="text-lg font-semibold text-stone-900">Query result</h3>
             <div className="flex items-center gap-2">
               {queryResult && queryResult.rows?.length > 0 && (
-                <button
-                  onClick={openPivotModal}
-                  className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-800 transition hover:bg-amber-100"
-                >
-                  Send to Pivot
-                </button>
+                <>
+                  <button
+                    onClick={handleExportQueryResult}
+                    className="rounded-full border border-amber-200 bg-white px-3 py-1 text-xs font-semibold text-stone-700 transition hover:bg-stone-100"
+                  >
+                    Export to PDF
+                  </button>
+                  <button
+                    onClick={openPivotModal}
+                    className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-800 transition hover:bg-amber-100"
+                  >
+                    Send to Pivot
+                  </button>
+                </>
               )}
               {message && <p className="text-xs text-amber-700">{message}</p>}
               {error && (
@@ -420,7 +443,10 @@ export default function SqlExplorerV2() {
               }`}
             >
               <div className="max-h-[28rem] w-full overflow-auto">
-                <table className="min-w-max text-sm text-stone-800">
+                <table
+                  ref={queryTableRef}
+                  className="min-w-max text-sm text-stone-800"
+                >
                   <thead className="bg-amber-100 text-left text-xs font-semibold uppercase tracking-wide text-amber-800">
                     <tr>
                       {queryResult.columns.map((col) => (
