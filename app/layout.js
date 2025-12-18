@@ -1,9 +1,9 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Gemini + DuckDB SQL Playground",
+  title: "BRFSS Clearinghouse",
   description:
-    "Upload CSVs, ask Gemini for SQL, and query with DuckDB all in your browser.",
+    "BRFSS data clearinghouse with Google Gemini integration for SQL querying and built-in pivot table.",
 };
 
 export default function RootLayout({ children }) {
