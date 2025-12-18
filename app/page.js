@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import NavTabs from "./components/NavTabs";
 import { initDuckDB, loadCsv, runDuckQuery } from "./lib/duckdbClient";
 import { draftSql } from "./lib/sqlexplorerGeminiClient";
@@ -42,6 +43,7 @@ export default function SqlExplorerV2() {
   const sqlFlashTimeoutRef = useRef(null);
   const resultFlashTimeoutRef = useRef(null);
   const queryTableRef = useRef(null);
+  const router = useRouter();
 
   useEffect(() => {
     let cancelled = false;
@@ -258,7 +260,7 @@ export default function SqlExplorerV2() {
         "pivotTransfer",
         JSON.stringify({ rows: filteredRows, columns: selected })
       );
-      window.location.href = "/pivot";
+      router.push("/pivot");
     }
   };
 
