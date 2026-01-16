@@ -64,6 +64,11 @@ export default function SqlExplorerV2() {
 
     bootDuckDB();
 
+    const storedKey = localStorage.getItem("brfss_cerebras_key");
+    if (storedKey) {
+      setCerebrasKey(storedKey);
+    }
+
     return () => {
       cancelled = true;
       connRef.current?.close();
@@ -318,7 +323,7 @@ export default function SqlExplorerV2() {
                 <p className="text-xs uppercase tracking-[0.2em] text-amber-700">
                   Natural language
                 </p>
-                <h3 className="text-lg font-semibold text-stone-900">Ask Cerebras</h3>
+                <h3 className="text-lg font-semibold text-stone-900">Ask LLM</h3>
               </div>
             </div>
             <textarea
@@ -336,8 +341,29 @@ export default function SqlExplorerV2() {
               {aiLoading ? "Drafting..." : "Ask Cerebras for SQL"}
             </button>
             <p className="mt-2 text-xs text-stone-600">
-              Uses your Cerebras API key. Returns SQL directly into the editor.
+              Uses your Cerebras API key. Returns SQL directly into the editor.{" "}
+              <a
+                href="https://cloud.cerebras.ai/platform/"
+                target="_blank"
+                rel="noreferrer"
+                className="font-medium text-amber-700 hover:text-amber-800 hover:underline"
+              >
+                Get an API Key
+              </a>
             </p>
+            <div className="mt-4 space-y-1">
+              <label className="text-xs uppercase tracking-[0.2em] text-amber-700">
+                Sample queries
+              </label>
+              <SampleQueryPicker
+                samples={SAMPLE_QUERIES}
+                selectedId={selectedSample}
+                onSelect={handleSampleSelect}
+              />
+              <p className="text-[11px] text-stone-500">
+                Selecting a sample fills the SQL editor and runs it immediately.
+              </p>
+            </div>
 
           </div>
 
@@ -375,19 +401,7 @@ export default function SqlExplorerV2() {
                   : "waiting for uploads"}
                 .
               </div>
-              <div className="mt-4 space-y-1 border-t border-amber-200/50 pt-4">
-                <label className="text-xs uppercase tracking-[0.2em] text-amber-700">
-                  Sample queries
-                </label>
-                <SampleQueryPicker
-                  samples={SAMPLE_QUERIES}
-                  selectedId={selectedSample}
-                  onSelect={handleSampleSelect}
-                />
-                <p className="text-[11px] text-stone-500">
-                  Selecting a sample fills the SQL editor and runs it immediately.
-                </p>
-              </div>
+
             </div>
           </div>
         </section>
@@ -488,10 +502,13 @@ export default function SqlExplorerV2() {
                   </h3>
                 </div>
                 <button
-                  onClick={() => setShowApiModal(false)}
+                  onClick={() => {
+                    localStorage.setItem("brfss_cerebras_key", cerebrasKey);
+                    setShowApiModal(false);
+                  }}
                   className="rounded-full bg-stone-900 px-3 py-1 text-xs font-semibold text-amber-50"
                 >
-                  Close
+                  Save
                 </button>
               </div>
               <div className="mt-4 space-y-3">
@@ -506,7 +523,15 @@ export default function SqlExplorerV2() {
                   />
                 </label>
                 <p className="text-xs text-stone-500">
-                  Keys stay in this browser. Cerebras is used for SQL drafting.
+                  Keys stay in this browser. Cerebras is used for SQL drafting.{" "}
+                  <a
+                    href="https://cloud.cerebras.ai/platform/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-medium text-amber-700 hover:text-amber-800 hover:underline"
+                  >
+                    Get an API Key
+                  </a>
                 </p>
               </div>
             </div>
