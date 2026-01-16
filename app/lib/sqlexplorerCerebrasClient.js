@@ -77,16 +77,16 @@ export async function draftSql({
   1. Return only executable DuckDB SQL.
   2. No markdown formatting (no \`\`\`sql blocks).
   3. No explanations or commentary.
-  4. Use the attached data dictionaries for column names.
-  5. ALWAYS match a table to its same-year dictionary (e.g., brfss_2019 uses the 2019 dict).
-  6. If a column is ambiguous, pick the best match from the correct year.
+  4. Use ONLY the columns listed in the attached data dictionaries. Do NOT invent column names.
+  5. Pay close attention to leading underscores (e.g., _SMOKER3, _BMI5). These are calculated variables and are very common. Check for them specifically.
+  6. ALWAYS match a table to its same-year dictionary (e.g., brfss_2019 uses the 2019 dict).
+  7. If a column is ambiguous, pick the best match from the correct year's dictionary.
   
   Available tables: ${availableTables}`;
 
   const userContext = `
-  Attached dictionaries: ${
-    dictParts.length ? dictPayloads.filter(Boolean).map((d) => d.year).join(", ") : "none"
-  }
+  Attached dictionaries: ${dictParts.length ? dictPayloads.filter(Boolean).map((d) => d.year).join(", ") : "none"
+    }
   
   Context Data Dictionaries:
   ${dictParts.join("\n\n")}
@@ -115,13 +115,13 @@ export async function draftSql({
     });
 
     if (!response.ok) {
-        const errData = await response.json().catch(() => ({}));
-        throw new Error(errData?.error?.message || `Cerebras API error: ${response.statusText}`);
+      const errData = await response.json().catch(() => ({}));
+      throw new Error(errData?.error?.message || `Cerebras API error: ${response.statusText}`);
     }
 
     const data = await response.json();
     const content = data.choices?.[0]?.message?.content || "";
-    
+
     // Clean up any potential markdown if the model disobeys (though we told it not to)
     return content.replace(/```sql/gi, "").replace(/```/g, "").trim();
 
