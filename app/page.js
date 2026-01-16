@@ -17,7 +17,7 @@ export default function SqlExplorerV2() {
   const [showFilesModal, setShowFilesModal] = useState(false);
   const [cerebrasKey, setCerebrasKey] = useState("");
   const [prompt, setPrompt] = useState(
-    "Create a profile of the latest BRFSS year."
+    "How many smokers had TBI in 2022?"
   );
   const [sql, setSql] = useState("");
   const [sqlFlash, setSqlFlash] = useState(false);
