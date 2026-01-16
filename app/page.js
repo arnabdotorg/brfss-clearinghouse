@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import NavTabs from "./components/NavTabs";
 import { initDuckDB, loadCsv, runDuckQuery } from "./lib/duckdbClient";
-import { draftSql } from "./lib/sqlexplorerGeminiClient";
+import { draftSql } from "./lib/sqlexplorerCerebrasClient";
 import { SAMPLE_QUERIES } from "./lib/sampleQueries";
 import SampleQueryPicker from "./components/SampleQueryPicker";
 import { printElement } from "./lib/printUtils";
@@ -15,7 +15,7 @@ export default function SqlExplorerV2() {
   const [status, setStatus] = useState("Booting DuckDB in your browser...");
   const [showApiModal, setShowApiModal] = useState(false);
   const [showFilesModal, setShowFilesModal] = useState(false);
-  const [geminiKey, setGeminiKey] = useState("");
+  const [cerebrasKey, setCerebrasKey] = useState("");
   const [prompt, setPrompt] = useState(
     "Create a profile of the latest BRFSS year."
   );
@@ -147,8 +147,8 @@ export default function SqlExplorerV2() {
   };
 
   const handleDraftSql = async () => {
-    if (!geminiKey.trim()) {
-      setError("Add a Gemini API key first.");
+    if (!cerebrasKey.trim()) {
+      setError("Add a Cerebras API key first.");
       return;
     }
     setAiLoading(true);
@@ -157,17 +157,17 @@ export default function SqlExplorerV2() {
     try {
       const sampleRows = await fetchSampleRows();
       const drafted = await draftSql({
-        apiKey: geminiKey.trim(),
+        apiKey: cerebrasKey.trim(),
         prompt,
         loadedYears,
         sampleRows,
       });
       setSql(drafted);
       triggerSqlFlash();
-      setMessage("Gemini drafted SQL for you.");
+      setMessage("Cerebras drafted SQL for you.");
     } catch (err) {
       console.error(err);
-      setError(err.message || "Gemini request failed.");
+      setError(err.message || "Cerebras request failed.");
     } finally {
       setAiLoading(false);
     }
@@ -191,8 +191,7 @@ export default function SqlExplorerV2() {
       const result = await runDuckQuery(connRef.current, statement);
       setQueryResult(result);
       setMessage(
-        `Query returned ${result.rows.length} row${
-          result.rows.length === 1 ? "" : "s"
+        `Query returned ${result.rows.length} row${result.rows.length === 1 ? "" : "s"
         }.`
       );
       triggerResultFlash();
@@ -314,12 +313,12 @@ export default function SqlExplorerV2() {
 
         <section className="grid gap-6 lg:grid-cols-3">
           <div className="rounded-2xl border border-amber-200 bg-white/80 p-5 shadow-lg shadow-amber-100/60">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-amber-700">
-                Natural language
-              </p>
-                <h3 className="text-lg font-semibold text-stone-900">Ask Gemini</h3>
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-xs uppercase tracking-[0.2em] text-amber-700">
+                  Natural language
+                </p>
+                <h3 className="text-lg font-semibold text-stone-900">Ask Cerebras</h3>
               </div>
             </div>
             <textarea
@@ -334,24 +333,12 @@ export default function SqlExplorerV2() {
               disabled={aiLoading}
               className="mt-3 w-full rounded-xl bg-amber-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-amber-500 disabled:cursor-not-allowed disabled:bg-amber-200 disabled:text-stone-500"
             >
-              {aiLoading ? "Drafting..." : "Ask Gemini for SQL"}
+              {aiLoading ? "Drafting..." : "Ask Cerebras for SQL"}
             </button>
             <p className="mt-2 text-xs text-stone-600">
-              Uses your Gemini API key. Returns SQL directly into the editor.
+              Uses your Cerebras API key. Returns SQL directly into the editor.
             </p>
-            <div className="mt-4 space-y-1">
-              <label className="text-xs uppercase tracking-[0.2em] text-amber-700">
-                Sample queries
-              </label>
-              <SampleQueryPicker
-                samples={SAMPLE_QUERIES}
-                selectedId={selectedSample}
-                onSelect={handleSampleSelect}
-              />
-              <p className="text-[11px] text-stone-500">
-                Selecting a sample fills the SQL editor and runs it immediately.
-              </p>
-            </div>
+
           </div>
 
           <div className="lg:col-span-2">
@@ -377,9 +364,8 @@ export default function SqlExplorerV2() {
                 value={sql}
                 onChange={(e) => setSql(e.target.value)}
                 rows={14}
-                className={`mt-3 w-full rounded-xl border border-amber-200 bg-white px-4 py-3 font-mono text-sm text-stone-900 outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-500/30 ${
-                  sqlFlash ? "sql-flash" : ""
-                }`}
+                className={`mt-3 w-full rounded-xl border border-amber-200 bg-white px-4 py-3 font-mono text-sm text-stone-900 outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-500/30 ${sqlFlash ? "sql-flash" : ""
+                  }`}
                 placeholder="SELECT * FROM brfss_2016 LIMIT 25;"
               />
               <div className="mt-2 text-xs text-stone-600">
@@ -388,6 +374,19 @@ export default function SqlExplorerV2() {
                   ? loadedYears.map((year) => `brfss_${year}`).join(", ")
                   : "waiting for uploads"}
                 .
+              </div>
+              <div className="mt-4 space-y-1 border-t border-amber-200/50 pt-4">
+                <label className="text-xs uppercase tracking-[0.2em] text-amber-700">
+                  Sample queries
+                </label>
+                <SampleQueryPicker
+                  samples={SAMPLE_QUERIES}
+                  selectedId={selectedSample}
+                  onSelect={handleSampleSelect}
+                />
+                <p className="text-[11px] text-stone-500">
+                  Selecting a sample fills the SQL editor and runs it immediately.
+                </p>
               </div>
             </div>
           </div>
@@ -423,23 +422,21 @@ export default function SqlExplorerV2() {
           </div>
           {!queryResult && (
             <p className="mt-3 text-sm text-stone-600">
-              Run a query to see results. Gemini will fill the SQL editor with DuckDB-only output.
+              Run a query to see results. Cerebras will fill the SQL editor with DuckDB-only output.
             </p>
           )}
           {queryResult && queryResult.rows.length === 0 && (
             <div
-              className={`mt-4 rounded-xl border border-amber-200 bg-white/90 px-4 py-3 text-sm text-stone-700 ${
-                resultFlash ? "result-flash" : ""
-              }`}
+              className={`mt-4 rounded-xl border border-amber-200 bg-white/90 px-4 py-3 text-sm text-stone-700 ${resultFlash ? "result-flash" : ""
+                }`}
             >
               Query returned zero rows. Adjust your filters and try again.
             </div>
           )}
           {queryResult && queryResult.rows.length > 0 && (
             <div
-              className={`mt-4 overflow-hidden rounded-xl border border-amber-200 bg-white/90 ${
-                resultFlash ? "result-flash" : ""
-              }`}
+              className={`mt-4 overflow-hidden rounded-xl border border-amber-200 bg-white/90 ${resultFlash ? "result-flash" : ""
+                }`}
             >
               <div className="max-h-[28rem] w-full overflow-auto">
                 <table
@@ -499,17 +496,17 @@ export default function SqlExplorerV2() {
               </div>
               <div className="mt-4 space-y-3">
                 <label className="block text-sm text-stone-700">
-                  Gemini API key
+                  Cerebras API key
                   <input
                     type="password"
-                    value={geminiKey}
-                    onChange={(e) => setGeminiKey(e.target.value)}
-                    placeholder="Paste your Gemini key"
+                    value={cerebrasKey}
+                    onChange={(e) => setCerebrasKey(e.target.value)}
+                    placeholder="Paste your Cerebras key"
                     className="mt-1 w-full rounded-xl border border-amber-200 bg-white px-3 py-2 text-sm text-stone-900 outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-500/30"
                   />
                 </label>
                 <p className="text-xs text-stone-500">
-                  Keys stay in this browser. Gemini is used for SQL drafting.
+                  Keys stay in this browser. Cerebras is used for SQL drafting.
                 </p>
               </div>
             </div>
@@ -564,13 +561,13 @@ export default function SqlExplorerV2() {
                           Pending
                         </span>
                       )}
-                    <input
-                      type="file"
-                      accept=".csv,text/csv"
-                      onChange={(e) => handleFileUpload(year, e.target.files?.[0])}
-                      disabled={uploadingYear === year}
-                      className="w-40 cursor-pointer text-xs text-stone-700 file:mr-2 file:rounded-lg file:border-0 file:bg-amber-600 file:px-3 file:py-2 file:text-xs file:font-semibold file:text-white"
-                    />
+                      <input
+                        type="file"
+                        accept=".csv,text/csv"
+                        onChange={(e) => handleFileUpload(year, e.target.files?.[0])}
+                        disabled={uploadingYear === year}
+                        className="w-40 cursor-pointer text-xs text-stone-700 file:mr-2 file:rounded-lg file:border-0 file:bg-amber-600 file:px-3 file:py-2 file:text-xs file:font-semibold file:text-white"
+                      />
                     </div>
                   </label>
                 ))}

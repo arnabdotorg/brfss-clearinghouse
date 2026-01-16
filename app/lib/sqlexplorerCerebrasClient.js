@@ -1,12 +1,5 @@
 "use client";
 
-import { GoogleGenAI, createUserContent } from "@google/genai";
-
-const MODEL_NAME = "gemini-2.5-flash";
-
-const safeStringify = (value) =>
-  JSON.stringify(value, (_, v) => (typeof v === "bigint" ? v.toString() : v));
-
 const DATA_DICT_URLS = {
   2016: new URL("../datadicts/2016_datadict.csv", import.meta.url).href,
   2017: new URL("../datadicts/2017_datadict.csv", import.meta.url).href,
@@ -38,7 +31,6 @@ async function fetchDataDict(year) {
     }
     const text = await res.text();
     dataDictCache.set(year, text);
-    console.log(text);
     return text;
   } catch (err) {
     console.error(`Data dictionary load failed for ${year}:`, err);
@@ -54,10 +46,9 @@ export async function draftSql({
   sampleRows = [],
 }) {
   if (!apiKey) {
-    throw new Error("Gemini API key is required.");
+    throw new Error("Cerebras API key is required.");
   }
 
-  const genAI = new GoogleGenAI({ apiKey });
   const availableTables = loadedYears.length
     ? loadedYears.map((year) => `brfss_${year}`).join(", ")
     : "None";
@@ -80,33 +71,62 @@ export async function draftSql({
         `DATA DICTIONARY — YEAR ${year} — TABLE brfss_${year}\nColumns: column_name, column_type, description, possible_values (Python dict-style)\n${text}`
     );
 
-  const instruction = `You are a DuckDB SQL assistant. Return only executable DuckDB SQL with no markdown or commentary. Use the attached BRFSS data dictionaries for column names, descriptions, allowed values, and DuckDB types. ALWAYS match a table to its same-year dictionary (brfss_2019 uses the 2019 dictionary, etc.). If querying multiple years, reference each table with its matching year dictionary. If a column is ambiguous, pick the best match from the correct year dictionary and sample rows.
+  const systemInstruction = `You are an expert DuckDB SQL data analyst.
+  
+  Rules:
+  1. Return only executable DuckDB SQL.
+  2. No markdown formatting (no \`\`\`sql blocks).
+  3. No explanations or commentary.
+  4. Use the attached data dictionaries for column names.
+  5. ALWAYS match a table to its same-year dictionary (e.g., brfss_2019 uses the 2019 dict).
+  6. If a column is ambiguous, pick the best match from the correct year.
+  
+  Available tables: ${availableTables}`;
 
-Available tables: ${availableTables}
-Attached dictionaries: ${
+  const userContext = `
+  Attached dictionaries: ${
     dictParts.length ? dictPayloads.filter(Boolean).map((d) => d.year).join(", ") : "none"
   }
+  
+  Context Data Dictionaries:
+  ${dictParts.join("\n\n")}
 
-User request: ${prompt}
+  User Request: ${prompt}
+  `;
 
-Return only SQL. Do not wrap in fences or add prefixes.`;
-
-  let result;
-  console.log(dictParts);
   try {
-    result = await genAI.models.generateContent({
-      model: MODEL_NAME,
-      contents: createUserContent([...dictParts, instruction]),
+    const response = await fetch("https://api.cerebras.ai/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model: "gpt-oss-120b",
+        messages: [
+          { role: "system", content: systemInstruction },
+          { role: "user", content: userContext },
+        ],
+        max_completion_tokens: 32768,
+        temperature: 0.01,
+        top_p: 1,
+        stream: false,
+      }),
     });
+
+    if (!response.ok) {
+        const errData = await response.json().catch(() => ({}));
+        throw new Error(errData?.error?.message || `Cerebras API error: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    const content = data.choices?.[0]?.message?.content || "";
+    
+    // Clean up any potential markdown if the model disobeys (though we told it not to)
+    return content.replace(/```sql/gi, "").replace(/```/g, "").trim();
+
   } catch (err) {
-    const message = err?.message || "Gemini request failed.";
-    throw new Error(message);
+    console.error("Cerebras request failed:", err);
+    throw new Error(err.message || "Cerebras request failed.");
   }
-
-  const raw = result?.text || "";
-  if (!raw.trim()) {
-    throw new Error("Gemini did not return SQL.");
-  }
-
-  return raw.replace(/```sql/gi, "").replace(/```/g, "").trim();
 }
