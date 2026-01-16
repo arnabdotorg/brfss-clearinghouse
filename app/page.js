@@ -203,7 +203,18 @@ export default function SqlExplorerV2() {
       triggerResultFlash();
     } catch (err) {
       console.error(err);
-      setError(err.message || "Query failed.");
+      const tableMatch = err.message?.match(
+        /Table with name brfss_(\d+) does not exist/
+      );
+      if (tableMatch) {
+        setSampleModalMessage(
+          `Please upload CSVs for ${tableMatch[1]} to run this query.`
+        );
+        setShowSampleModal(true);
+        setError(`Missing table: brfss_${tableMatch[1]}`);
+      } else {
+        setError(err.message || "Query failed.");
+      }
     } finally {
       setRunning(false);
     }
