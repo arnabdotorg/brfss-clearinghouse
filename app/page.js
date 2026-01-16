@@ -166,6 +166,7 @@ export default function SqlExplorerV2() {
         prompt,
         loadedYears,
         sampleRows,
+        sampleQueries: SAMPLE_QUERIES, // Pass sample queries for few-shot prompting
       });
       setSql(drafted);
       triggerSqlFlash();

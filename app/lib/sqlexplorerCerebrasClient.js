@@ -44,6 +44,7 @@ export async function draftSql({
   prompt,
   loadedYears = [],
   sampleRows = [],
+  sampleQueries = [],
 }) {
   if (!apiKey) {
     throw new Error("Cerebras API key is required.");
@@ -84,6 +85,11 @@ export async function draftSql({
   
   Available tables: ${availableTables}`;
 
+  const fewShotMessages = sampleQueries.flatMap((sample) => [
+    { role: "user", content: sample.prompt },
+    { role: "assistant", content: sample.sql },
+  ]);
+
   const userContext = `
   Attached dictionaries: ${dictParts.length ? dictPayloads.filter(Boolean).map((d) => d.year).join(", ") : "none"
     }
@@ -105,6 +111,7 @@ export async function draftSql({
         model: "gpt-oss-120b",
         messages: [
           { role: "system", content: systemInstruction },
+          ...fewShotMessages,
           { role: "user", content: userContext },
         ],
         max_completion_tokens: 32768,
